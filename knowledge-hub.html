@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Hub - Resources for Product Teams | productflow.online</title>
+
+    <meta name="description" content="Explore our collection of articles, success stories, and podcasts on outcome-driven product management, strategy, and discovery.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+</head>
+<body class="bg-black text-gray-200 font-sans">
+
+    <div id="header-placeholder"></div>
+
+    <main class="container mx-auto px-4 py-16">
+        <section class="text-center feature-hero pt-16 pb-24">
+            <h1 class="text-5xl font-extrabold tracking-tight text-white animate-on-scroll">Knowledge Hub</h1>
+            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400 animate-on-scroll" style="transition-delay: 150ms;">
+                Your central resource for articles, case studies, and insights on building better products.
+            </p>
+        </section>
+
+        <!-- Filtering Controls -->
+        <section class="py-12 sticky top-[88px] z-10 animate-on-scroll">
+            <div id="knowledge-hub-filters" class="flex flex-wrap justify-center gap-2 md:gap-4 p-2 rounded-full max-w-lg mx-auto bg-gray-900/50 border border-gray-800 backdrop-blur-sm">
+                <button data-filter="all" class="filter-button active">All</button>
+                <button data-filter="blog" class="filter-button">Blog Posts</button>
+                <button data-filter="success" class="filter-button">Success Stories</button>
+                <button data-filter="podcast" class="filter-button">Podcasts</button>
+            </div>
+        </section>
+
+
+        <section class="py-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Item 1: Blog Post -->
+                <div class="knowledge-item" data-category="blog">
+                    <a href="/blog/post1.html" class="feature-card animate-on-scroll block">
+                        <div class="space-y-3">
+                            <p class="text-sm font-semibold text-emerald-400">BLOG POST</p>
+                            <h2 class="text-2xl font-bold text-white">The Difference Between a Feature Factory and an Outcome-Driven Team</h2>
+                            <p class="text-gray-400">Are you shipping features or solving problems? Learn the key mindset shifts and practices that separate the most effective product teams from the rest.</p>
+                            <span class="font-semibold text-emerald-500">Read More &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Item 2: Success Story -->
+                 <div class="knowledge-item" data-category="success">
+                    <a href="/success-stories/innovatecorp.html" class="feature-card animate-on-scroll block" style="transition-delay: 100ms;">
+                        <div class="space-y-3">
+                            <p class="text-sm font-semibold text-emerald-400">SUCCESS STORY</p>
+                            <h2 class="text-2xl font-bold text-white">How InnovateCorp Cut Their Discovery Time in Half</h2>
+                            <p class="text-gray-400">By standardizing their upstream workflow, InnovateCorp was able to validate and de-risk ideas faster, leading to a more impactful roadmap.</p>
+                            <span class="font-semibold text-emerald-500">Read the story &rarr;</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Item 3: Podcast (Placeholder) -->
+                <div class="knowledge-item" data-category="podcast">
+                    <div class="feature-card animate-on-scroll" style="transition-delay: 200ms;">
+                        <div class="space-y-3">
+                            <p class="text-sm font-semibold text-emerald-400">PODCAST</p>
+                            <h2 class="text-2xl font-bold text-white">Episode 1: The Art of Saying No</h2>
+                            <p class="text-gray-400">Our CEO Anna Kowalska discusses how to use data and strategy to have productive conversations with stakeholders and protect your roadmap.</p>
+                            <span class="font-semibold text-gray-600">Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4: Blog Post (Placeholder) -->
+                <div class="knowledge-item" data-category="blog">
+                    <div class="feature-card animate-on-scroll" style="transition-delay: 300ms;">
+                        <div class="space-y-3">
+                            <p class="text-sm font-semibold text-emerald-400">BLOG POST</p>
+                            <h2 class="text-2xl font-bold text-white">How to Build an Opportunity Solution Tree that Actually Works</h2>
+                            <p class="text-gray-400">A practical guide to implementing Teresa Torres's powerful framework to connect discovery work directly to your desired business outcomes.</p>
+                            <span class="font-semibold text-gray-600">Coming Soon</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="/assets/js/index.js" defer></script>
+</body>
+</html>

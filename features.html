@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
     
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <script src="/assets/js/index.js" defer></script>
+    
 </head>
 <body class="bg-black text-gray-200 font-sans">
 
@@ -32,6 +32,14 @@
             </p>
         </section>
 
+        <section class="py-12 sticky top-[88px] z-10 animate-on-scroll">
+            <div class="quick-links-nav p-2 rounded-full max-w-md mx-auto flex justify-center shadow-lg">
+                <a href="#feedback-hub" class="px-4 py-2 text-sm font-semibold text-gray-400 rounded-full">Feedback Hub</a>
+                <a href="#upstream-workflow" class="px-4 py-2 text-sm font-semibold text-gray-400 rounded-full">Upstream Workflow</a>
+                <a href="#strategy-suite" class="px-4 py-2 text-sm font-semibold text-gray-400 rounded-full">Strategy Suite</a>
+            </div>
+        </section>
+
         <section class="py-20 text-center max-w-3xl mx-auto animate-on-scroll">
             <h2 class="text-3xl font-bold text-white">An Integrated System, Not a Collection of Features</h2>
             <p class="text-gray-400 mt-4">
@@ -39,9 +47,9 @@
             </p>
         </section>
 
-        <section id="features" class="py-24 space-y-20">
+        <section class="py-12 space-y-24">
             <!-- Feature 1: Feedback Hub -->
-            <div class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
+            <div id="feedback-hub" class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
                 <div>
                     <span class="text-sm font-bold text-emerald-500">FEEDBACK HUB</span>
                     <h3 class="text-3xl font-bold text-white mt-2 mb-4">Turn Noise into Signal</h3>
@@ -57,24 +65,24 @@
                     <a href="/features-feedback.html" class="text-emerald-500 font-semibold hover:text-emerald-400 mt-6 inline-block">Learn more about the Feedback Hub &rarr;</a>
                 </div>
                  <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated">
-                     <p class="font-mono text-xs text-emerald-400 mb-2">&gt; AI Summary of Feedback Cluster #14</p>
+                    <p class="font-mono text-xs text-emerald-400 mb-2">&gt; 🔍 AI Summary of Feedback Cluster #14</p>
                     <div class="font-mono text-sm text-gray-300 space-y-1">
-                        <p>Problem: Users find the mobile export process confusing and slow.</p>
-                        <p>Sentiment: Negative (-0.8)</p>
-                        <p>Sources: App Store (12), Zendesk (8), Twitter (5)</p>
-                        <p>Key Quote: "It took me five taps to export a simple report, I almost gave up."</p>
+                        <p><strong class="text-white">Problem:</strong> Users find the mobile export process confusing and slow.</p>
+                        <p><strong class="text-white">Sentiment:</strong> <span class="text-red-400">Negative (-0.8)</span></p>
+                        <p><strong class="text-white">Sources:</strong> App Store (12), Zendesk (8), Twitter (5)</p>
+                        <p><strong class="text-white">Key Quote:</strong> "It took me five taps to export a simple report, I almost gave up."</p>
                     </div>
                 </div>
             </div>
             <!-- Feature 2: Upstream Workflow -->
-            <div class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
+            <div id="upstream-workflow" class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
                 <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated md:order-last">
-                     <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Upstream Kanban: "Improve Mobile Export"</p>
+                     <p class="font-mono text-xs text-emerald-400 mb-2">&gt; ✅ Upstream Kanban: "Improve Mobile Export"</p>
                     <div class="font-mono text-sm text-gray-300 space-y-1">
-                        <p>Stage: [Analysing] -> [Deep Research] -> [Ready for Discussion]</p>
-                        <p>AI Co-Pilot: Generated 5 research questions.</p>
-                        <p>Risks Identified: 3 (Technical, UX, Market)</p>
-                        <p>Next Step: Schedule stakeholder review.</p>
+                        <p><strong class="text-white">Stage:</strong> [Analysing] -> <span class="bg-yellow-900/50 text-yellow-300 px-1 rounded">[Deep Research]</span> -> [Ready]</p>
+                        <p><strong class="text-white">AI Co-Pilot:</strong> Generated 5 research questions.</p>
+                        <p><strong class="text-white">Risks Identified:</strong> 3 (Technical, UX, Market)</p>
+                        <p><strong class="text-white">Next Step:</strong> Schedule stakeholder review.</p>
                     </div>
                 </div>
                 <div>
@@ -93,7 +101,7 @@
                 </div>
             </div>
             <!-- Feature 3: Strategy Suite -->
-            <div class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
+            <div id="strategy-suite" class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
                 <div>
                     <span class="text-sm font-bold text-emerald-500">STRATEGY SUITE</span>
                     <h3 class="text-3xl font-bold text-white mt-2 mb-4">Visualize The Golden Thread</h3>
@@ -109,14 +117,14 @@
                      <a href="/features-strategy.html" class="text-emerald-500 font-semibold hover:text-emerald-400 mt-6 inline-block">Learn more about the Strategy Suite &rarr;</a>
                 </div>
                 <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated">
-                     <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Traceability View</p>
+                    <p class="font-mono text-xs text-emerald-400 mb-2">&gt; 🚀 Traceability View</p>
                     <div class="font-mono text-sm text-gray-300 space-y-1">
-                        <p>Vision: Break Down Barriers</p>
-                        <p>└ Pillar: Unmatched Accuracy</p>
-                        <p>⠀└ Objective: Market Leadership</p>
-                        <p>⠀ ⠀└ KR: ↑ Market Share to 25%</p>
-                        <p>⠀ ⠀ ⠀└ Initiative: Improve Photo Translator</p>
-                        <p>⠀ ⠀ ⠀ ⠀└ Feedback: "Slow on menus"</p>
+                        <div class="font-mono"><span class="text-purple-400">Vision:</span> Break Down Barriers</div>
+                        <div class="font-mono"> └ <span class="text-blue-400">Pillar:</span> Unmatched Accuracy</div>
+                        <div class="font-mono"> ⠀└ <span class="text-yellow-400">Objective:</span> Market Leadership</div>
+                        <div class="font-mono"> ⠀ ⠀└ <span class="text-green-400">KR:</span> ↑ Market Share to 25%</div>
+                        <div class="font-mono"> ⠀ ⠀ ⠀└ <span class="text-cyan-400">Initiative:</span> Improve Photo Translator</div>
+                        <div class="font-mono"> ⠀ ⠀ ⠀ ⠀└ <span class="text-gray-500">Feedback:</span> "Slow on menus"</div>
                     </div>
                 </div>
             </div>
@@ -124,5 +132,6 @@
     </main>
 
     <div id="footer-placeholder"></div>
+    <script src="/assets/js/index.js" defer></script>
 </body>
 </html>
