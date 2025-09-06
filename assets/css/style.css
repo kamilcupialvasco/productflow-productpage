@@ -1,6 +1,11 @@
 
 @import url('https://rsms.me/inter/inter.css');
 
+/* 
+==============================================
+Base Styles & Typography
+==============================================
+*/
 body {
     font-family: 'Inter', sans-serif;
     background-color: #000;
@@ -9,97 +14,28 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.feature-hero {
-    background: radial-gradient(circle at top, rgba(16, 185, 129, 0.15), transparent 60%);
-}
-
-.feature-card, .industry-card {
-    background-color: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    transition: all 0.3s ease;
-    height: 100%; /* Make cards in a grid equal height */
-}
-
-.feature-card:hover, .industry-card:hover {
-    border-color: #10b981;
-    transform: translateY(-5px);
-}
-
 .hidden {
     display: none;
 }
 
-/* Dropdown Menu Fix */
-.dropdown-menu {
-    background-color: rgba(24, 24, 27, 0.85); /* zinc-950 with transparency */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(63, 63, 70, 0.5); /* zinc-700 with transparency */
+/* 
+==============================================
+Layout & Sections
+==============================================
+*/
+.feature-hero {
+    background: radial-gradient(circle at top, rgba(16, 185, 129, 0.15), transparent 60%);
 }
 
-nav a {
-    transition: color 0.2s ease-in-out;
-}
-
-
-/* Scroll Animations */
-.animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.animate-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Newsletter Section */
 .newsletter-section {
     background: linear-gradient(45deg, #052e22, #0c4b3e);
 }
 
-/* Hero Headline Animation */
-#hero-headline span {
-    transition: opacity 0.5s ease-in-out;
-}
-#hero-headline span.fade-out {
-    opacity: 0;
-}
-#hero-headline span.typing::after {
-    content: '▋';
-    animation: blink 1s step-end infinite;
-    color: #10b981; /* Emerald-500 */
-}
-
-/* Code Block Animation */
-.code-block-animated.typing p:last-of-type::after,
-.code-block-animated.typing div:last-of-type::after {
-    content: '▋';
-    animation: blink 1s step-end infinite;
-    color: #10b981; /* Emerald-500 */
-    margin-left: 2px;
-}
-
-@keyframes blink {
-    from, to { opacity: 1 }
-    50% { opacity: 0 }
-}
-
-/* Methodology Cards */
-.methodology-card {
-    background-color: #1a1a1a;
-    border: 1px solid #333;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-}
-
-
-/* Prose styles for blog posts, legal pages */
 .prose-custom {
     color: #d1d5db; /* gray-300 */
+    max-width: 65ch;
+    margin-left: auto;
+    margin-right: auto;
 }
 .prose-custom h1, .prose-custom h2, .prose-custom h3, .prose-custom strong {
     color: #ffffff;
@@ -111,12 +47,77 @@ nav a {
     border-left-color: #10b981; /* emerald-500 */
     color: #9ca3af; /* gray-400 */
 }
+.prose-custom p, .prose-custom li {
+    line-height: 1.75;
+}
 .prose-custom code {
     color: #f3f4f6; /* gray-100 */
     background-color: #374151; /* gray-700 */
     padding: 0.2em 0.4em;
     border-radius: 0.25rem;
 }
+
+/* 
+==============================================
+Components
+==============================================
+*/
+
+/* Active Navigation Link */
+.active-nav-link {
+    color: #ffffff !important;
+    font-weight: 600;
+}
+header .dropdown .active-nav-link {
+    color: #ffffff !important; /* Keep top-level dropdown link white */
+}
+.dropdown-menu a.active-nav-link {
+    color: #34d399 !important; /* Highlight item within dropdown menu */
+}
+
+
+/* Buttons */
+.cta-button-secondary {
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: 1px solid #4a5568;
+    transition: all 0.2s ease;
+}
+.cta-button-secondary:hover {
+    background-color: #333;
+    border-color: #666;
+    color: #fff;
+}
+
+
+/* Cards */
+.feature-card, .industry-card, .use-case-card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.feature-card:hover, .industry-card:hover, .use-case-card:hover {
+    border-color: #10b981;
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2);
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    background-color: rgba(24, 24, 27, 0.85); /* zinc-950 with transparency */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(63, 63, 70, 0.5); /* zinc-700 with transparency */
+}
+
+nav a {
+    transition: color 0.2s ease-in-out;
+}
+
 /* Key Takeaways / Results Box */
 .key-takeaways {
     background-color: rgba(16, 185, 129, 0.1);
@@ -152,12 +153,6 @@ nav a {
     animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1.05); box-shadow: 0 0 25px rgba(16, 185, 129, 0.5); }
-  50% { transform: scale(1.1); box-shadow: 0 0 35px rgba(16, 185, 129, 0.7); }
-  100% { transform: scale(1.05); box-shadow: 0 0 25px rgba(16, 185, 129, 0.5); }
-}
-
 /* Tabs styles */
 .tab-button {
     padding: 0.75rem 1.5rem;
@@ -179,11 +174,6 @@ nav a {
 }
 .tab-pane.active {
     display: block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Carousel Styles */
@@ -242,7 +232,6 @@ nav a {
     background-color: #10b981;
 }
 
-
 /* Pricing Table */
 .pricing-table {
     width: 100%;
@@ -273,6 +262,50 @@ nav a {
     color: #fff;
     background-color: #1a1a1a;
 }
+.pricing-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Pricing Toggle Switch */
+.pricing-toggle-label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+.pricing-toggle-label input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.pricing-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #333;
+    transition: .4s;
+    border-radius: 34px;
+}
+.pricing-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .pricing-toggle-slider {
+    background-color: #10b981;
+}
+input:checked + .pricing-toggle-slider:before {
+    transform: translateX(26px);
+}
 
 /* Use Case Card Enhancement */
 .use-case-card .impact-label {
@@ -298,13 +331,15 @@ nav a {
     border: 1px solid #333;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }
-
 .quick-links-nav a {
     transition: all 0.2s ease;
 }
 .quick-links-nav a:hover {
     background-color: #333;
     color: #fff;
+}
+#feedback-hub, #upstream-workflow, #strategy-suite {
+    scroll-margin-top: 120px; /* Adjust based on sticky nav height + breathing room */
 }
 
 /* Knowledge Hub Filters */
@@ -373,4 +408,160 @@ nav a {
     font-size: 0.875rem;
     color: #a0aec0;
     margin-top: 0.25rem;
+}
+
+/* Integrations Section */
+.integrations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 2rem;
+    align-items: center;
+}
+.integration-logo {
+    max-height: 40px;
+    width: auto;
+    margin: 0 auto;
+    filter: grayscale(100%) opacity(60%);
+    transition: all 0.3s ease;
+}
+.integration-logo:hover {
+    filter: grayscale(0%) opacity(100%);
+    transform: scale(1.1);
+}
+
+/* Form Submission Feedback */
+.form-success-message {
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid #10b981;
+    color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    animation: fadeIn 0.5s;
+}
+
+
+/*
+==============================================
+Animations & Interactive "Wodotryski"
+==============================================
+*/
+
+/* General Page Load Animation */
+main {
+    animation: mainFadeIn 0.6s ease-out;
+}
+
+/* Scroll-triggered animations (base styles) */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero Parallax */
+.hero-parallax-bg {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    right: 0;
+    bottom: -50%;
+    background: radial-gradient(circle at top, rgba(16, 185, 129, 0.1), transparent 50%);
+    z-index: 0;
+    transition: transform 0.2s ease-out;
+}
+
+/* Hero Headline Animation */
+#hero-headline span {
+    transition: opacity 0.5s ease-in-out;
+}
+#hero-headline span.fade-out {
+    opacity: 0;
+}
+
+/* Code Block "Typing" Animation */
+@keyframes typing-effect {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink {
+    from, to { opacity: 1 }
+    50% { opacity: 0 }
+}
+
+.code-block-animated.typing div:last-of-type::after,
+.code-block-animated.typing p:last-of-type::after,
+.code-block-animated.typing strong:last-of-type::after {
+    content: '▋';
+    animation: blink 1s step-end infinite;
+    color: #10b981; /* Emerald-500 */
+    margin-left: 2px;
+}
+
+/* Golden Thread Diagram */
+.golden-thread-diagram .thread-node, .golden-thread-diagram .thread-line {
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+.golden-thread-diagram .thread-node:hover .thread-text {
+    font-weight: bold;
+}
+.golden-thread-diagram .dimmed {
+    opacity: 0.3;
+}
+.golden-thread-diagram .thread-text {
+    font-size: 10px;
+    font-family: 'Inter', sans-serif;
+    fill: #E2E8F0;
+}
+
+/* Staggered Animations */
+@keyframes card-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+[data-stagger-group] .animate-on-scroll {
+    opacity: 0; /* Keep hidden until observer triggers */
+}
+[data-stagger-group].is-visible .animate-on-scroll {
+    animation: card-in 0.5s ease-out forwards;
+}
+
+/* Other Keyframes */
+@keyframes mainFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1.05); box-shadow: 0 0 25px rgba(16, 185, 129, 0.5); }
+  50% { transform: scale(1.1); box-shadow: 0 0 35px rgba(16, 185, 129, 0.7); }
+  100% { transform: scale(1.05); box-shadow: 0 0 25px rgba(16, 185, 129, 0.5); }
+}
+
+/* 
+==============================================
+Accessibility
+==============================================
+*/
+*:focus-visible {
+    outline: 2px solid #10b981; /* emerald-500 */
+    outline-offset: 2px;
+    border-radius: 2px;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.5);
 }

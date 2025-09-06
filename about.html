@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Learn about the mission behind productflow.online - to empower product teams with the tools and workflows they need to connect with customers, align on strategy, and build things that truly matter.">
+    <link rel="canonical" href="https://productflow.online/about.html" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -16,7 +18,6 @@
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <script src="/assets/js/index.js" defer></script>
 </head>
 <body class="bg-black text-gray-200 font-sans">
 
@@ -24,18 +25,18 @@
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-16">
-        <section class="text-center max-w-3xl mx-auto pt-16 pb-24 feature-hero">
+        <section class="text-center pt-16 pb-24 feature-hero">
             <h1 class="text-5xl font-extrabold tracking-tight text-white animate-on-scroll">We're here to help you build better products.</h1>
-            <p class="mt-6 text-lg text-gray-400 animate-on-scroll" style="transition-delay: 150ms;">
+            <p class="mt-6 text-lg text-gray-400 animate-on-scroll max-w-3xl mx-auto" data-stagger-child>
                 Our mission is to empower product teams with the tools and workflows they need to connect with their customers, align on strategy, and build things that truly matter.
             </p>
         </section>
 
-        <section class="py-20 max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
-            <div class="space-y-4">
+        <section class="py-20 grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
+            <div class="space-y-4 prose-custom !max-w-none">
                 <h2 class="text-3xl font-bold text-white">Our Story</h2>
-                <p class="text-gray-400">productflow.online was born out of frustration. As product managers and researchers ourselves, we were tired of the constant struggle to connect the dots. Our user feedback lived in one tool, our roadmap in another, and our company strategy in a forgotten slide deck. We knew there had to be a better way.</p>
-                <p class="text-gray-400">We started building productflow.online not as a business, but as the tool we wished we had. A tool that provides a single, unbroken thread from customer insight to business impact. We're a small, bootstrapped team dedicated to solving the real-world problems that modern product teams face every day.</p>
+                <p>productflow.online was born out of frustration. As product managers and researchers ourselves, we were tired of the constant struggle to connect the dots. Our user feedback lived in one tool, our roadmap in another, and our company strategy in a forgotten slide deck. We knew there had to be a better way.</p>
+                <p>We started building productflow.online not as a business, but as the tool we wished we had. A tool that provides a single, unbroken thread from customer insight to business impact. We're a small, bootstrapped team dedicated to solving the real-world problems that modern product teams face every day.</p>
             </div>
             <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated">
                  <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Our Core Values</p>
@@ -53,19 +54,19 @@
                 <h2 class="text-3xl font-bold text-white">Meet the Founders</h2>
                 <p class="text-gray-400 mt-4">We're a team of builders, thinkers, and problem-solvers passionate about the craft of product management.</p>
             </div>
-            <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-                <div class="text-center">
-                    <img class="w-32 h-32 rounded-full mx-auto grayscale" src="https://i.pravatar.cc/250?u=founder1" alt="Founder 1">
+            <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-4xl mx-auto" data-stagger-group>
+                <div class="text-center animate-on-scroll">
+                    <img class="w-32 h-32 rounded-full mx-auto grayscale" src="https://i.pravatar.cc/250?u=founder1" alt="Headshot of Anna Kowalska, Co-Founder & CEO of productflow.online" loading="lazy">
                     <h4 class="mt-4 text-lg font-bold text-white">Anna Kowalska</h4>
                     <p class="text-emerald-400 text-sm">Co-Founder & CEO</p>
                 </div>
-                 <div class="text-center">
-                    <img class="w-32 h-32 rounded-full mx-auto grayscale" src="https://i.pravatar.cc/250?u=founder2" alt="Founder 2">
+                 <div class="text-center animate-on-scroll">
+                    <img class="w-32 h-32 rounded-full mx-auto grayscale" src="https://i.pravatar.cc/250?u=founder2" alt="Headshot of Piotr Nowak, Co-Founder & CTO of productflow.online" loading="lazy">
                     <h4 class="mt-4 text-lg font-bold text-white">Piotr Nowak</h4>
                     <p class="text-emerald-400 text-sm">Co-Founder & CTO</p>
                 </div>
-                 <div class="text-center sm:col-span-2 md:col-span-1">
-                    <img class="w-32 h-32 rounded-full mx-auto grayscale" src="https://i.pravatar.cc/250?u=founder3" alt="Founder 3">
+                 <div class="text-center sm:col-span-2 md:col-span-1 animate-on-scroll">
+                    <img class="w-32 h-32 rounded-full mx-auto grayscale" src="https://i.pravatar.cc/250?u=founder3" alt="Headshot of Ewa Wiśniewska, Head of Product at productflow.online" loading="lazy">
                     <h4 class="mt-4 text-lg font-bold text-white">Ewa Wiśniewska</h4>
                     <p class="text-emerald-400 text-sm">Head of Product</p>
                 </div>
@@ -74,5 +75,6 @@
     </main>
 
     <div id="footer-placeholder"></div>
+    <script src="/assets/js/index.js" defer></script>
 </body>
 </html>

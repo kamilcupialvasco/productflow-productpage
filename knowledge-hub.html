@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
     <title>Knowledge Hub - Resources for Product Teams | productflow.online</title>
 
     <meta name="description" content="Explore our collection of articles, success stories, and podcasts on outcome-driven product management, strategy, and discovery.">
+    <link rel="canonical" href="https://productflow.online/knowledge-hub.html" />
     
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -18,7 +20,7 @@
     <main class="container mx-auto px-4 py-16">
         <section class="text-center feature-hero pt-16 pb-24">
             <h1 class="text-5xl font-extrabold tracking-tight text-white animate-on-scroll">Knowledge Hub</h1>
-            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400 animate-on-scroll" style="transition-delay: 150ms;">
+            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400 animate-on-scroll" data-stagger-child>
                 Your central resource for articles, case studies, and insights on building better products.
             </p>
         </section>
@@ -35,11 +37,11 @@
 
 
         <section class="py-12">
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-stagger-group>
 
                 <!-- Item 1: Blog Post -->
-                <div class="knowledge-item" data-category="blog">
-                    <a href="/blog/post1.html" class="feature-card animate-on-scroll block">
+                <div class="knowledge-item animate-on-scroll" data-category="blog">
+                    <a href="/blog/post1.html" class="feature-card block">
                         <div class="space-y-3">
                             <p class="text-sm font-semibold text-emerald-400">BLOG POST</p>
                             <h2 class="text-2xl font-bold text-white">The Difference Between a Feature Factory and an Outcome-Driven Team</h2>
@@ -50,8 +52,8 @@
                 </div>
                 
                 <!-- Item 2: Success Story -->
-                 <div class="knowledge-item" data-category="success">
-                    <a href="/success-stories/innovatecorp.html" class="feature-card animate-on-scroll block" style="transition-delay: 100ms;">
+                 <div class="knowledge-item animate-on-scroll" data-category="success">
+                    <a href="/success-stories/innovatecorp.html" class="feature-card block">
                         <div class="space-y-3">
                             <p class="text-sm font-semibold text-emerald-400">SUCCESS STORY</p>
                             <h2 class="text-2xl font-bold text-white">How InnovateCorp Cut Their Discovery Time in Half</h2>
@@ -62,8 +64,8 @@
                 </div>
 
                 <!-- Item 3: Podcast (Placeholder) -->
-                <div class="knowledge-item" data-category="podcast">
-                    <div class="feature-card animate-on-scroll" style="transition-delay: 200ms;">
+                <div class="knowledge-item animate-on-scroll" data-category="podcast">
+                    <div class="feature-card">
                         <div class="space-y-3">
                             <p class="text-sm font-semibold text-emerald-400">PODCAST</p>
                             <h2 class="text-2xl font-bold text-white">Episode 1: The Art of Saying No</h2>
@@ -74,8 +76,8 @@
                 </div>
 
                 <!-- Item 4: Blog Post (Placeholder) -->
-                <div class="knowledge-item" data-category="blog">
-                    <div class="feature-card animate-on-scroll" style="transition-delay: 300ms;">
+                <div class="knowledge-item animate-on-scroll" data-category="blog">
+                    <div class="feature-card">
                         <div class="space-y-3">
                             <p class="text-sm font-semibold text-emerald-400">BLOG POST</p>
                             <h2 class="text-2xl font-bold text-white">How to Build an Opportunity Solution Tree that Actually Works</h2>

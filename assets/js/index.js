@@ -1,11 +1,9 @@
-
 // --- CRITICAL LAYOUT LOADER ---
 // This function MUST run first and complete before any other scripts that rely on the full DOM are initialized.
 async function loadLayout() {
     const headerPlaceholder = document.getElementById('header-placeholder');
     const footerPlaceholder = document.getElementById('footer-placeholder');
     
-    // Use root-relative paths to ensure they work from any page depth
     const headerPath = '/assets/html/_header.html';
     const footerPath = '/assets/html/_footer.html';
 
@@ -37,284 +35,347 @@ async function loadLayout() {
 }
 
 
-function initializeHeroAnimation() {
-    const headline = document.getElementById('hero-headline');
-    if (!headline) return;
+// --- MODULES for page initialization ---
 
-    const mainText = headline.childNodes[0].nodeValue.trim(); // "The Command Center for"
-    const span = headline.querySelector('span');
-    const rotatingTexts = ["Outcome-Driven Product Teams.", "Modern B2B SaaS.", "High-Stakes FinTech."];
-    
-    headline.innerHTML = `${mainText}<br/><span class="text-emerald-400 transition-opacity duration-500"></span>`;
-    const newSpan = headline.querySelector('span');
+const Nav = {
+    init() {
+        this.highlightActiveLink();
+        this.initMobileMenu();
+        this.initDropdowns();
+        this.initStickyNav();
+    },
 
-    let textIndex = 0;
-    
-    function rotate() {
-        newSpan.classList.add('fade-out'); // Start fade out
-        setTimeout(() => {
-            newSpan.textContent = rotatingTexts[textIndex];
-            textIndex = (textIndex + 1) % rotatingTexts.length;
-            newSpan.classList.remove('fade-out'); // End fade out, which triggers fade in
-        }, 500); // Must match CSS transition duration
+    highlightActiveLink() {
+        // Use a more robust path check that handles both root and file paths
+        const currentPath = window.location.pathname.endsWith('/') 
+            ? window.location.pathname 
+            : window.location.pathname + '/';
+        const rootPath = '/';
+        const indexPath = '/index.html/';
+
+        const navLinks = document.querySelectorAll('header nav a');
+
+        navLinks.forEach(link => {
+            let linkPath = new URL(link.href).pathname;
+            if (!linkPath.endsWith('/')) {
+                linkPath += '/';
+            }
+            
+            let isMatch = (linkPath === currentPath);
+            if (currentPath === rootPath && linkPath === indexPath) {
+                isMatch = true;
+            }
+            if (currentPath.startsWith('/features') && link.href.includes('/features.html')) {
+                 isMatch = true;
+            }
+            
+            if (isMatch) {
+                link.classList.add('active-nav-link');
+                const dropdown = link.closest('.dropdown');
+                if (dropdown) {
+                    dropdown.querySelector('a').classList.add('active-nav-link');
+                }
+            }
+        });
+    },
+
+    initMobileMenu() {
+        const menuButton = document.getElementById('mobile-menu-button');
+        const closeButton = document.getElementById('mobile-menu-close-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuButton && mobileMenu && closeButton) {
+            menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
+            closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        }
+    },
+
+    initDropdowns() {
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const menu = dropdown.querySelector('.dropdown-menu');
+            if (menu) {
+                dropdown.addEventListener('mouseenter', () => menu.classList.remove('hidden'));
+                dropdown.addEventListener('mouseleave', () => menu.classList.add('hidden'));
+            }
+        });
+    },
+
+    initStickyNav() {
+        const nav = document.querySelector('.quick-links-nav');
+        const sentinel = document.querySelector('#sticky-nav-sentinel');
+        if (!nav || !sentinel) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => nav.classList.toggle('is-stuck', !entry.isIntersecting),
+            { rootMargin: `-100px`, threshold: 0 }
+        );
+        observer.observe(sentinel);
     }
+};
 
-    rotate(); // Initial set
-    setInterval(rotate, 3000); // Loop
-}
+const Animations = {
+    init() {
+        this.initScrollAnimations();
+        this.initHeroAnimation();
+        this.initHeroParallax();
+        this.initCodeAnimations();
+    },
 
-
-function initializeCodeAnimations() {
-    const codeBlocks = document.querySelectorAll('.code-block-animated');
-    codeBlocks.forEach(block => {
-        const observer = new IntersectionObserver((entries) => {
+    initScrollAnimations() {
+        const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const lines = Array.from(block.querySelectorAll('p, div.font-mono > div'));
-                    if (lines.length === 0) return;
-                    
-                    const originalHTMLs = lines.map(p => p.innerHTML);
-                    lines.forEach(p => p.innerHTML = '');
-                    block.classList.add('typing');
-
-                    let lineIndex = 0;
-
-                    function typeLine() {
-                        if (lineIndex < lines.length) {
-                            const line = lines[lineIndex];
-                            const html = originalHTMLs[lineIndex];
-                            line.innerHTML = html; // Set the full HTML to preserve styling/icons
-                            line.style.width = '0';
-                            line.style.whiteSpace = 'nowrap';
-                            line.style.overflow = 'hidden';
-                            line.style.transition = `width ${Math.max(0.5, html.length / 50)}s steps(${html.length})`;
-                            
-                            // Trigger the animation
-                            setTimeout(() => {
-                                line.style.width = '100%';
-                                lineIndex++;
-                                setTimeout(typeLine, 200); // Delay before typing next line
-                            }, 10);
-                            
-                        } else {
-                             setTimeout(() => block.classList.remove('typing'), 500);
-                        }
+                    entry.target.classList.add('is-visible');
+                    if (entry.target.dataset.staggerGroup !== undefined) {
+                        const children = entry.target.querySelectorAll('.animate-on-scroll');
+                        children.forEach((child, i) => {
+                            child.style.transitionDelay = `${i * 100}ms`;
+                        });
                     }
-                    typeLine();
-                    observer.unobserve(block);
+                    scrollObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 });
-        observer.observe(block);
-    });
-}
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('[data-stagger-group], .animate-on-scroll:not([data-stagger-group] .animate-on-scroll)').forEach(el => {
+            scrollObserver.observe(el);
+        });
+    },
 
-function initializeTabs(containerSelector) {
-    const tabContainers = document.querySelectorAll(containerSelector);
-    tabContainers.forEach(container => {
-        const buttons = container.querySelectorAll('.tab-button');
-        const panes = container.querySelectorAll('.tab-pane');
-        if (!buttons.length || !panes.length) return;
+    initHeroAnimation() {
+        const headline = document.getElementById('hero-headline');
+        if (!headline) return;
+
+        const mainText = headline.childNodes[0].nodeValue.trim();
+        const rotatingTexts = ["Outcome-Driven Product Teams.", "Modern B2B SaaS.", "High-Stakes FinTech."];
+        
+        headline.innerHTML = `${mainText}<br/><span class="text-emerald-400 transition-opacity duration-500"></span>`;
+        const newSpan = headline.querySelector('span');
+        let textIndex = 0;
+        
+        function rotate() {
+            newSpan.classList.add('fade-out');
+            setTimeout(() => {
+                newSpan.textContent = rotatingTexts[textIndex];
+                textIndex = (textIndex + 1) % rotatingTexts.length;
+                newSpan.classList.remove('fade-out');
+            }, 500);
+        }
+        rotate();
+        setInterval(rotate, 3000);
+    },
+
+    initHeroParallax() {
+        const parallaxBg = document.getElementById('hero-parallax-bg');
+        if (!parallaxBg) return;
+
+        window.addEventListener('scroll', () => {
+            const offset = window.pageYOffset;
+            parallaxBg.style.transform = `translateY(${offset * 0.3}px)`;
+        });
+    },
+
+    initCodeAnimations() {
+        const codeBlocks = document.querySelectorAll('.code-block-animated');
+        codeBlocks.forEach(block => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const lines = Array.from(block.querySelectorAll('p, div.font-mono > div, div.font-mono > p, .font-mono > strong'));
+                        if (lines.length === 0) return;
+                        
+                        const originalHTMLs = lines.map(p => p.innerHTML);
+                        lines.forEach(p => p.innerHTML = '');
+                        block.classList.add('typing');
+
+                        let lineIndex = 0;
+                        function typeLine() {
+                            if (lineIndex < lines.length) {
+                                const line = lines[lineIndex];
+                                const html = originalHTMLs[lineIndex];
+                                line.innerHTML = html;
+                                line.style.width = '0';
+                                line.style.whiteSpace = 'nowrap';
+                                line.style.overflow = 'hidden';
+                                line.style.animation = `typing-effect ${Math.max(0.5, html.length / 50)}s steps(${html.length}) forwards`;
+                                lineIndex++;
+                                setTimeout(typeLine, 150);
+                            } else {
+                                setTimeout(() => block.classList.remove('typing'), 500);
+                            }
+                        }
+                        typeLine();
+                        observer.unobserve(block);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(block);
+        });
+    }
+};
+
+const UI = {
+    init() {
+        this.initTabs('.tabs-container');
+        this.initTabs('#built-for-you-tabs');
+        this.initTabs('#for-who-tabs');
+        this.initTabs('#roadmap-tabs');
+        this.initCarousel();
+        this.initPricingToggle();
+        this.initKnowledgeHubFilters();
+        this.initGoldenThread();
+    },
+
+    initTabs(containerSelector) {
+        const tabContainers = document.querySelectorAll(containerSelector);
+        tabContainers.forEach(container => {
+            const buttons = container.querySelectorAll('.tab-button');
+            const panes = container.querySelectorAll('.tab-pane');
+            if (!buttons.length || !panes.length) return;
+
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.dataset.tab;
+                    buttons.forEach(btn => {
+                        btn.classList.remove('active');
+                        btn.setAttribute('aria-selected', 'false');
+                    });
+                    button.classList.add('active');
+                    button.setAttribute('aria-selected', 'true');
+                    panes.forEach(pane => pane.classList.toggle('active', pane.id === tabId));
+                });
+            });
+        });
+    },
+
+    initCarousel() {
+        // ... (existing carousel logic)
+        const carousels = document.querySelectorAll('.carousel-container');
+        carousels.forEach(carousel => {
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const nextButton = carousel.querySelector('.carousel-next');
+            const prevButton = carousel.querySelector('.carousel-prev');
+            const dotsContainer = carousel.querySelector('.carousel-dots');
+            let autoplayInterval = null;
+
+            if (slides.length <= 1) {
+                if(nextButton) nextButton.style.display = 'none';
+                if(prevButton) prevButton.style.display = 'none';
+                if(dotsContainer) dotsContainer.style.display = 'none';
+                return;
+            }
+
+            let currentIndex = 0;
+            
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.add('carousel-dot');
+                dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
+                dot.addEventListener('click', () => { showSlide(i); resetAutoplay(); });
+                dotsContainer.appendChild(dot);
+            });
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+            function updateDots() { dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex)); }
+            function showSlide(index) { currentIndex = index; slides.forEach((s, i) => s.classList.toggle('active', i === index)); updateDots(); }
+            function nextSlide() { showSlide((currentIndex + 1) % slides.length); }
+            function prevSlide() { showSlide((currentIndex - 1 + slides.length) % slides.length); }
+            function startAutoplay() { autoplayInterval = setInterval(nextSlide, 7000); }
+            function resetAutoplay() { clearInterval(autoplayInterval); startAutoplay(); }
+
+            nextButton.addEventListener('click', () => { nextSlide(); resetAutoplay(); });
+            prevButton.addEventListener('click', () => { prevSlide(); resetAutoplay(); });
+            
+            showSlide(0);
+            startAutoplay();
+        });
+    },
+
+    initPricingToggle() {
+        const toggle = document.getElementById('pricing-toggle');
+        if (!toggle) return;
+
+        const monthlyPrices = document.querySelectorAll('[data-price-monthly]');
+        const annualPrices = document.querySelectorAll('[data-price-annually]');
+        const annualLabel = document.getElementById('annual-label');
+        const monthlyLabel = document.getElementById('monthly-label');
+
+        toggle.addEventListener('change', () => {
+            const isAnnual = toggle.checked;
+            monthlyPrices.forEach(p => p.classList.toggle('hidden', isAnnual));
+            annualPrices.forEach(p => p.classList.toggle('hidden', !isAnnual));
+            monthlyLabel.classList.toggle('text-white', !isAnnual);
+            monthlyLabel.classList.toggle('text-gray-500', isAnnual);
+            annualLabel.classList.toggle('text-white', isAnnual);
+            annualLabel.classList.toggle('text-gray-500', !isAnnual);
+        });
+    },
+
+    initKnowledgeHubFilters() {
+        const container = document.getElementById('knowledge-hub-filters');
+        if (!container) return;
+        const buttons = container.querySelectorAll('button');
+        const items = document.querySelectorAll('.knowledge-item');
 
         buttons.forEach(button => {
             button.addEventListener('click', () => {
-                const tabId = button.dataset.tab;
-
-                buttons.forEach(btn => {
-                    btn.classList.remove('active');
-                    btn.setAttribute('aria-selected', 'false');
-                });
+                const filter = button.dataset.filter;
+                buttons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
-                button.setAttribute('aria-selected', 'true');
-
-                panes.forEach(pane => {
-                    if (pane.id === tabId) {
-                        pane.classList.add('active');
-                    } else {
-                        pane.classList.remove('active');
-                    }
+                items.forEach(item => {
+                    item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none';
                 });
             });
         });
-    });
-}
+    },
 
-function initializeCarousel() {
-    const carousels = document.querySelectorAll('.carousel-container');
-    carousels.forEach(carousel => {
-        const slides = carousel.querySelectorAll('.carousel-slide');
-        const nextButton = carousel.querySelector('.carousel-next');
-        const prevButton = carousel.querySelector('.carousel-prev');
-        const dotsContainer = carousel.querySelector('.carousel-dots');
-        let autoplayInterval = null;
-
-        if (slides.length <= 1) {
-            if (nextButton) nextButton.style.display = 'none';
-            if (prevButton) prevButton.style.display = 'none';
-            if (dotsContainer) dotsContainer.style.display = 'none';
-            return;
-        }
-
-        let currentIndex = 0;
+    initGoldenThread() {
+        const diagram = document.getElementById('golden-thread-diagram');
+        if (!diagram) return;
+        const nodes = diagram.querySelectorAll('.thread-node');
         
-        // Create dots
-        slides.forEach((_, i) => {
-            const dot = document.createElement('button');
-            dot.classList.add('carousel-dot');
-            dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
-            dot.addEventListener('click', () => {
-                showSlide(i);
-                resetAutoplay();
+        nodes.forEach(node => {
+            node.addEventListener('mouseenter', () => {
+                const id = node.dataset.threadId;
+                diagram.querySelectorAll('.thread-line, .thread-node').forEach(el => el.classList.add('dimmed'));
+                diagram.querySelectorAll(`[data-thread-id="${id}"]`).forEach(el => el.classList.remove('dimmed'));
             });
-            dotsContainer.appendChild(dot);
-        });
-        const dots = dotsContainer.querySelectorAll('.carousel-dot');
-
-        function updateDots() {
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentIndex);
-            });
-        }
-
-        function showSlide(index) {
-            currentIndex = index;
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
-            updateDots();
-        }
-
-        function nextSlide() {
-            showSlide((currentIndex + 1) % slides.length);
-        }
-
-        function prevSlide() {
-            showSlide((currentIndex - 1 + slides.length) % slides.length);
-        }
-        
-        function startAutoplay() {
-            autoplayInterval = setInterval(nextSlide, 7000); // 7 seconds
-        }
-
-        function resetAutoplay() {
-            clearInterval(autoplayInterval);
-            startAutoplay();
-        }
-
-        nextButton.addEventListener('click', () => {
-            nextSlide();
-            resetAutoplay();
-        });
-
-        prevButton.addEventListener('click', () => {
-            prevSlide();
-            resetAutoplay();
-        });
-        
-        showSlide(0);
-        startAutoplay();
-    });
-}
-
-function initializeKnowledgeHubFilters() {
-    const filterContainer = document.getElementById('knowledge-hub-filters');
-    if (!filterContainer) return;
-
-    const filterButtons = filterContainer.querySelectorAll('button');
-    const contentItems = document.querySelectorAll('.knowledge-item');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const filter = button.dataset.filter;
-
-            // Update button styles
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            // Update content visibility
-            contentItems.forEach(item => {
-                if (filter === 'all' || item.dataset.category === filter) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
+            node.addEventListener('mouseleave', () => {
+                 diagram.querySelectorAll('.thread-line, .thread-node').forEach(el => el.classList.remove('dimmed'));
             });
         });
-    });
-}
+    }
+};
 
-function initializeStickyNav() {
-    const nav = document.querySelector('.quick-links-nav');
-    const sentinel = document.querySelector('#sticky-nav-sentinel');
-    if (!nav || !sentinel) return;
+const Forms = {
+    init() {
+        this.initContactForm();
+    },
+    initContactForm() {
+        const form = document.getElementById('contact-form');
+        const successMessage = document.getElementById('form-success-message');
+        if (!form || !successMessage) return;
 
-    const observer = new IntersectionObserver(
-        ([entry]) => {
-            nav.classList.toggle('is-stuck', !entry.isIntersecting);
-        },
-        {
-            rootMargin: `-${nav.offsetHeight}px`,
-            threshold: 0
-        }
-    );
-
-    observer.observe(sentinel);
-}
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            form.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+        });
+    }
+};
 
 // --- INITIALIZATION SEQUENCE ---
-// This function initializes all scripts that depend on the dynamic header/footer.
-// It is called ONLY after the layout has been loaded.
 function initializePageScripts() {
-    // Dropdown Logic
-    const dropdowns = document.querySelectorAll('.dropdown');
-    dropdowns.forEach(dropdown => {
-        const menu = dropdown.querySelector('.dropdown-menu');
-        const trigger = dropdown.querySelector('a'); // Assuming the link is the trigger
-        if (menu && trigger) {
-            dropdown.addEventListener('mouseenter', () => menu.classList.remove('hidden'));
-            dropdown.addEventListener('mouseleave', () => menu.classList.add('hidden'));
-        }
-    });
-
-    // Mobile Menu Toggle
-    const menuButton = document.getElementById('mobile-menu-button');
-    const closeButton = document.getElementById('mobile-menu-close-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    if (menuButton && mobileMenu && closeButton) {
-        menuButton.addEventListener('click', () => mobileMenu.classList.remove('hidden'));
-        closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    }
-
-    // Scroll Animations
-    const scrollObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                scrollObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        scrollObserver.observe(el);
-    });
-
-    // Page-specific interactive features
-    initializeHeroAnimation();
-    initializeCodeAnimations();
-    initializeTabs('.tabs-container'); // Original tabs
-    initializeTabs('#built-for-you-tabs'); // For homepage industries/roles
-    initializeTabs('#for-who-tabs'); // For the expanded For Who page
-    initializeCarousel();
-    initializeKnowledgeHubFilters();
-    initializeStickyNav();
+    Nav.init();
+    Animations.init();
+    UI.init();
+    Forms.init();
 }
 
 // --- MAIN EXECUTION ---
-// On DOMContentLoaded, load the layout first, then initialize all other scripts.
-// This new sequence prevents race conditions where scripts try to access DOM elements that haven't been loaded yet.
-document.addEventListener('DOMContentLoaded', async () => {
-    await loadLayout();
-    initializePageScripts();
+document.addEventListener('DOMContentLoaded', () => {
+    loadLayout().then(() => {
+        setTimeout(initializePageScripts, 0);
+    });
 });

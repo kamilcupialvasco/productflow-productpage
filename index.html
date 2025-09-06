@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -9,6 +8,7 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="Stop building feature factories. Connect scattered user feedback directly to your product strategy and ensure every feature you build delivers real business impact with productflow.online.">
     <meta name="keywords" content="product management, outcome-driven, roadmap, feedback analysis, product strategy, OKR, saas">
+    <link rel="canonical" href="https://productflow.online/" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -18,6 +18,24 @@
     
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/style.css">
+
+    <!-- SEO: Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "productflow.online",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "abstract": "The Command Center for Outcome-Driven Product Teams. Connect user feedback to product strategy and ensure every feature delivers business impact.",
+      "description": "productflow.online is an integrated platform for modern product teams. It includes a Feedback Hub to centralize user insights with AI analysis, an Upstream Workflow to standardize product discovery, and a Strategy Suite to connect daily work to company OKRs and vision.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
     
 </head>
 <body class="bg-black text-gray-200 font-sans">
@@ -27,19 +45,21 @@
     <main>
         <!-- Home Page -->
         <div id="page-home">
-            <section class="text-center pt-20 pb-24 feature-hero">
-                <div class="container mx-auto px-4">
+            <section class="text-center pt-20 pb-24 feature-hero relative overflow-hidden">
+                <div id="hero-parallax-bg" class="hero-parallax-bg"></div>
+                <div class="container mx-auto px-4 relative z-10">
                     <h1 id="hero-headline" class="text-5xl font-extrabold tracking-tight text-white sm:text-6xl animate-on-scroll min-h-[144px] sm:min-h-[156px]">
                         The Command Center for<br/><span class="text-emerald-400 transition-opacity duration-500"></span>
                     </h1>
-                    <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-400 animate-on-scroll" style="transition-delay: 150ms;">
+                    <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-400 animate-on-scroll" data-stagger-child>
                         Stop building feature factories. Connect scattered user feedback directly to your product strategy and ensure every feature you build delivers real business impact.
                     </p>
-                     <p class="mt-4 text-sm text-emerald-300 animate-on-scroll" style="transition-delay: 250ms;">Join 500+ teams building better products, faster.</p>
-                    <div class="mt-8 flex justify-center gap-x-4 animate-on-scroll" style="transition-delay: 300ms;">
+                     <p class="mt-4 text-sm text-emerald-300 animate-on-scroll" data-stagger-child>Join 500+ teams building better products, faster.</p>
+                    <div class="mt-8 flex flex-col items-center gap-y-4 animate-on-scroll" data-stagger-child>
                         <a href="https://app.productflow.online" class="px-8 py-4 text-lg font-semibold rounded-md bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg cta-button-prominent">
                             Start Your Free Trial
                         </a>
+                         <a href="https://app.productflow.online/demo" class="text-sm text-gray-400 hover:text-white hover:underline">Or explore an interactive demo</a>
                     </div>
                 </div>
             </section>
@@ -71,16 +91,44 @@
                         <p class="mt-4 text-gray-400">Most product strategies live in slide decks, forgotten after the quarterly planning meeting. This disconnect leads to feature factories, where teams are busy but not impactful. We solve this.</p>
                         <p class="mt-4 text-gray-400">productflow.online creates a <strong class="text-emerald-400">traceable, "golden thread"</strong> from high-level company vision down to the individual piece of user feedback that sparked an idea. This ensures every decision is justified, every stakeholder is aligned, and every feature has a purpose.</p>
                     </div>
-                    <div class="animate-on-scroll" style="transition-delay: 150ms;">
-                        <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated">
-                             <div class="font-mono text-sm text-gray-300 space-y-1">
-                                <div class="font-mono"><span class="text-purple-400">Vision:</span> Break Down Barriers</div>
-                                <div class="font-mono"> └ <span class="text-blue-400">Pillar:</span> Unmatched Accuracy</div>
-                                <div class="font-mono"> ⠀└ <span class="text-yellow-400">Objective:</span> Market Leadership</div>
-                                <div class="font-mono"> ⠀ ⠀└ <span class="text-green-400">KR:</span> ↑ Market Share to 25%</div>
-                                <div class="font-mono"> ⠀ ⠀ ⠀└ <span class="text-cyan-400">Initiative:</span> Improve Photo Translator</div>
-                                <div class="font-mono"> ⠀ ⠀ ⠀ ⠀└ <span class="text-gray-500">Feedback:</span> "Slow on menus"</div>
-                            </div>
+                    <div class="animate-on-scroll" data-stagger-child>
+                        <div id="golden-thread-diagram" class="golden-thread-diagram bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl">
+                            <!-- Interactive SVG Diagram -->
+                            <svg viewBox="0 0 300 150" class="w-full h-auto">
+                                <!-- Lines -->
+                                <path d="M30 30 L80 30" class="thread-line" data-thread-id="vision" />
+                                <path d="M105 30 L105 50 L80 50" class="thread-line" data-thread-id="pillar" />
+                                <path d="M105 50 L105 70 L80 70" class="thread-line" data-thread-id="objective" />
+                                <path d="M105 70 L105 90 L80 90" class="thread-line" data-thread-id="kr" />
+                                <path d="M105 90 L105 110 L80 110" class="thread-line" data-thread-id="initiative" />
+                                <path d="M105 110 L105 130 L80 130" class="thread-line" data-thread-id="feedback" />
+                                
+                                <!-- Nodes -->
+                                <g class="thread-node" data-thread-id="vision">
+                                    <circle cx="20" cy="30" r="5" class="fill-purple-400" />
+                                    <text x="35" y="34" class="thread-text"><tspan class="font-bold text-purple-400">Vision:</tspan> Break Down Barriers</text>
+                                </g>
+                                <g class="thread-node" data-thread-id="pillar">
+                                    <circle cx="115" cy="30" r="5" class="fill-blue-400" />
+                                    <text x="130" y="34" class="thread-text"><tspan class="font-bold text-blue-400">Pillar:</tspan> Unmatched Accuracy</text>
+                                </g>
+                                <g class="thread-node" data-thread-id="objective">
+                                    <circle cx="115" cy="50" r="5" class="fill-yellow-400" />
+                                    <text x="130" y="54" class="thread-text"><tspan class="font-bold text-yellow-400">Objective:</tspan> Market Leadership</text>
+                                </g>
+                                <g class="thread-node" data-thread-id="kr">
+                                    <circle cx="115" cy="70" r="5" class="fill-green-400" />
+                                    <text x="130" y="74" class="thread-text"><tspan class="font-bold text-green-400">KR:</tspan> ↑ Market Share to 25%</text>
+                                </g>
+                                <g class="thread-node" data-thread-id="initiative">
+                                    <circle cx="115" cy="90" r="5" class="fill-cyan-400" />
+                                    <text x="130" y="94" class="thread-text"><tspan class="font-bold text-cyan-400">Initiative:</tspan> Improve Photo Translator</text>
+                                </g>
+                                <g class="thread-node" data-thread-id="feedback">
+                                    <circle cx="115" cy="110" r="5" class="fill-gray-500" />
+                                    <text x="130" y="114" class="thread-text"><tspan class="font-bold text-gray-500">Feedback:</tspan> "Slow on menus"</text>
+                                </g>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -89,9 +137,9 @@
             <section class="py-24">
                 <div class="container mx-auto px-4 text-center">
                     <h2 class="text-3xl font-bold text-white mb-4 animate-on-scroll">Achieve True Product Excellence</h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll" style="transition-delay: 150ms;">Our integrated modules provide a complete workflow for modern product teams.</p>
+                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll" data-stagger-child>Our integrated modules provide a complete workflow for modern product teams.</p>
                     
-                    <div class="tabs-container max-w-4xl mx-auto animate-on-scroll" style="transition-delay: 300ms;">
+                    <div class="tabs-container max-w-4xl mx-auto animate-on-scroll" data-stagger-child>
                         <div class="tab-buttons flex justify-center space-x-2 md:space-x-4 mb-8" role="tablist">
                             <button class="tab-button active" data-tab="tab-eliminate" role="tab" aria-selected="true">Eliminate Guesswork</button>
                             <button class="tab-button" data-tab="tab-align" role="tab" aria-selected="false">Align Your Teams</button>
@@ -155,50 +203,64 @@
             <section class="py-24 bg-gray-900/50">
                 <div class="container mx-auto px-4 text-center">
                     <h2 class="text-3xl font-bold text-white mb-4 animate-on-scroll">Built For You, However You Work</h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll" style="transition-delay: 150ms;">Our platform adapts to your context, whether you're defined by your industry or your role.</p>
-                     <div id="built-for-you-tabs" class="max-w-5xl mx-auto animate-on-scroll" style="transition-delay: 300ms;">
+                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll" data-stagger-child>Our platform adapts to your context, whether you're defined by your industry or your role.</p>
+                     <div id="built-for-you-tabs" class="max-w-5xl mx-auto animate-on-scroll" data-stagger-child>
                         <div class="tab-buttons flex justify-center space-x-2 md:space-x-4 mb-8" role="tablist">
                             <button class="tab-button active" data-tab="tab-industry" role="tab" aria-selected="true">By Industry</button>
                             <button class="tab-button" data-tab="tab-role" role="tab" aria-selected="false">By Role</button>
                         </div>
                         <div class="tab-content text-left">
                             <div id="tab-industry" class="tab-pane active" role="tabpanel">
-                                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                                    <a href="/for-who.html#industry-fintech" class="industry-card block">
+                                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" data-stagger-group>
+                                    <a href="/for-who.html#industry-fintech" class="industry-card block animate-on-scroll">
                                         <h4 class="font-bold text-white text-lg">FinTech & InsurTech</h4>
                                         <p class="text-sm text-gray-400 mt-2">Maintain a clear audit trail from customer feedback to feature release, ensuring compliance and justifying every product decision with data.</p>
                                     </a>
-                                     <a href="/for-who.html#industry-saas" class="industry-card block">
+                                     <a href="/for-who.html#industry-saas" class="industry-card block animate-on-scroll">
                                         <h4 class="font-bold text-white text-lg">B2B SaaS</h4>
                                         <p class="text-sm text-gray-400 mt-2">Balance the needs of enterprise clients with your long-term vision. Quantify feedback from high-value accounts and align your roadmap with strategic goals.</p>
                                     </a>
-                                     <a href="/for-who.html#industry-healthcare" class="industry-card block">
+                                     <a href="/for-who.html#industry-healthcare" class="industry-card block animate-on-scroll">
                                         <h4 class="font-bold text-white text-lg">Healthcare Tech</h4>
                                         <p class="text-sm text-gray-400 mt-2">Securely manage sensitive feedback from patients and providers. Prioritize features that improve outcomes and user experience while navigating complex regulations.</p>
                                     </a>
-                                     <a href="/for-who.html#industry-ecommerce" class="industry-card block">
+                                     <a href="/for-who.html#industry-ecommerce" class="industry-card block animate-on-scroll">
                                         <h4 class="font-bold text-white text-lg">E-commerce & D2C</h4>
                                         <p class="text-sm text-gray-400 mt-2">Rapidly analyze thousands of customer reviews and support tickets. Identify conversion-blocking issues and prioritize the improvements that have the biggest impact on your bottom line.</p>
                                     </a>
                                 </div>
                             </div>
                              <div id="tab-role" class="tab-pane" role="tabpanel">
-                                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                    <a href="/for-who.html#role-pm" class="industry-card block">
+                                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-stagger-group>
+                                    <a href="/for-who.html#role-pm" class="industry-card block animate-on-scroll">
                                         <h4 class="font-bold text-white text-lg">Product Managers</h4>
                                         <p class="text-sm text-gray-400 mt-2">Stop juggling a dozen disconnected tools. Take control of your entire workflow from feedback analysis to roadmap planning in one place.</p>
                                     </a>
-                                    <a href="/for-who.html#role-ux" class="industry-card block">
+                                    <a href="/for-who.html#role-ux" class="industry-card block animate-on-scroll">
                                         <h4 class="font-bold text-white text-lg">UX Researchers</h4>
                                         <p class="text-sm text-gray-400 mt-2">Your research deserves to make an impact. Centralize qualitative data, identify themes with AI, and link your findings directly to product initiatives.</p>
                                     </a>
-                                    <a href="/for-who.html#role-head" class="industry-card block">
+                                    <a href="/for-who.html#role-head" class="industry-card block animate-on-scroll">
                                         <h4 class="font-bold text-white text-lg">Heads of Product</h4>
                                         <p class="text-sm text-gray-400 mt-2">Lead with strategy, not gut feelings. Get a high-level overview of your product portfolio, monitor strategic alignment, and ensure your teams are focused on outcomes.</p>
                                     </a>
                                 </div>
                              </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-24">
+                <div class="container mx-auto px-4 text-center">
+                     <h2 class="text-3xl font-bold text-white mb-4 animate-on-scroll">Integrates Seamlessly with Your Workflow</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll" data-stagger-child>Connect the tools you already use to create a single source of truth.</p>
+                    <div class="integrations-grid max-w-3xl mx-auto animate-on-scroll" data-stagger-child>
+                        <img src="https://i.imgur.com/gJ5J9iB.png" alt="Jira logo" class="integration-logo" loading="lazy">
+                        <img src="https://i.imgur.com/C532kSP.png" alt="Slack logo" class="integration-logo" loading="lazy">
+                        <img src="https://i.imgur.com/Gks92t3.png" alt="Zendesk logo" class="integration-logo" loading="lazy">
+                        <img src="https://i.imgur.com/6EaD42x.png" alt="Intercom logo" class="integration-logo" loading="lazy">
+                        <img src="https://i.imgur.com/i9t8i08.png" alt="Zapier logo" class="integration-logo" loading="lazy">
                     </div>
                 </div>
             </section>
@@ -213,7 +275,7 @@
                                         <p>"productflow.online transformed our process. We now make decisions with clarity and confidence, backed by data. It's our single source of truth for what to build next and why."</p>
                                     </blockquote>
                                     <figcaption class="mt-6 text-center">
-                                        <img class="w-12 h-12 rounded-full mx-auto" src="https://i.pravatar.cc/150?u=alice" alt="Photo of Alicja Nowak">
+                                        <img class="w-12 h-12 rounded-full mx-auto" src="https://i.pravatar.cc/150?u=alice" alt="Photo of Alicja Nowak, Head of Product at InnovateCorp" loading="lazy">
                                         <div class="font-semibold mt-2">Alicja Nowak</div>
                                         <div class="text-gray-400 text-sm">Head of Product, InnovateCorp</div>
                                     </figcaption>
@@ -225,7 +287,7 @@
                                         <p>"The ability to trace a feature from a customer comment all the way to a company OKR is a game-changer. It has completely aligned our engineering and product teams."</p>
                                     </blockquote>
                                     <figcaption class="mt-6 text-center">
-                                        <img class="w-12 h-12 rounded-full mx-auto" src="https://i.pravatar.cc/150?u=ben" alt="Photo of Ben Carter">
+                                        <img class="w-12 h-12 rounded-full mx-auto" src="https://i.pravatar.cc/150?u=ben" alt="Photo of Ben Carter, Lead Product Manager at DataStream" loading="lazy">
                                         <div class="font-semibold mt-2">Ben Carter</div>
                                         <div class="text-gray-400 text-sm">Lead Product Manager, DataStream</div>
                                     </figcaption>
@@ -237,7 +299,7 @@
                                         <p>"The AI-powered feedback analysis saves us hours every week. We're surfacing insights we would have completely missed before."</p>
                                     </blockquote>
                                     <figcaption class="mt-6 text-center">
-                                        <img class="w-12 h-12 rounded-full mx-auto" src="https://i.pravatar.cc/150?u=chloe" alt="Photo of Chloe Davis">
+                                        <img class="w-12 h-12 rounded-full mx-auto" src="https://i.pravatar.cc/150?u=chloe" alt="Photo of Chloe Davis, Senior UX Researcher at Sparkflow" loading="lazy">
                                         <div class="font-semibold mt-2">Chloe Davis</div>
                                         <div class="text-gray-400 text-sm">Senior UX Researcher, Sparkflow</div>
                                     </figcaption>
