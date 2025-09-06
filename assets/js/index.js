@@ -41,39 +41,26 @@ function initializeHeroAnimation() {
     const headline = document.getElementById('hero-headline');
     if (!headline) return;
 
+    const mainText = headline.childNodes[0].nodeValue.trim(); // "The Command Center for"
     const span = headline.querySelector('span');
     const rotatingTexts = ["Outcome-Driven Product Teams.", "Modern B2B SaaS.", "High-Stakes FinTech."];
-    const initialText = rotatingTexts[0];
-    span.textContent = '';
-    span.classList.add('typing');
-
-    let charIndex = 0;
     
-    // 1. Type out the initial text
-    const typingInterval = setInterval(() => {
-        if (charIndex < initialText.length) {
-            span.textContent += initialText.charAt(charIndex);
-            charIndex++;
-        } else {
-            clearInterval(typingInterval);
-            span.classList.remove('typing');
-            // 2. Wait, then start the rotating animation
-            setTimeout(startRotation, 2000); 
-        }
-    }, 80);
+    headline.innerHTML = `${mainText}<br/><span class="text-emerald-400 transition-opacity duration-500"></span>`;
+    const newSpan = headline.querySelector('span');
 
-    // 3. Loop through the rotating texts
-    let textIndex = 1; // Start from the second item
-    function startRotation() {
-        setInterval(() => {
-            span.classList.add('fade-out'); // Start fade out
-            setTimeout(() => {
-                span.textContent = rotatingTexts[textIndex];
-                textIndex = (textIndex + 1) % rotatingTexts.length;
-                span.classList.remove('fade-out'); // End fade out, which triggers fade in
-            }, 500); // Must match CSS transition duration
-        }, 3000); // Time each phrase is visible
+    let textIndex = 0;
+    
+    function rotate() {
+        newSpan.classList.add('fade-out'); // Start fade out
+        setTimeout(() => {
+            newSpan.textContent = rotatingTexts[textIndex];
+            textIndex = (textIndex + 1) % rotatingTexts.length;
+            newSpan.classList.remove('fade-out'); // End fade out, which triggers fade in
+        }, 500); // Must match CSS transition duration
     }
+
+    rotate(); // Initial set
+    setInterval(rotate, 3000); // Loop
 }
 
 
@@ -174,6 +161,7 @@ function initializeCarousel() {
         slides.forEach((_, i) => {
             const dot = document.createElement('button');
             dot.classList.add('carousel-dot');
+            dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
             dot.addEventListener('click', () => {
                 showSlide(i);
                 resetAutoplay();
@@ -255,6 +243,24 @@ function initializeKnowledgeHubFilters() {
     });
 }
 
+function initializeStickyNav() {
+    const nav = document.querySelector('.quick-links-nav');
+    const sentinel = document.querySelector('#sticky-nav-sentinel');
+    if (!nav || !sentinel) return;
+
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            nav.classList.toggle('is-stuck', !entry.isIntersecting);
+        },
+        {
+            rootMargin: `-${nav.offsetHeight}px`,
+            threshold: 0
+        }
+    );
+
+    observer.observe(sentinel);
+}
+
 // --- INITIALIZATION SEQUENCE ---
 // This function initializes all scripts that depend on the dynamic header/footer.
 // It is called ONLY after the layout has been loaded.
@@ -298,9 +304,11 @@ function initializePageScripts() {
     initializeHeroAnimation();
     initializeCodeAnimations();
     initializeTabs('.tabs-container'); // Original tabs
-    initializeTabs('#built-for-you-tabs'); // New tabs on homepage
+    initializeTabs('#built-for-you-tabs'); // For homepage industries/roles
+    initializeTabs('#for-who-tabs'); // For the expanded For Who page
     initializeCarousel();
     initializeKnowledgeHubFilters();
+    initializeStickyNav();
 }
 
 // --- MAIN EXECUTION ---
