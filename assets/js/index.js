@@ -21,7 +21,7 @@
 const Nav = {
     init() {
         this.initMobileMenu();
-        this.initMegaMenu();
+        this.initMegaMenuInteractivity();
     },
 
     initMobileMenu() {
@@ -35,47 +35,18 @@ const Nav = {
         }
     },
     
-    // Reworked Mega Menu logic for improved reliability.
-    // Uses JS to toggle a class instead of pure CSS :hover.
-    initMegaMenu() {
-        console.log("Attempting to initialize Mega Menus...");
+    // Mega Menu visibility is now handled by pure CSS :hover for reliability.
+    // This function ONLY handles the interactive details panel inside the menu.
+    initMegaMenuInteractivity() {
+        console.log("Initializing Mega Menu Details Panels...");
         const containers = document.querySelectorAll('.mega-menu-container');
-        console.log(`Found ${containers.length} mega menu containers.`);
-
+        
         if (containers.length === 0) {
-            console.error("No mega menu containers found. Desktop menu will not be interactive.");
+            console.log("No mega menu containers found. Skipping details panel interactivity.");
             return;
         }
 
         containers.forEach((container, index) => {
-            const trigger = container.querySelector('a');
-            const menu = container.querySelector('.mega-menu');
-
-            if (!trigger || !menu) {
-                console.warn(`Mega menu container ${index + 1} is missing a trigger or a menu panel.`);
-                return;
-            }
-            
-            console.log(`Attaching listeners to menu container ${index + 1}`);
-
-            const openMenu = () => menu.classList.add('is-open');
-            const closeMenu = () => menu.classList.remove('is-open');
-
-            container.addEventListener('mouseenter', openMenu);
-            container.addEventListener('mouseleave', closeMenu);
-            trigger.addEventListener('focus', openMenu);
-
-            const focusableElements = menu.querySelectorAll('a, button');
-            if (focusableElements.length > 0) {
-                const lastFocusableElement = focusableElements[focusableElements.length - 1];
-                lastFocusableElement.addEventListener('blur', (e) => {
-                    if (!container.contains(e.relatedTarget)) {
-                        closeMenu();
-                    }
-                });
-            }
-
-            // Interactive Details Panel Logic (if it exists)
             const links = container.querySelectorAll('.mega-menu-nav-link');
             const detailsColumn = container.querySelector('.mega-menu-details-column .details-content');
             
@@ -114,8 +85,6 @@ const Nav = {
                         detailsColumn.classList.remove('fade-out-details');
                     }, 150);
                 });
-            } else {
-                 console.log(`No details panel or links found for menu ${index + 1}.`);
             }
         });
     },
@@ -238,7 +207,7 @@ const UI = {
         this.initTabs();
         this.initCarousel();
         this.initPricingToggle();
-        this.initFilters();
+        this.initUseCaseFilters();
         this.initGoldenThread();
         this.initForms();
     },
@@ -314,23 +283,23 @@ const UI = {
         });
     },
 
-    initFilters() {
-        const filterContainers = document.querySelectorAll('[data-filter-container]');
-        filterContainers.forEach(container => {
-            const buttons = container.querySelectorAll('[data-filter]');
-            const items = document.querySelectorAll(container.dataset.filterContainer);
+    initUseCaseFilters() {
+        const container = document.querySelector('.interactive-workflow');
+        if (!container) return;
 
-            buttons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const filter = button.dataset.filter;
-                    buttons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                    
-                    items.forEach(item => {
-                        const itemCategories = item.dataset.category.split(' ');
-                        const shouldShow = (filter === 'all' || itemCategories.includes(filter));
-                        item.classList.toggle('hidden', !shouldShow);
-                    });
+        const buttons = container.querySelectorAll('.workflow-stage');
+        const items = document.querySelectorAll('.use-case-card');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.category;
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                items.forEach(item => {
+                    const itemCategories = item.dataset.usecaseCategory.split(' ');
+                    const shouldShow = (filter === 'all' || itemCategories.includes(filter));
+                    item.style.display = shouldShow ? '' : 'none';
                 });
             });
         });
