@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Who - Built for Product Teams | productflow.online</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="productflow.online is built for every member of the modern product team: Product Managers, UX Researchers, and Heads of Product.">
+    <meta name="keywords" content="product manager tools, ux research tools, head of product, product team collaboration">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://productflow.online/for-who.html">
+    <meta property="og:title" content="For Who - Built for Product Teams | productflow.online">
+    <meta property="og:description" content="productflow.online is built for every member of the modern product team: Product Managers, UX Researchers, and Heads of Product.">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+<body class="bg-black text-gray-200 font-sans">
+
+    <!-- Header -->
+    <header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-20">
+        <a href="index.html" class="flex items-center">
+            <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+            <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+        </a>
+        <nav class="hidden md:flex items-center space-x-6 text-sm">
+            <div class="relative dropdown">
+                <a href="features.html" class="text-gray-400 hover:text-white flex items-center">
+                    Features
+                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="dropdown-menu hidden absolute mt-2 w-56 bg-gray-900 rounded-md shadow-lg z-30 border border-gray-800 py-1">
+                    <a href="features-feedback.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Feedback Hub</a>
+                    <a href="features-strategy.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Strategy Suite</a>
+                    <a href="features-upstream.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Upstream Workflow</a>
+                </div>
+            </div>
+            <a href="use-cases.html" class="text-gray-400 hover:text-white">Use Cases</a>
+            <a href="for-who.html" class="text-white font-semibold">For Who</a>
+            <a href="pricing.html" class="text-gray-400 hover:text-white">Pricing</a>
+        </nav>
+        <div class="hidden md:block">
+            <a href="https://app.productflow.online" class="text-sm font-medium text-gray-400 hover:text-white mr-4">Sign In</a>
+            <a href="https://app.productflow.online" class="px-4 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Get Started FREE</a>
+        </div>
+        <!-- Hamburger Button -->
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-400 hover:text-white focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-black/95">
+        <nav class="container mx-auto px-4 pt-2 pb-4 space-y-2 text-center">
+            <a href="features.html" class="block text-gray-300 hover:text-white py-2">Features</a>
+            <a href="use-cases.html" class="block text-gray-300 hover:text-white py-2">Use Cases</a>
+            <a href="for-who.html" class="block text-white font-semibold py-2">For Who</a>
+            <a href="pricing.html" class="block text-gray-300 hover:text-white py-2">Pricing</a>
+            <div class="border-t border-gray-800 my-4"></div>
+            <a href="https://app.productflow.online" class="block text-gray-300 hover:text-white py-2">Sign In</a>
+            <a href="https://app.productflow.online" class="inline-block px-6 py-2 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Get Started FREE</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+        <section class="text-center feature-hero pt-16 pb-24">
+            <h1 class="text-5xl font-extrabold tracking-tight text-white">Built for Every Member of the Product Team.</h1>
+            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400">
+                productflow.online provides a shared language and a common ground for product managers, researchers, designers, and leaders to collaborate effectively.
+            </p>
+        </section>
+
+        <section class="py-20 space-y-16">
+            <!-- For Product Managers -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="feature-card">
+                     <h3 class="text-2xl font-bold text-emerald-400 mb-3">For Product Managers</h3>
+                    <p class="text-gray-400 mb-4">Take control of your workflow. Stop chasing down feedback and start making data-informed decisions. Connect user needs to your roadmap and clearly communicate the 'why' behind your priorities to stakeholders.</p>
+                    <ul class="text-sm space-y-2 text-gray-300">
+                        <li>✓ Prioritize with confidence</li>
+                        <li>✓ Build stronger business cases</li>
+                        <li>✓ Streamline your discovery process</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" alt="Product managers collaborating around a digital whiteboard" class="rounded-lg shadow-2xl">
+                </div>
+            </div>
+
+            <!-- For UX Researchers -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                 <div class="md:order-last">
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="UX researcher analyzing data on a laptop with sticky notes" class="rounded-lg shadow-2xl">
+                </div>
+                <div class="feature-card">
+                     <h3 class="text-2xl font-bold text-emerald-400 mb-3">For UX Researchers</h3>
+                    <p class="text-gray-400 mb-4">Your research deserves to make an impact. Centralize qualitative data from all sources, identify emerging themes with AI, and link your findings directly to product initiatives. Ensure your insights are not just heard, but acted upon.</p>
+                     <ul class="text-sm space-y-2 text-gray-300">
+                        <li>✓ Centralize all qualitative data</li>
+                        <li>✓ Identify trends and patterns faster</li>
+                        <li>✓ Track the impact of your research</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- For Heads of Product -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="feature-card">
+                     <h3 class="text-2xl font-bold text-emerald-400 mb-3">For Heads of Product</h3>
+                    <p class="text-gray-400 mb-4">Lead with strategy, not gut feelings. Get a high-level overview of your entire product portfolio, monitor strategic alignment, and ensure your teams are focused on the outcomes that drive business growth. Standardize your product process and scale with confidence.</p>
+                     <ul class="text-sm space-y-2 text-gray-300">
+                        <li>✓ Ensure strategic alignment</li>
+                        <li>✓ Monitor team progress and OKRs</li>
+                        <li>✓ Standardize the product lifecycle</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" alt="Product leader presenting a strategy to their team" class="rounded-lg shadow-2xl">
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+     <footer class="bg-gray-900/50 border-t border-gray-800">
+      <div class="container mx-auto px-4 py-12">
+        <div class="grid md:grid-cols-4 gap-8 text-sm">
+            <div>
+                <h4 class="font-semibold text-white mb-3">Product</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="features.html" class="hover:text-white">Features</a></li>
+                    <li><a href="use-cases.html" class="hover:text-white">Use Cases</a></li>
+                    <li><a href="for-who.html" class="hover:text-white">For Who</a></li>
+                    <li><a href="pricing.html" class="hover:text-white">Pricing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white mb-3">Company</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                    <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                 <h4 class="font-semibold text-white mb-3">Legal</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
+                    <li><a href="terms.html" class="hover:text-white">Terms of Service</a></li>
+                </ul>
+            </div>
+             <div class="text-center md:text-right">
+                 <h2 class="text-lg font-bold text-white">Ready to build what matters?</h2>
+                 <p class="text-gray-400 mt-2">Start your free trial today. No credit card required.</p>
+                 <a href="https://app.productflow.online" class="mt-4 px-5 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg">
+                    Get Started FREE
+                </a>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            <p>&copy; 2024 productflow.online. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

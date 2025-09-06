@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrations - productflow.online</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="features-style.css">
+</head>
+<body class="bg-black text-gray-200 font-sans">
+
+    <!-- Header -->
+    <header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-20">
+        <a href="index.html" class="flex items-center">
+            <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+            <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+        </a>
+        <nav class="hidden md:flex items-center space-x-6 text-sm">
+            <div class="relative dropdown">
+                <a href="features.html" class="text-white font-semibold flex items-center">
+                    Features
+                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="dropdown-menu hidden absolute mt-2 w-56 bg-gray-900 rounded-md shadow-lg z-30 border border-gray-800 py-1">
+                    <a href="features.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Features Overview</a>
+                    <div class="my-1 border-t border-gray-800"></div>
+                    <a href="features-strategy.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Strategy Suite</a>
+                    <a href="features-feedback.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Feedback Hub</a>
+                    <a href="features-upstream.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Upstream Workflow</a>
+                    <a href="features-integrations.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Integrations</a>
+                </div>
+            </div>
+            <a href="use-cases.html" class="text-gray-400 hover:text-white">Use Cases</a>
+            <a href="for-who.html" class="text-gray-400 hover:text-white">For Who</a>
+            <a href="pricing.html" class="text-gray-400 hover:text-white">Pricing</a>
+        </nav>
+        <div>
+             <a href="app.html" class="px-4 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Access your Hub</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+        <section class="text-center feature-hero pt-16 pb-24">
+            <h1 class="text-5xl font-extrabold tracking-tight text-white">Your Hub, Your Tools. Connected.</h1>
+            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400">
+                productflow.online doesn't replace your existing tools—it enhances them. Connect your entire product stack to create a seamless flow of information from user feedback to development.
+            </p>
+        </section>
+
+        <section class="py-20 text-center">
+            <h2 class="text-3xl font-bold text-white mb-12">Connect in a Few Clicks</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="feature-card items-center justify-center flex flex-col p-8">
+                    <img src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="Jira logo" class="h-16 w-16 mb-4"/>
+                    <h3 class="font-bold text-lg">Jira</h3>
+                </div>
+                 <div class="feature-card items-center justify-center flex flex-col p-8">
+                    <img src="https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg" alt="Slack logo" class="h-16 w-16 mb-4"/>
+                    <h3 class="font-bold text-lg">Slack</h3>
+                </div>
+                 <div class="feature-card items-center justify-center flex flex-col p-8">
+                    <img src="https://cdn.worldvectorlogo.com/logos/zendesk.svg" alt="Zendesk logo" class="h-16 w-16 mb-4"/>
+                    <h3 class="font-bold text-lg">Zendesk</h3>
+                </div>
+                 <div class="feature-card items-center justify-center flex flex-col p-8">
+                    <img src="https://cdn.worldvectorlogo.com/logos/google-sheets.svg" alt="Google Sheets logo" class="h-16 w-16 mb-4"/>
+                    <h3 class="font-bold text-lg">Google Sheets</h3>
+                </div>
+                <div class="feature-card items-center justify-center flex flex-col p-8">
+                    <p class="text-lg font-bold">And more...</p>
+                </div>
+            </div>
+            <p class="mt-12 text-gray-400">Plus, use our API and webhooks to build custom integrations.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 border-t border-gray-800">
+      <div class="container mx-auto px-4 py-12 text-center text-sm text-gray-500">
+        <p>&copy; 2024 productflow.online. All rights reserved.</p>
+      </div>
+    </footer>
+
+</body>
+</html>

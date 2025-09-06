@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Hub - Centralize & Analyze User Feedback | productflow.online</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Turn customer noise into product signal. Aggregate user feedback from any source, analyze with AI, and link insights directly to your product roadmap with the Feedback Hub.">
+    <meta name="keywords" content="feedback management, user feedback, sentiment analysis, feedback analysis, customer insights">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://productflow.online/features-feedback.html">
+    <meta property="og:title" content="Feedback Hub - Centralize & Analyze User Feedback | productflow.online">
+    <meta property="og:description" content="Turn customer noise into product signal. Aggregate user feedback from any source and analyze with AI in the productflow.online Feedback Hub.">
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
+</head>
+<body class="bg-black text-gray-200 font-sans">
+
+    <!-- Header -->
+    <header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-20">
+        <a href="index.html" class="flex items-center">
+            <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+            <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+        </a>
+        <nav class="hidden md:flex items-center space-x-6 text-sm">
+            <div class="relative dropdown">
+                <a href="features.html" class="text-white font-semibold flex items-center">
+                    Features
+                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="dropdown-menu hidden absolute mt-2 w-56 bg-gray-900 rounded-md shadow-lg z-30 border border-gray-800 py-1">
+                    <a href="features-strategy.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Strategy Suite</a>
+                    <a href="features-feedback.html" class="block px-4 py-2 text-sm text-emerald-400 bg-gray-800 font-semibold">Feedback Hub</a>
+                    <a href="features-upstream.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Upstream Workflow</a>
+                </div>
+            </div>
+            <a href="use-cases.html" class="text-gray-400 hover:text-white">Use Cases</a>
+            <a href="for-who.html" class="text-gray-400 hover:text-white">For Who</a>
+            <a href="pricing.html" class="text-gray-400 hover:text-white">Pricing</a>
+        </nav>
+        <div>
+             <a href="https://app.productflow.online" class="px-4 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Access your Hub</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-16">
+        <section class="text-center feature-hero pt-16 pb-24">
+            <h1 class="text-5xl font-extrabold tracking-tight text-white">Turn Customer Noise into Product Signal.</h1>
+            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400">
+                Your users are telling you what to build. Are you listening? productflow.online brings every piece of feedback—from support tickets to app store reviews—into one intelligent, actionable hub.
+            </p>
+        </section>
+
+        <section class="py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="feature-card md:order-last">
+                    <p class="font-mono text-xs text-emerald-400 mb-2">&gt; AI Analysis Complete</p>
+                    <div class="bg-gray-900 p-4 rounded-md space-y-3">
+                       <p><strong class="text-white">Theme:</strong> Poor battery life on V4</p>
+                       <p><strong class="text-white">Sentiment:</strong> Negative (Frustration)</p>
+                       <p><strong class="text-white">Problem:</strong> "A segment of users is experiencing rapid battery drain..."</p>
+                       <p><strong class="text-white">Impact Score:</strong> <span class="font-bold text-red-400">75</span></p>
+                    </div>
+                </div>
+                 <div class="space-y-6">
+                    <h2 class="text-3xl font-bold text-white">Aggregate. Analyze. Act.</h2>
+                    <p class="text-gray-400">
+                        Connect all your data sources and let our AI do the heavy lifting. We automatically cluster similar feedback, analyze sentiment, and generate concise problem descriptions so your team can focus on solving problems, not sorting spreadsheets.
+                    </p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Connect Everything:</strong> Integrates with Zendesk, Jira, Slack, App Stores, and more.</span></li>
+                        <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Find Signal in the Noise:</strong> AI-powered clustering and anomaly detection finds what's important.</span></li>
+                        <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Close the Loop:</strong> Link feedback directly to hypotheses and initiatives to track impact.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 border-t border-gray-800">
+      <div class="container mx-auto px-4 py-12 text-center text-sm text-gray-500">
+        <p>&copy; 2024 productflow.online. All rights reserved.</p>
+      </div>
+    </footer>
+
+</body>
+</html>
