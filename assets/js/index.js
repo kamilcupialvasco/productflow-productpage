@@ -46,26 +46,21 @@ const Nav = {
     },
 
     highlightActiveLink() {
-        // Use a more robust path check that handles both root and file paths
-        const currentPath = window.location.pathname.endsWith('/') 
-            ? window.location.pathname 
-            : window.location.pathname + '/';
-        const rootPath = '/';
-        const indexPath = '/index.html/';
-
+        const currentPath = window.location.pathname;
         const navLinks = document.querySelectorAll('header nav a');
 
         navLinks.forEach(link => {
-            let linkPath = new URL(link.href).pathname;
-            if (!linkPath.endsWith('/')) {
-                linkPath += '/';
-            }
+            const linkPath = new URL(link.href).pathname;
             
-            let isMatch = (linkPath === currentPath);
-            if (currentPath === rootPath && linkPath === indexPath) {
-                isMatch = true;
+            // Exact match or matches index.html for root path
+            let isMatch = (linkPath === currentPath) || (currentPath === '/' && linkPath.endsWith('/index.html'));
+
+            // Special case for features parent link
+            if (currentPath.startsWith('/features') && linkPath.endsWith('/features.html')) {
+                 isMatch = true;
             }
-            if (currentPath.startsWith('/features') && link.href.includes('/features.html')) {
+             // Special case for use cases parent link
+            if (currentPath.startsWith('/use-cases') && linkPath.endsWith('/use-cases.html')) {
                  isMatch = true;
             }
             
@@ -198,7 +193,7 @@ const Animations = {
                                 line.style.width = '0';
                                 line.style.whiteSpace = 'nowrap';
                                 line.style.overflow = 'hidden';
-                                line.style.animation = `typing-effect ${Math.max(0.5, html.length / 50)}s steps(${html.length}) forwards`;
+                                line.style.animation = `typing-effect ${Math.max(0.5, line.textContent.length / 50)}s steps(${line.textContent.length}) forwards`;
                                 lineIndex++;
                                 setTimeout(typeLine, 150);
                             } else {
@@ -250,7 +245,6 @@ const UI = {
     },
 
     initCarousel() {
-        // ... (existing carousel logic)
         const carousels = document.querySelectorAll('.carousel-container');
         carousels.forEach(carousel => {
             const slides = carousel.querySelectorAll('.carousel-slide');
@@ -374,8 +368,13 @@ function initializePageScripts() {
 }
 
 // --- MAIN EXECUTION ---
-document.addEventListener('DOMContentLoaded', () => {
-    loadLayout().then(() => {
-        setTimeout(initializePageScripts, 0);
-    });
+// This new structure guarantees that initializePageScripts() is ONLY called
+// after the layout has been fetched and injected into the DOM.
+loadLayout().then(() => {
+    // We use a minimal timeout to push the initialization to the end of the event loop.
+    // This gives the browser a moment to process the newly injected DOM,
+    // preventing race conditions where scripts try to access elements that aren't ready yet.
+    setTimeout(initializePageScripts, 0);
+}).catch(error => {
+    console.error("Layout loading failed, page scripts will not be initialized.", error);
 });
