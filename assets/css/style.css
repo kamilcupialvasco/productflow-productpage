@@ -72,20 +72,21 @@ header .mega-menu-container .active-nav-link {
     color: #ffffff !important; /* Keep top-level dropdown link white */
 }
 
-/* Mega Menu */
+/* Mega Menu (NEW & IMPROVED) */
 .mega-menu-container .dropdown-menu {
     opacity: 0;
     visibility: hidden;
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
-.mega-menu-container:hover .dropdown-menu {
+.mega-menu-container:hover .dropdown-menu,
+.mega-menu-container:focus-within .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 .mega-menu {
-    width: 680px;
+    width: 720px;
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(24, 24, 27, 0.85);
@@ -127,6 +128,23 @@ header .mega-menu-container .active-nav-link {
 }
 .mega-menu-link:hover {
     color: #6ee7b7;
+}
+
+
+/* How It Works Section */
+.how-it-works-step {
+    text-align: center;
+}
+.how-it-works-step .step-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: rgba(16, 185, 129, 0.1);
+    border: 1px solid #10b981;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
 }
 
 /* Buttons */

@@ -1,11 +1,10 @@
+
 // --- MODULES for page initialization ---
 
 const Nav = {
     init() {
         this.highlightActiveLink();
         this.initMobileMenu();
-        this.initMegaMenu();
-        this.initStickyNav();
     },
 
     highlightActiveLink() {
@@ -15,15 +14,13 @@ const Nav = {
         navLinks.forEach(link => {
             const linkPath = new URL(link.href).pathname.replace(/\/$/, "");
 
-            // Handle index.html vs root path
             let isMatch = (currentPath === linkPath) || (currentPath === '' && (linkPath.endsWith('/index.html') || linkPath === ''));
+            if (currentPath.endsWith('/index.html') && linkPath === '') isMatch = true;
 
-            // Special case for features parent link
-            if (currentPath.startsWith('/features') && linkPath.endsWith('/features.html')) {
+            if (currentPath.startsWith('/features') && link.getAttribute('href') === '/features.html') {
                  isMatch = true;
             }
-             // Special case for use cases parent link
-            if (currentPath.startsWith('/use-cases') && linkPath.endsWith('/use-cases.html')) {
+            if (currentPath.startsWith('/use-cases') && link.getAttribute('href') === '/use-cases.html') {
                  isMatch = true;
             }
             
@@ -47,29 +44,6 @@ const Nav = {
             closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         }
     },
-
-    initMegaMenu() {
-        const dropdowns = document.querySelectorAll('.mega-menu-container');
-        dropdowns.forEach(dropdown => {
-            const menu = dropdown.querySelector('.dropdown-menu');
-            if (menu) {
-                dropdown.addEventListener('mouseenter', () => menu.classList.remove('hidden'));
-                dropdown.addEventListener('mouseleave', () => menu.classList.add('hidden'));
-            }
-        });
-    },
-
-    initStickyNav() {
-        const nav = document.querySelector('.quick-links-nav');
-        const sentinel = document.querySelector('#sticky-nav-sentinel');
-        if (!nav || !sentinel) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => nav.classList.toggle('is-stuck', !entry.isIntersecting),
-            { rootMargin: `-100px`, threshold: 0 }
-        );
-        observer.observe(sentinel);
-    }
 };
 
 const Animations = {
@@ -322,14 +296,10 @@ const Forms = {
     }
 };
 
-// --- INITIALIZATION SEQUENCE ---
-function initializePageScripts() {
+// --- MAIN EXECUTION ---
+document.addEventListener('DOMContentLoaded', () => {
     Nav.init();
     Animations.init();
     UI.init();
     Forms.init();
-}
-
-// --- MAIN EXECUTION ---
-// This robust approach ensures scripts run only after the DOM is fully parsed and ready.
-document.addEventListener('DOMContentLoaded', initializePageScripts);
+});
