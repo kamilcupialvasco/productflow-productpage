@@ -14,22 +14,107 @@
 </head>
 <body class="bg-black text-gray-200 font-sans">
 
-    <div id="header-placeholder"></div>
+    <!-- Header -->
+    <header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-30 border-b border-gray-900">
+        <a href="/index.html" class="flex items-center" data-ga-event="Nav:Click:Logo">
+            <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+            <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+        </a>
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold">
+            <!-- Mega Menu: Product -->
+            <div class="mega-menu-container">
+                <a href="/features.html" class="text-gray-400 hover:text-white flex items-center" data-ga-event="Nav:Hover:Product">
+                    Product
+                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="mega-menu">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-nav-column">
+                            <h4 class="mega-menu-column-header">Features</h4>
+                            <a href="/features-feedback.html" class="mega-menu-nav-link" data-title="Feedback Hub" data-description="Turn customer noise into product signal. Aggregate, analyze, and act on user feedback from any source." data-ga-event="Nav:Click:Features_FeedbackHub">Feedback Hub</a>
+                            <a href="/features-strategy.html" class="mega-menu-nav-link" data-title="Strategy Suite" data-description="Connect your strategy to daily execution. Visualize the 'Golden Thread' from company vision to user stories." data-ga-event="Nav:Click:Features_StrategySuite">Strategy Suite</a>
+                            <a href="/features-upstream.html" class="mega-menu-nav-link" data-title="Upstream Workflow" data-description="From a vague idea to a bulletproof plan. Standardize your discovery process with our guided Kanban workflow." data-ga-event="Nav:Click:Features_UpstreamWorkflow">Upstream Workflow</a>
+                        </div>
+                         <div class="mega-menu-nav-column">
+                            <h4 class="mega-menu-column-header">Use Cases</h4>
+                            <a href="/use-cases/roadmap-prioritization.html" class="mega-menu-nav-link" data-title="Prioritize Your Roadmap" data-description="Make confident, data-driven decisions about what to build next based on user impact and strategic fit." data-ga-event="Nav:Click:UseCases_Prioritize">Prioritize Your Roadmap</a>
+                            <a href="/use-cases/justify-decisions.html" class="mega-menu-nav-link" data-title="Justify Decisions" data-description="Build a bulletproof business case for every feature by tracing it back to the problem it solves and goal it serves." data-ga-event="Nav:Click:UseCases_Justify">Justify Decisions</a>
+                            <a href="/use-cases/align-stakeholders.html" class="mega-menu-nav-link" data-title="Align Stakeholders" data-description="Create a single source of truth that engineering, marketing, and leadership can rally behind." data-ga-event="Nav:Click:UseCases_Align">Align Stakeholders</a>
+                        </div>
+                        <div class="mega-menu-details-column">
+                            <!-- JS will populate this -->
+                            <div class="details-content">
+                                <h4 id="mega-menu-details-title">Explore Our Product</h4>
+                                <p id="mega-menu-details-description">Hover over an item to learn more about how productflow.online can help your team build better products.</p>
+                                <a id="mega-menu-details-link" href="/features.html" class="mega-menu-link" data-ga-event="Nav:Click:Product_ViewAll">View all features &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-16">
-        <section class="max-w-3xl mx-auto py-12 prose-custom animate-on-scroll">
-            <h1>Terms of Service</h1>
-            <p>Last updated: July 25, 2024</p>
-            <p>Please read these terms and conditions carefully before using Our Service.</p>
-            <h2>Acknowledgment</h2>
-            <p>These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.</p>
-            <h2>User Accounts</h2>
-            <p>When You create an account with Us, You must provide Us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of Your account on Our Service.</p>
-        </section>
-    </main>
-
-    <div id="footer-placeholder"></div>
-    <script src="/assets/js/index.js" defer></script>
-</body>
-</html>
+            <!-- Mega Menu: Solutions -->
+            <div class="mega-menu-container">
+                <a href="/for-who.html" class="text-gray-400 hover:text-white flex items-center" data-ga-event="Nav:Hover:Solutions">
+                    Solutions
+                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="mega-menu">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-nav-column">
+                            <h4 class="mega-menu-column-header">By Role</h4>
+                            <a href="/for-who.html#role-pm" class="mega-menu-nav-link" data-title="Product Managers" data-description="Take control of your entire workflow from feedback analysis to roadmap planning in one place." data-ga-event="Nav:Click:Solutions_Role_PM">For Product Managers</a>
+                            <a href="/for-who.html#role-ux" class="mega-menu-nav-link" data-title="UX Researchers" data-description="Ensure your research makes an impact by linking findings directly to product initiatives." data-ga-event="Nav:Click:Solutions_Role_UX">For UX Researchers</a>
+                            <a href="/for-who.html#role-head" class="mega-menu-nav-link" data-title="Heads of Product" data-description="Get a high-level overview of your portfolio and ensure your teams are focused on outcomes." data-ga-event="Nav:Click:Solutions_Role_Head">For Heads of Product</a>
+                        </div>
+                         <div class="mega-menu-nav-column">
+                            <h4 class="mega-menu-column-header">By Industry</h4>
+                            <a href="/for-who.html#industry-saas" class="mega-menu-nav-link" data-title="B2B SaaS" data-description="Balance the needs of enterprise clients with your long-term vision and strategic goals." data-ga-event="Nav:Click:Solutions_Industry_SaaS">For B2B SaaS</a>
+                            <a href="/for-who.html#industry-fintech" class="mega-menu-nav-link" data-title="FinTech" data-description="Maintain a clear audit trail from customer feedback to feature release, ensuring compliance." data-ga-event="Nav:Click:Solutions_Industry_Fintech">For FinTech</a>
+                            <a href="/for-who.html#industry-healthcare" class="mega-menu-nav-link" data-title="Healthcare" data-description="Securely manage sensitive feedback while navigating complex regulations." data-ga-event="Nav:Click:Solutions_Industry_Healthcare">For Healthcare</a>
+                        </div>
+                        <div class="mega-menu-details-column">
+                            <!-- JS will populate this -->
+                             <div class="details-content">
+                                <h4 id="mega-menu-details-title-solutions">Solutions For Your Team</h4>
+                                <p id="mega-menu-details-description-solutions">Discover how our platform adapts to your specific context, whether defined by your role, industry, or company maturity.</p>
+                                <a id="mega-menu-details-link-solutions" href="/for-who.html" class="mega-menu-link" data-ga-event="Nav:Click:Solutions_ViewAll">See all solutions &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="/pricing.html" class="text-gray-400 hover:text-white" data-ga-event="Nav:Click:Pricing">Pricing</a>
+            <a href="/knowledge-hub.html" class="text-gray-400 hover:text-white" data-ga-event="Nav:Click:KnowledgeHub">Knowledge Hub</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-x-4">
+            <a href="https://app.productflow.online" class="text-sm font-medium text-gray-400 hover:text-white" data-ga-event="Nav:Click:SignIn">Sign In</a>
+            <a href="https://app.productflow.online" class="px-4 py-2 text-sm font-semibold rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors" data-ga-event="Nav:Click:GetStarted">Get Started FREE</a>
+        </div>
+        <!-- Hamburger Button -->
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-400 hover:text-white focus:outline-none" data-ga-event="Nav:Click:MobileMenuOpen">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black/95 z-50">
+        <div class="container mx-auto px-4 pt-4 pb-4">
+            <div class="flex justify-between items-center">
+                <a href="/index.html" class="flex items-center" data-ga-event="Nav:Click:MobileLogo">
+                    <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+                    <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+                </a>
+                <button id="mobile-menu-close-button" class="text-gray-400 hover:text-white" data-ga-event="Nav:Click:MobileMenuClose">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <nav class="mt-8 space-y-2 text-center">
+                <a href="/features.html" class="block text-gray-300 hover:text-white py-2" data-ga-event="Nav:Click:Mobile_Features">Features</a>
+                <a href="/for-who.html" class="block text-gray-300 hover:text-white py-2" data-ga-event="Nav:Click:Mobile_Solutions">Solutions</a>
+                <a href="/pricing.html" class="block text-gray-

@@ -1,39 +1,26 @@
-// --- MODULES for page initialization ---
+// =================================================================================
+// productflow.online - Main JavaScript File
+//
+// This file contains all the client-side logic for the marketing website.
+// It's organized into modules to handle different aspects of the site's
+// interactivity, animations, and analytics.
+//
+// Modules:
+// - Nav: Handles navigation, including mobile menu and active link highlighting.
+// - Animations: Manages all visual effects, like scroll-triggered animations.
+// - UI: Initializes interactive components like tabs, carousels, and forms.
+// - Analytics: Provides a lightweight event tracking system.
+//
+// Execution starts at the bottom with the DOMContentLoaded event listener.
+// =================================================================================
 
+
+// --- NAVIGATION MODULE ---
+// Handles the main site navigation, including the mobile menu and mega menu.
 const Nav = {
     init() {
-        this.highlightActiveLink();
         this.initMobileMenu();
-    },
-
-    highlightActiveLink() {
-        const currentPath = window.location.pathname.replace(/\/$/, ""); // Normalize path by removing trailing slash
-        const navLinks = document.querySelectorAll('header nav a');
-
-        navLinks.forEach(link => {
-            const linkPath = new URL(link.href).pathname.replace(/\/$/, "");
-
-            let isMatch = (currentPath === linkPath) || (currentPath === '' && (linkPath.endsWith('/index.html') || linkPath === ''));
-            if (currentPath.endsWith('/index.html') && linkPath === '') isMatch = true;
-            
-            if (currentPath.startsWith('/features') && link.getAttribute('href') === '/features.html') {
-                 isMatch = true;
-            }
-            if (currentPath.startsWith('/use-cases') && link.getAttribute('href') === '/use-cases.html') {
-                 isMatch = true;
-            }
-             if (currentPath.startsWith('/for-who') && link.getAttribute('href') === '/for-who.html') {
-                 isMatch = true;
-            }
-            
-            if (isMatch) {
-                link.classList.add('active-nav-link');
-                const dropdown = link.closest('.mega-menu-container');
-                if (dropdown) {
-                    dropdown.querySelector('a').classList.add('active-nav-link');
-                }
-            }
-        });
+        this.initMegaMenu();
     },
 
     initMobileMenu() {
@@ -46,129 +33,15 @@ const Nav = {
             closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         }
     },
-};
-
-const Animations = {
-    init() {
-        this.initScrollAnimations();
-        this.initHeroAnimation();
-        this.initHeroParallax();
-        this.initCodeAnimations();
-    },
-
-    initScrollAnimations() {
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    if (entry.target.dataset.staggerGroup !== undefined) {
-                        const children = entry.target.querySelectorAll('.animate-on-scroll, .use-case-card');
-                        children.forEach((child, i) => {
-                            child.style.transitionDelay = `${i * 100}ms`;
-                        });
-                    }
-                    scrollObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('[data-stagger-group], .animate-on-scroll:not([data-stagger-group] .animate-on-scroll)').forEach(el => {
-            scrollObserver.observe(el);
-        });
-    },
-
-    initHeroAnimation() {
-        const headline = document.getElementById('hero-headline');
-        if (!headline) return;
-
-        const mainText = headline.childNodes[0].nodeValue.trim();
-        const rotatingTexts = ["Outcome-Driven Product Teams.", "Modern B2B SaaS.", "High-Stakes FinTech."];
-        
-        headline.innerHTML = `${mainText}<br/><span class="text-emerald-400 transition-opacity duration-500"></span>`;
-        const newSpan = headline.querySelector('span');
-        let textIndex = 0;
-        
-        function rotate() {
-            newSpan.classList.add('fade-out');
-            setTimeout(() => {
-                newSpan.textContent = rotatingTexts[textIndex];
-                textIndex = (textIndex + 1) % rotatingTexts.length;
-                newSpan.classList.remove('fade-out');
-            }, 500);
-        }
-        rotate();
-        setInterval(rotate, 3000);
-    },
-
-    initHeroParallax() {
-        const parallaxBg = document.getElementById('hero-parallax-bg');
-        if (!parallaxBg) return;
-
-        window.addEventListener('scroll', () => {
-            const offset = window.pageYOffset;
-            parallaxBg.style.transform = `translateY(${offset * 0.3}px)`;
-        });
-    },
-
-    initCodeAnimations() {
-        const codeBlocks = document.querySelectorAll('.code-block-animated');
-        codeBlocks.forEach(block => {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const lines = Array.from(block.querySelectorAll('p, div.font-mono > div, div.font-mono > p, .font-mono > strong'));
-                        if (lines.length === 0) return;
-                        
-                        const originalHTMLs = lines.map(p => p.innerHTML);
-                        lines.forEach(p => p.innerHTML = '');
-                        block.classList.add('typing');
-
-                        let lineIndex = 0;
-                        function typeLine() {
-                            if (lineIndex < lines.length) {
-                                const line = lines[lineIndex];
-                                const html = originalHTMLs[lineIndex];
-                                line.innerHTML = html;
-                                line.style.width = '0';
-                                line.style.whiteSpace = 'nowrap';
-                                line.style.overflow = 'hidden';
-                                line.style.animation = `typing-effect ${Math.max(0.5, line.textContent.length / 50)}s steps(${line.textContent.length}) forwards`;
-                                lineIndex++;
-                                setTimeout(typeLine, 150);
-                            } else {
-                                setTimeout(() => block.classList.remove('typing'), 500);
-                            }
-                        }
-                        typeLine();
-                        observer.unobserve(block);
-                    }
-                });
-            }, { threshold: 0.5 });
-            observer.observe(block);
-        });
-    }
-};
-
-const UI = {
-    init() {
-        this.initTabs('.tabs-container');
-        this.initTabs('#built-for-you-tabs');
-        this.initTabs('#for-who-tabs');
-        this.initTabs('#roadmap-tabs');
-        this.initCarousel();
-        this.initPricingToggle();
-        this.initKnowledgeHubFilters();
-        this.initGoldenThread();
-        this.initUseCaseFilters();
-        this.initMegaMenu();
-    },
     
     initMegaMenu() {
         const megaMenuContainers = document.querySelectorAll('.mega-menu-container');
-        megaMenuContainers.forEach(container => {
+
+        megaMenuContainers.forEach((container) => {
             const links = container.querySelectorAll('.mega-menu-nav-link');
             const detailsColumn = container.querySelector('.mega-menu-details-column .details-content');
-            if (!detailsColumn) return;
+            
+            if (!detailsColumn || links.length === 0) return;
 
             const titleEl = detailsColumn.querySelector('h4');
             const descEl = detailsColumn.querySelector('p');
@@ -207,10 +80,137 @@ const UI = {
             });
         });
     },
+};
 
-    initTabs(containerSelector) {
-        const tabContainers = document.querySelectorAll(containerSelector);
-        tabContainers.forEach(container => {
+// --- ANIMATIONS MODULE ---
+// Manages all visual animations on the site.
+const Animations = {
+    init() {
+        this.initScrollAnimations();
+        this.initHeroAnimation();
+        this.initHeroParallax();
+        this.initCodeAnimations();
+        this.initCounterAnimation();
+    },
+
+    // Initializes scroll-triggered animations for elements with `.animate-on-scroll`.
+    // Supports staggered animations and different directions.
+    initScrollAnimations() {
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const direction = entry.target.dataset.animationDirection || 'up';
+                    entry.target.classList.add('is-visible', `animate-${direction}`);
+                    
+                    // Handle staggered animations for child elements
+                    if (entry.target.dataset.staggerGroup !== undefined) {
+                        const children = entry.target.querySelectorAll('.animate-on-scroll');
+                        children.forEach((child, i) => {
+                            child.style.transitionDelay = `${i * 100}ms`;
+                        });
+                    }
+                    scrollObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            scrollObserver.observe(el);
+        });
+    },
+
+    // Animates the main headline on the homepage.
+    initHeroAnimation() {
+        const headline = document.getElementById('hero-headline');
+        if (!headline) return;
+
+        const mainText = headline.childNodes[0].nodeValue.trim();
+        const rotatingTexts = ["Outcome-Driven Teams.", "Modern B2B SaaS.", "High-Stakes FinTech."];
+        
+        headline.innerHTML = `${mainText}<br/><span class="text-emerald-400 transition-opacity duration-500"></span>`;
+        const newSpan = headline.querySelector('span');
+        let textIndex = 0;
+        
+        const rotate = () => {
+            newSpan.classList.add('fade-out');
+            setTimeout(() => {
+                newSpan.textContent = rotatingTexts[textIndex];
+                textIndex = (textIndex + 1) % rotatingTexts.length;
+                newSpan.classList.remove('fade-out');
+            }, 500);
+        }
+        rotate();
+        setInterval(rotate, 3000);
+    },
+
+    // Creates a parallax effect on the hero section background.
+    initHeroParallax() {
+        const parallaxBg = document.getElementById('hero-parallax-bg');
+        if (!parallaxBg) return;
+
+        window.addEventListener('scroll', () => {
+            const offset = window.pageYOffset;
+            parallaxBg.style.transform = `translateY(${offset * 0.3}px)`;
+        });
+    },
+
+    // Creates a "typing" effect for code blocks.
+    initCodeAnimations() {
+        document.querySelectorAll('.code-block-animated').forEach(block => {
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    block.classList.add('is-visible');
+                    observer.unobserve(block);
+                }
+            }, { threshold: 0.5 });
+            observer.observe(block);
+        });
+    },
+    
+    // Animates numbers counting up.
+    initCounterAnimation() {
+        const counters = document.querySelectorAll('[data-animate-counter]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = +el.dataset.animateCounter;
+                    let current = 0;
+                    const increment = target / 100;
+
+                    const updateCounter = () => {
+                        current += increment;
+                        if (current < target) {
+                            el.textContent = Math.ceil(current);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            el.textContent = target;
+                        }
+                    };
+                    updateCounter();
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.8 });
+
+        counters.forEach(counter => observer.observe(counter));
+    }
+};
+
+// --- UI MODULE ---
+// Initializes all interactive UI components.
+const UI = {
+    init() {
+        this.initTabs();
+        this.initCarousel();
+        this.initPricingToggle();
+        this.initFilters();
+        this.initGoldenThread();
+        this.initForms();
+    },
+    
+    initTabs() {
+        document.querySelectorAll('.tabs-container').forEach(container => {
             const buttons = container.querySelectorAll('.tab-button');
             const panes = container.querySelectorAll('.tab-pane');
             if (!buttons.length || !panes.length) return;
@@ -231,44 +231,34 @@ const UI = {
     },
 
     initCarousel() {
-        const carousels = document.querySelectorAll('.carousel-container');
-        carousels.forEach(carousel => {
+        document.querySelectorAll('.carousel-container').forEach(carousel => {
             const slides = carousel.querySelectorAll('.carousel-slide');
+            if (slides.length <= 1) return;
+
             const nextButton = carousel.querySelector('.carousel-next');
             const prevButton = carousel.querySelector('.carousel-prev');
             const dotsContainer = carousel.querySelector('.carousel-dots');
-            let autoplayInterval = null;
-
-            if (slides.length <= 1) {
-                if(nextButton) nextButton.style.display = 'none';
-                if(prevButton) prevButton.style.display = 'none';
-                if(dotsContainer) dotsContainer.style.display = 'none';
-                return;
-            }
-
             let currentIndex = 0;
             
             slides.forEach((_, i) => {
                 const dot = document.createElement('button');
-                dot.classList.add('carousel-dot');
+                dot.className = 'carousel-dot';
                 dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
-                dot.addEventListener('click', () => { showSlide(i); resetAutoplay(); });
+                dot.addEventListener('click', () => showSlide(i));
                 dotsContainer.appendChild(dot);
             });
+
             const dots = dotsContainer.querySelectorAll('.carousel-dot');
-
-            function updateDots() { dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex)); }
-            function showSlide(index) { currentIndex = index; slides.forEach((s, i) => s.classList.toggle('active', i === index)); updateDots(); }
-            function nextSlide() { showSlide((currentIndex + 1) % slides.length); }
-            function prevSlide() { showSlide((currentIndex - 1 + slides.length) % slides.length); }
-            function startAutoplay() { autoplayInterval = setInterval(nextSlide, 7000); }
-            function resetAutoplay() { clearInterval(autoplayInterval); startAutoplay(); }
-
-            nextButton.addEventListener('click', () => { nextSlide(); resetAutoplay(); });
-            prevButton.addEventListener('click', () => { prevSlide(); resetAutoplay(); });
+            const showSlide = (index) => {
+                currentIndex = index;
+                slides.forEach((s, i) => s.classList.toggle('active', i === index));
+                dots.forEach((d, i) => d.classList.toggle('active', i === index));
+            };
+            
+            nextButton.addEventListener('click', () => showSlide((currentIndex + 1) % slides.length));
+            prevButton.addEventListener('click', () => showSlide((currentIndex - 1 + slides.length) % slides.length));
             
             showSlide(0);
-            startAutoplay();
         });
     },
 
@@ -276,35 +266,33 @@ const UI = {
         const toggle = document.getElementById('pricing-toggle');
         if (!toggle) return;
 
-        const monthlyPrices = document.querySelectorAll('[data-price-monthly]');
-        const annualPrices = document.querySelectorAll('[data-price-annually]');
-        const annualLabel = document.getElementById('annual-label');
-        const monthlyLabel = document.getElementById('monthly-label');
-
+        const monthly = document.querySelectorAll('[data-price-monthly]');
+        const annually = document.querySelectorAll('[data-price-annually]');
+        
         toggle.addEventListener('change', () => {
             const isAnnual = toggle.checked;
-            monthlyPrices.forEach(p => p.classList.toggle('hidden', isAnnual));
-            annualPrices.forEach(p => p.classList.toggle('hidden', !isAnnual));
-            monthlyLabel.classList.toggle('text-white', !isAnnual);
-            monthlyLabel.classList.toggle('text-gray-500', isAnnual);
-            annualLabel.classList.toggle('text-white', isAnnual);
-            annualLabel.classList.toggle('text-gray-500', !isAnnual);
+            monthly.forEach(p => p.classList.toggle('hidden', isAnnual));
+            annually.forEach(p => p.classList.toggle('hidden', !isAnnual));
         });
     },
 
-    initKnowledgeHubFilters() {
-        const container = document.getElementById('knowledge-hub-filters');
-        if (!container) return;
-        const buttons = container.querySelectorAll('button');
-        const items = document.querySelectorAll('.knowledge-item');
+    initFilters() {
+        const filterContainers = document.querySelectorAll('[data-filter-container]');
+        filterContainers.forEach(container => {
+            const buttons = container.querySelectorAll('[data-filter]');
+            const items = document.querySelectorAll(container.dataset.filterContainer);
 
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                const filter = button.dataset.filter;
-                buttons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                items.forEach(item => {
-                    item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none';
+            buttons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.dataset.filter;
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    items.forEach(item => {
+                        const itemCategories = item.dataset.category.split(' ');
+                        const shouldShow = (filter === 'all' || itemCategories.includes(filter));
+                        item.classList.toggle('hidden', !shouldShow);
+                    });
                 });
             });
         });
@@ -319,19 +307,11 @@ const UI = {
 
         nodes.forEach(node => {
             node.addEventListener('mouseenter', () => {
-                const currentId = node.dataset.threadId;
-                const currentIndex = hierarchy.indexOf(currentId);
-                
+                const currentIndex = hierarchy.indexOf(node.dataset.threadId);
                 diagram.classList.add('active');
-                
                 nodes.forEach((el, index) => {
-                    el.classList.remove('active', 'in-path');
-                    if (index === currentIndex) {
-                        el.classList.add('active');
-                    }
-                    if (index <= currentIndex) {
-                        el.classList.add('in-path');
-                    }
+                    el.classList.toggle('active', index === currentIndex);
+                    el.classList.toggle('in-path', index <= currentIndex);
                 });
             });
         });
@@ -342,83 +322,31 @@ const UI = {
         });
     },
 
-    initUseCaseFilters() {
-        const container = document.querySelector('.interactive-workflow');
-        if (!container) return;
-
-        const filterButtons = container.querySelectorAll('.workflow-stage');
-        const cardsContainer = document.getElementById('use-cases-grid');
-        const cards = cardsContainer.querySelectorAll('.use-case-card');
-
-        let activeFilter = 'all';
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const filter = button.dataset.category;
-
-                // Toggle behavior: if clicking the same filter again, show all
-                if (activeFilter === filter) {
-                    activeFilter = 'all';
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                } else {
-                    activeFilter = filter;
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-                }
-                
-                cards.forEach(card => {
-                    const cardCategories = card.dataset.usecaseCategory.split(' ');
-                    const shouldShow = activeFilter === 'all' || cardCategories.includes(activeFilter);
-                    
-                    if (shouldShow) {
-                        card.style.display = 'flex';
-                        card.classList.remove('fade-out-card');
-                    } else {
-                        card.classList.add('fade-out-card');
-                        setTimeout(() => {
-                           if (!card.classList.contains('fade-out-card')) return; // Check if state changed
-                           card.style.display = 'none';
-                        }, 300);
-                    }
-                });
+    initForms() {
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', e => {
+                e.preventDefault();
+                contactForm.style.display = 'none';
+                document.getElementById('form-success-message').classList.remove('hidden');
             });
-        });
-    },
-};
+        }
 
-const Forms = {
-    init() {
-        this.initContactForm();
-        this.initNewsletterForm();
-    },
-    initContactForm() {
-        const form = document.getElementById('contact-form');
-        const successMessage = document.getElementById('form-success-message');
-        if (!form || !successMessage) return;
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // In a real app, you'd send data here.
-            // For analytics, the button click is tracked.
-            form.style.display = 'none';
-            successMessage.classList.remove('hidden');
-        });
-    },
-    initNewsletterForm() {
-        const form = document.getElementById('newsletter-form');
-        if (!form) return;
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // In a real app, you'd send data here.
-            // For analytics, the button click is tracked.
-            form.querySelector('input').disabled = true;
-            const button = form.querySelector('button');
-            button.textContent = 'Subscribed!';
-            button.disabled = true;
-        });
+        const newsletterForm = document.getElementById('newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', e => {
+                e.preventDefault();
+                newsletterForm.querySelector('input').disabled = true;
+                const button = newsletterForm.querySelector('button');
+                button.textContent = 'Subscribed!';
+                button.disabled = true;
+            });
+        }
     }
 };
 
+// --- ANALYTICS MODULE ---
+// Handles lightweight event tracking for analytics.
 const Analytics = {
     init() {
         document.body.addEventListener('click', this.trackEvent.bind(this));
@@ -431,20 +359,19 @@ const Analytics = {
             const [category, action, label] = eventString.split(':');
             
             if (category && action) {
-                // In a real implementation, you would send this to Google Analytics
-                // For example: gtag('event', action, { 'event_category': category, 'event_label': label });
+                // In a real implementation, you would send this to an analytics service.
+                // e.g., gtag('event', action, { 'event_category': category, 'event_label': label });
                 console.log(`GA Event: { Category: '${category}', Action: '${action}', Label: '${label || 'not_set'}' }`);
             }
         }
     }
 };
 
-
 // --- MAIN EXECUTION ---
+// Initializes all modules after the DOM is fully loaded.
 document.addEventListener('DOMContentLoaded', () => {
     Nav.init();
     Animations.init();
     UI.init();
-    Forms.init();
-    Analytics.init(); // Initialize analytics tracking
+    Analytics.init();
 });
