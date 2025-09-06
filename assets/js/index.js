@@ -18,21 +18,21 @@ async function loadLayout() {
         if (headerPlaceholder && headerResponse.ok) {
             headerPlaceholder.outerHTML = await headerResponse.text();
         } else if (!headerPlaceholder) {
-            console.warn('Header placeholder not found.');
+            console.error('CRITICAL: Header placeholder not found in HTML.');
         } else if (!headerResponse.ok) {
-            console.error('Failed to load header:', headerResponse.statusText);
+            console.error('CRITICAL: Failed to load header HTML partial:', headerResponse.statusText);
         }
 
         if (footerPlaceholder && footerResponse.ok) {
             footerPlaceholder.outerHTML = await footerResponse.text();
         } else if (!footerPlaceholder) {
-            console.warn('Footer placeholder not found.');
+             console.error('CRITICAL: Footer placeholder not found in HTML.');
         } else if (!footerResponse.ok) {
-            console.error('Failed to load footer:', footerResponse.statusText);
+            console.error('CRITICAL: Failed to load footer HTML partial:', footerResponse.statusText);
         }
         
     } catch (error) {
-        console.error('Error loading layout:', error);
+        console.error('CRITICAL: Error loading layout partials. Header/footer will be missing.', error);
     }
 }
 
@@ -42,8 +42,8 @@ function initializeHeroAnimation() {
     if (!headline) return;
 
     const span = headline.querySelector('span');
-    const initialText = span.dataset.text;
-    const rotatingTexts = ["Build with Clarity.", "Ship with Confidence.", "Drive Real Impact."];
+    const rotatingTexts = ["Outcome-Driven Product Teams.", "Modern B2B SaaS.", "High-Stakes FinTech."];
+    const initialText = rotatingTexts[0];
     span.textContent = '';
     span.classList.add('typing');
 
@@ -63,13 +63,13 @@ function initializeHeroAnimation() {
     }, 80);
 
     // 3. Loop through the rotating texts
-    let textIndex = 0;
+    let textIndex = 1; // Start from the second item
     function startRotation() {
         setInterval(() => {
             span.classList.add('fade-out'); // Start fade out
             setTimeout(() => {
-                textIndex = (textIndex + 1) % rotatingTexts.length;
                 span.textContent = rotatingTexts[textIndex];
+                textIndex = (textIndex + 1) % rotatingTexts.length;
                 span.classList.remove('fade-out'); // End fade out, which triggers fade in
             }, 500); // Must match CSS transition duration
         }, 3000); // Time each phrase is visible
@@ -122,8 +122,8 @@ function initializeCodeAnimations() {
     });
 }
 
-function initializeTabs() {
-    const tabContainers = document.querySelectorAll('.tabs-container');
+function initializeTabs(containerSelector) {
+    const tabContainers = document.querySelectorAll(containerSelector);
     tabContainers.forEach(container => {
         const buttons = container.querySelectorAll('.tab-button');
         const panes = container.querySelectorAll('.tab-pane');
@@ -158,31 +158,73 @@ function initializeCarousel() {
         const slides = carousel.querySelectorAll('.carousel-slide');
         const nextButton = carousel.querySelector('.carousel-next');
         const prevButton = carousel.querySelector('.carousel-prev');
+        const dotsContainer = carousel.querySelector('.carousel-dots');
+        let autoplayInterval = null;
+
         if (slides.length <= 1) {
             if (nextButton) nextButton.style.display = 'none';
             if (prevButton) prevButton.style.display = 'none';
+            if (dotsContainer) dotsContainer.style.display = 'none';
             return;
-        };
-        
-        let currentIndex = 0;
+        }
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
+        let currentIndex = 0;
+        
+        // Create dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.classList.add('carousel-dot');
+            dot.addEventListener('click', () => {
+                showSlide(i);
+                resetAutoplay();
+            });
+            dotsContainer.appendChild(dot);
+        });
+        const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+        function updateDots() {
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
             });
         }
 
+        function showSlide(index) {
+            currentIndex = index;
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            updateDots();
+        }
+
+        function nextSlide() {
+            showSlide((currentIndex + 1) % slides.length);
+        }
+
+        function prevSlide() {
+            showSlide((currentIndex - 1 + slides.length) % slides.length);
+        }
+        
+        function startAutoplay() {
+            autoplayInterval = setInterval(nextSlide, 7000); // 7 seconds
+        }
+
+        function resetAutoplay() {
+            clearInterval(autoplayInterval);
+            startAutoplay();
+        }
+
         nextButton.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
+            nextSlide();
+            resetAutoplay();
         });
 
         prevButton.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(currentIndex);
+            prevSlide();
+            resetAutoplay();
         });
         
         showSlide(0);
+        startAutoplay();
     });
 }
 
@@ -255,7 +297,8 @@ function initializePageScripts() {
     // Page-specific interactive features
     initializeHeroAnimation();
     initializeCodeAnimations();
-    initializeTabs();
+    initializeTabs('.tabs-container'); // Original tabs
+    initializeTabs('#built-for-you-tabs'); // New tabs on homepage
     initializeCarousel();
     initializeKnowledgeHubFilters();
 }

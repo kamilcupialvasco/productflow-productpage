@@ -1,5 +1,4 @@
 
-
 @import url('https://rsms.me/inter/inter.css');
 
 body {
@@ -160,7 +159,7 @@ nav a {
 }
 
 /* Tabs styles */
-.tabs-container .tab-button {
+.tab-button {
     padding: 0.75rem 1.5rem;
     border-radius: 9999px;
     background-color: transparent;
@@ -168,17 +167,17 @@ nav a {
     color: #a0aec0;
     transition: all 0.2s ease-in-out;
 }
-.tabs-container .tab-button.active {
+.tab-button.active {
     background-color: #10b981;
     color: white;
     font-weight: 600;
     border-color: #10b981;
 }
-.tabs-container .tab-pane {
+.tab-pane {
     display: none;
     animation: fadeIn 0.5s;
 }
-.tabs-container .tab-pane.active {
+.tab-pane.active {
     display: block;
 }
 
@@ -190,6 +189,7 @@ nav a {
 /* Carousel Styles */
 .carousel-container {
     position: relative;
+    padding-bottom: 3rem; /* Space for dots */
 }
 .carousel-slide {
     display: none;
@@ -200,7 +200,7 @@ nav a {
 }
 .carousel-nav {
     position: absolute;
-    top: 50%;
+    top: 45%; /* Adjust to be slightly above center */
     transform: translateY(-50%);
     width: 3rem;
     height: 3rem;
@@ -211,6 +211,7 @@ nav a {
     justify-content: center;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    z-index: 10;
 }
 .carousel-nav:hover {
     background-color: rgba(255, 255, 255, 0.2);
@@ -221,6 +222,26 @@ nav a {
 .carousel-next {
     right: -1.5rem;
 }
+.carousel-dots {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+.carousel-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.carousel-dot.active {
+    background-color: #10b981;
+}
+
 
 /* Pricing Table */
 .pricing-table {
@@ -293,4 +314,56 @@ nav a {
     color: white;
     font-weight: 600;
     border-color: #10b981;
+}
+
+/* Interactive Product Workflow */
+.product-workflow {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    padding: 2rem 0;
+}
+.product-workflow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background-color: #333;
+    transform: translateY(-50%);
+    z-index: 0;
+}
+.workflow-stage {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    width: 18%;
+}
+.workflow-stage-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background-color: #1a1a1a;
+    border: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    transition: all 0.3s ease;
+}
+.workflow-stage:hover .workflow-stage-icon {
+    border-color: #10b981;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+}
+.workflow-stage h4 {
+    margin-top: 1rem;
+    font-weight: 600;
+    color: white;
+}
+.workflow-stage p {
+    font-size: 0.875rem;
+    color: #a0aec0;
+    margin-top: 0.25rem;
 }

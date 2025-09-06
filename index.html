@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -29,7 +30,7 @@
             <section class="text-center pt-20 pb-24 feature-hero">
                 <div class="container mx-auto px-4">
                     <h1 id="hero-headline" class="text-5xl font-extrabold tracking-tight text-white sm:text-6xl animate-on-scroll min-h-[144px] sm:min-h-[156px]">
-                        The Command Center for<br/><span class="text-emerald-400 transition-opacity duration-500" data-text="Outcome-Driven Product Teams"></span>
+                        The Command Center for<br/><span class="text-emerald-400 transition-opacity duration-500"></span>
                     </h1>
                     <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-400 animate-on-scroll" style="transition-delay: 150ms;">
                         Stop building feature factories. Connect scattered user feedback directly to your product strategy and ensure every feature you build delivers real business impact.
@@ -153,24 +154,50 @@
             
             <section class="py-24 bg-gray-900/50">
                 <div class="container mx-auto px-4 text-center">
-                    <h2 class="text-3xl font-bold text-white mb-4 animate-on-scroll">Perfect for High-Stakes Industries</h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll" style="transition-delay: 150ms;">Where clarity, compliance, and customer trust are paramount.</p>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto text-left">
-                        <div class="industry-card animate-on-scroll" style="transition-delay: 200ms;">
-                            <h4 class="font-bold text-white text-lg">FinTech & InsurTech</h4>
-                            <p class="text-sm text-gray-400 mt-2">Maintain a clear audit trail from customer feedback to feature release, ensuring compliance and justifying every product decision with data.</p>
+                    <h2 class="text-3xl font-bold text-white mb-4 animate-on-scroll">Built For You, However You Work</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll" style="transition-delay: 150ms;">Our platform adapts to your context, whether you're defined by your industry or your role.</p>
+                     <div id="built-for-you-tabs" class="max-w-5xl mx-auto animate-on-scroll" style="transition-delay: 300ms;">
+                        <div class="tab-buttons flex justify-center space-x-2 md:space-x-4 mb-8" role="tablist">
+                            <button class="tab-button active" data-tab="tab-industry" role="tab" aria-selected="true">By Industry</button>
+                            <button class="tab-button" data-tab="tab-role" role="tab" aria-selected="false">By Role</button>
                         </div>
-                         <div class="industry-card animate-on-scroll" style="transition-delay: 350ms;">
-                            <h4 class="font-bold text-white text-lg">B2B SaaS</h4>
-                            <p class="text-sm text-gray-400 mt-2">Balance the needs of enterprise clients with your long-term vision. Quantify feedback from high-value accounts and align your roadmap with strategic goals.</p>
-                        </div>
-                         <div class="industry-card animate-on-scroll" style="transition-delay: 500ms;">
-                            <h4 class="font-bold text-white text-lg">Healthcare Tech</h4>
-                            <p class="text-sm text-gray-400 mt-2">Securely manage sensitive feedback from patients and providers. Prioritize features that improve outcomes and user experience while navigating complex regulations.</p>
-                        </div>
-                         <div class="industry-card animate-on-scroll" style="transition-delay: 650ms;">
-                            <h4 class="font-bold text-white text-lg">E-commerce & D2C</h4>
-                            <p class="text-sm text-gray-400 mt-2">Rapidly analyze thousands of customer reviews and support tickets. Identify conversion-blocking issues and prioritize the improvements that have the biggest impact on your bottom line.</p>
+                        <div class="tab-content text-left">
+                            <div id="tab-industry" class="tab-pane active" role="tabpanel">
+                                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                                    <div class="industry-card">
+                                        <h4 class="font-bold text-white text-lg">FinTech & InsurTech</h4>
+                                        <p class="text-sm text-gray-400 mt-2">Maintain a clear audit trail from customer feedback to feature release, ensuring compliance and justifying every product decision with data.</p>
+                                    </div>
+                                     <div class="industry-card">
+                                        <h4 class="font-bold text-white text-lg">B2B SaaS</h4>
+                                        <p class="text-sm text-gray-400 mt-2">Balance the needs of enterprise clients with your long-term vision. Quantify feedback from high-value accounts and align your roadmap with strategic goals.</p>
+                                    </div>
+                                     <div class="industry-card">
+                                        <h4 class="font-bold text-white text-lg">Healthcare Tech</h4>
+                                        <p class="text-sm text-gray-400 mt-2">Securely manage sensitive feedback from patients and providers. Prioritize features that improve outcomes and user experience while navigating complex regulations.</p>
+                                    </div>
+                                     <div class="industry-card">
+                                        <h4 class="font-bold text-white text-lg">E-commerce & D2C</h4>
+                                        <p class="text-sm text-gray-400 mt-2">Rapidly analyze thousands of customer reviews and support tickets. Identify conversion-blocking issues and prioritize the improvements that have the biggest impact on your bottom line.</p>
+                                    </div>
+                                </div>
+                            </div>
+                             <div id="tab-role" class="tab-pane" role="tabpanel">
+                                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                    <div class="industry-card">
+                                        <h4 class="font-bold text-white text-lg">Product Managers</h4>
+                                        <p class="text-sm text-gray-400 mt-2">Stop juggling a dozen disconnected tools. Take control of your entire workflow from feedback analysis to roadmap planning in one place.</p>
+                                    </div>
+                                    <div class="industry-card">
+                                        <h4 class="font-bold text-white text-lg">UX Researchers</h4>
+                                        <p class="text-sm text-gray-400 mt-2">Your research deserves to make an impact. Centralize qualitative data, identify themes with AI, and link your findings directly to product initiatives.</p>
+                                    </div>
+                                    <div class="industry-card">
+                                        <h4 class="font-bold text-white text-lg">Heads of Product</h4>
+                                        <p class="text-sm text-gray-400 mt-2">Lead with strategy, not gut feelings. Get a high-level overview of your product portfolio, monitor strategic alignment, and ensure your teams are focused on outcomes.</p>
+                                    </div>
+                                </div>
+                             </div>
                         </div>
                     </div>
                 </div>
@@ -204,9 +231,22 @@
                                     </figcaption>
                                 </figure>
                             </div>
+                             <div class="carousel-slide">
+                                <figure>
+                                    <blockquote class="text-center text-xl italic text-white leading-loose">
+                                        <p>"The AI-powered feedback analysis saves us hours every week. We're surfacing insights we would have completely missed before."</p>
+                                    </blockquote>
+                                    <figcaption class="mt-6 text-center">
+                                        <img class="w-12 h-12 rounded-full mx-auto" src="https://i.pravatar.cc/150?u=chloe" alt="Photo of Chloe Davis">
+                                        <div class="font-semibold mt-2">Chloe Davis</div>
+                                        <div class="text-gray-400 text-sm">Senior UX Researcher, Sparkflow</div>
+                                    </figcaption>
+                                </figure>
+                            </div>
                         </div>
-                         <button class="carousel-nav carousel-prev" aria-label="Previous testimonial">&#8249;</button>
+                        <button class="carousel-nav carousel-prev" aria-label="Previous testimonial">&#8249;</button>
                         <button class="carousel-nav carousel-next" aria-label="Next testimonial">&#8250;</button>
+                        <div class="carousel-dots"></div>
                     </div>
                 </div>
             </section>
