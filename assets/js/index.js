@@ -1,3 +1,4 @@
+
 // =================================================================================
 // productflow.online - Main JavaScript File
 //
@@ -34,50 +35,88 @@ const Nav = {
         }
     },
     
+    // Reworked Mega Menu logic for improved reliability.
+    // Uses JS to toggle a class instead of pure CSS :hover.
     initMegaMenu() {
-        const megaMenuContainers = document.querySelectorAll('.mega-menu-container');
+        console.log("Attempting to initialize Mega Menus...");
+        const containers = document.querySelectorAll('.mega-menu-container');
+        console.log(`Found ${containers.length} mega menu containers.`);
 
-        megaMenuContainers.forEach((container) => {
+        if (containers.length === 0) {
+            console.error("No mega menu containers found. Desktop menu will not be interactive.");
+            return;
+        }
+
+        containers.forEach((container, index) => {
+            const trigger = container.querySelector('a');
+            const menu = container.querySelector('.mega-menu');
+
+            if (!trigger || !menu) {
+                console.warn(`Mega menu container ${index + 1} is missing a trigger or a menu panel.`);
+                return;
+            }
+            
+            console.log(`Attaching listeners to menu container ${index + 1}`);
+
+            const openMenu = () => menu.classList.add('is-open');
+            const closeMenu = () => menu.classList.remove('is-open');
+
+            container.addEventListener('mouseenter', openMenu);
+            container.addEventListener('mouseleave', closeMenu);
+            trigger.addEventListener('focus', openMenu);
+
+            const focusableElements = menu.querySelectorAll('a, button');
+            if (focusableElements.length > 0) {
+                const lastFocusableElement = focusableElements[focusableElements.length - 1];
+                lastFocusableElement.addEventListener('blur', (e) => {
+                    if (!container.contains(e.relatedTarget)) {
+                        closeMenu();
+                    }
+                });
+            }
+
+            // Interactive Details Panel Logic (if it exists)
             const links = container.querySelectorAll('.mega-menu-nav-link');
             const detailsColumn = container.querySelector('.mega-menu-details-column .details-content');
             
-            if (!detailsColumn || links.length === 0) return;
+            if (detailsColumn && links.length > 0) {
+                console.log(`Found details panel for menu ${index + 1}. Initializing interactivity.`);
+                const titleEl = detailsColumn.querySelector('h4');
+                const descEl = detailsColumn.querySelector('p');
+                const linkEl = detailsColumn.querySelector('a.mega-menu-link');
 
-            const titleEl = detailsColumn.querySelector('h4');
-            const descEl = detailsColumn.querySelector('p');
-            const linkEl = detailsColumn.querySelector('a.mega-menu-link');
+                const originalState = {
+                    title: titleEl.innerHTML,
+                    description: descEl.innerHTML,
+                    href: linkEl.href
+                };
 
-            const originalState = {
-                title: titleEl.innerHTML,
-                description: descEl.innerHTML,
-                href: linkEl.href
-            };
-
-            links.forEach(link => {
-                link.addEventListener('mouseenter', () => {
-                    const title = link.dataset.title;
-                    const description = link.dataset.description;
-                    const href = link.href;
-
-                    detailsColumn.classList.add('fade-out-details');
-                    setTimeout(() => {
-                        titleEl.textContent = title;
-                        descEl.textContent = description;
-                        linkEl.href = href;
+                links.forEach(link => {
+                    link.addEventListener('mouseenter', () => {
+                        const title = link.dataset.title;
+                        const description = link.dataset.description;
+                        detailsColumn.classList.add('fade-out-details');
+                        setTimeout(() => {
+                            titleEl.textContent = title;
+                            descEl.textContent = description;
+                            linkEl.href = link.href;
+                            detailsColumn.classList.remove('fade-out-details');
+                        }, 150);
+                    });
+                });
+                
+                container.addEventListener('mouseleave', () => {
+                     detailsColumn.classList.add('fade-out-details');
+                     setTimeout(() => {
+                        titleEl.innerHTML = originalState.title;
+                        descEl.innerHTML = originalState.description;
+                        linkEl.href = originalState.href;
                         detailsColumn.classList.remove('fade-out-details');
                     }, 150);
                 });
-            });
-            
-            container.addEventListener('mouseleave', () => {
-                 detailsColumn.classList.add('fade-out-details');
-                 setTimeout(() => {
-                    titleEl.innerHTML = originalState.title;
-                    descEl.innerHTML = originalState.description;
-                    linkEl.href = originalState.href;
-                    detailsColumn.classList.remove('fade-out-details');
-                }, 150);
-            });
+            } else {
+                 console.log(`No details panel or links found for menu ${index + 1}.`);
+            }
         });
     },
 };
@@ -102,7 +141,6 @@ const Animations = {
                     const direction = entry.target.dataset.animationDirection || 'up';
                     entry.target.classList.add('is-visible', `animate-${direction}`);
                     
-                    // Handle staggered animations for child elements
                     if (entry.target.dataset.staggerGroup !== undefined) {
                         const children = entry.target.querySelectorAll('.animate-on-scroll');
                         children.forEach((child, i) => {
@@ -119,13 +157,12 @@ const Animations = {
         });
     },
 
-    // Animates the main headline on the homepage.
     initHeroAnimation() {
         const headline = document.getElementById('hero-headline');
         if (!headline) return;
 
-        const mainText = headline.childNodes[0].nodeValue.trim();
-        const rotatingTexts = ["Outcome-Driven Teams.", "Modern B2B SaaS.", "High-Stakes FinTech."];
+        const mainText = "The Command Center for";
+        const rotatingTexts = ["Modern B2B SaaS.", "Outcome-Driven Teams.", "High-Stakes FinTech."];
         
         headline.innerHTML = `${mainText}<br/><span class="text-emerald-400 transition-opacity duration-500"></span>`;
         const newSpan = headline.querySelector('span');
@@ -143,7 +180,6 @@ const Animations = {
         setInterval(rotate, 3000);
     },
 
-    // Creates a parallax effect on the hero section background.
     initHeroParallax() {
         const parallaxBg = document.getElementById('hero-parallax-bg');
         if (!parallaxBg) return;
@@ -154,7 +190,6 @@ const Animations = {
         });
     },
 
-    // Creates a "typing" effect for code blocks.
     initCodeAnimations() {
         document.querySelectorAll('.code-block-animated').forEach(block => {
             const observer = new IntersectionObserver((entries) => {
@@ -167,7 +202,6 @@ const Animations = {
         });
     },
     
-    // Animates numbers counting up.
     initCounterAnimation() {
         const counters = document.querySelectorAll('[data-animate-counter]');
         const observer = new IntersectionObserver((entries) => {
@@ -273,6 +307,10 @@ const UI = {
             const isAnnual = toggle.checked;
             monthly.forEach(p => p.classList.toggle('hidden', isAnnual));
             annually.forEach(p => p.classList.toggle('hidden', !isAnnual));
+            document.getElementById('monthly-label').classList.toggle('text-white', !isAnnual);
+            document.getElementById('monthly-label').classList.toggle('text-gray-500', isAnnual);
+            document.getElementById('annual-label').classList.toggle('text-white', isAnnual);
+            document.getElementById('annual-label').classList.toggle('text-gray-500', !isAnnual);
         });
     },
 
@@ -370,6 +408,7 @@ const Analytics = {
 // --- MAIN EXECUTION ---
 // Initializes all modules after the DOM is fully loaded.
 document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded and parsed. Initializing scripts for productflow.online.");
     Nav.init();
     Animations.init();
     UI.init();
