@@ -1,4 +1,3 @@
-
 @import url('https://rsms.me/inter/inter.css');
 
 /* 
@@ -64,64 +63,101 @@ Components
 */
 
 /* --- Navigation --- */
+nav a {
+    transition: color 0.2s ease-in-out;
+}
 .active-nav-link {
     color: #ffffff !important;
-    font-weight: 600;
 }
 header .mega-menu-container .active-nav-link {
-    color: #ffffff !important; /* Keep top-level dropdown link white */
+     color: #ffffff !important;
 }
 
-/* Mega Menu (NEW & IMPROVED) */
-.mega-menu-container .dropdown-menu {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
-}
-.mega-menu-container:hover .dropdown-menu,
-.mega-menu-container:focus-within .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+
+/* Mega Menu */
+.mega-menu-container {
+    position: relative;
 }
 .mega-menu {
-    width: 720px;
+    position: absolute;
+    top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(24, 24, 27, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(63, 63, 70, 0.5);
-    padding: 1.5rem;
+    width: 768px; /* Tailwind's max-w-3xl */
+    padding: 2rem;
+    margin-top: 1rem;
+    
+    background-color: rgba(18, 18, 18, 0.8); /* Darker, slightly transparent */
+    border: 1px solid #333;
     border-radius: 0.75rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+.mega-menu-container:hover .mega-menu,
+.mega-menu-container:focus-within .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
 }
 .mega-menu-content {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr 1.25fr; /* 3 columns */
+    gap: 2rem;
 }
-.mega-menu-column {
-    border-left: 1px solid #333;
-    padding-left: 1.5rem;
+.mega-menu-nav-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
-.mega-menu-column:first-child {
-    border-left: none;
-    padding-left: 0;
-}
-.mega-menu-header {
+.mega-menu-column-header {
+    font-size: 0.75rem;
     font-weight: 600;
-    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af; /* gray-400 */
     margin-bottom: 0.5rem;
 }
-.mega-menu-description {
+.mega-menu-nav-link {
+    font-weight: 500;
+    color: #d1d5db; /* gray-300 */
+    transition: color 0.2s ease;
+    padding: 0.25rem 0;
+}
+.mega-menu-nav-link:hover {
+    color: #34d399; /* emerald-400 */
+}
+.mega-menu-details-column {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    border: 1px solid #444;
+}
+.mega-menu-details-column .details-content {
+    transition: opacity 0.2s ease-in-out;
+}
+.mega-menu-details-column .details-content.fade-out-details {
+    opacity: 0;
+}
+.mega-menu-details-column h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #fff;
+}
+.mega-menu-details-column p {
     font-size: 0.875rem;
     color: #a0aec0;
+    margin-top: 0.5rem;
     line-height: 1.5;
 }
 .mega-menu-link {
     display: inline-block;
-    margin-top: 0.75rem;
+    margin-top: 1rem;
     font-size: 0.875rem;
     font-weight: 500;
     color: #34d399;
@@ -129,7 +165,6 @@ header .mega-menu-container .active-nav-link {
 .mega-menu-link:hover {
     color: #6ee7b7;
 }
-
 
 /* How It Works Section */
 .how-it-works-step {
@@ -162,9 +197,9 @@ header .mega-menu-container .active-nav-link {
 
 /* Cards */
 .feature-card, .industry-card, .use-case-card {
-    background-color: #1a1a1a;
+    background: linear-gradient(145deg, #1f1f22, #1a1a1d);
     border: 1px solid #333;
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     padding: 1.5rem;
     transition: all 0.3s ease;
     height: 100%;
@@ -173,16 +208,11 @@ header .mega-menu-container .active-nav-link {
 .feature-card:hover, a.industry-card:hover, .use-case-card:hover {
     border-color: #10b981;
     transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2), 0 0 15px rgba(0,0,0,0.3);
 }
 
 a.industry-card:hover h4 {
     color: #34d399;
-}
-
-
-nav a {
-    transition: color 0.2s ease-in-out;
 }
 
 /* Key Takeaways / Results Box */
@@ -430,17 +460,19 @@ input:checked + .pricing-toggle-slider:before {
 }
 
 
-/* Interactive Product Workflow */
+/* Product Workflow */
 .product-workflow {
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
     justify-content: space-between;
     position: relative;
     padding: 2rem 0;
+    gap: 1rem;
 }
 .product-workflow::before {
     content: '';
     position: absolute;
-    top: 50%;
+    top: 4rem; /* Aligns with center of icons */
     left: 10%;
     right: 10%;
     height: 2px;
@@ -453,6 +485,7 @@ input:checked + .pricing-toggle-slider:before {
     z-index: 1;
     text-align: center;
     width: 18%;
+    min-width: 120px; /* Prevent shrinking too much */
 }
 .workflow-stage-icon {
     width: 4rem;
@@ -466,7 +499,8 @@ input:checked + .pricing-toggle-slider:before {
     margin: 0 auto;
     transition: all 0.3s ease;
 }
-.workflow-stage:hover .workflow-stage-icon {
+.workflow-stage:hover .workflow-stage-icon,
+.interactive-workflow .workflow-stage.active .workflow-stage-icon {
     border-color: #10b981;
     transform: scale(1.1);
     box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
@@ -480,6 +514,9 @@ input:checked + .pricing-toggle-slider:before {
     font-size: 0.875rem;
     color: #a0aec0;
     margin-top: 0.25rem;
+}
+.interactive-workflow .workflow-stage {
+    cursor: pointer;
 }
 
 /* Integrations Section */
@@ -512,10 +549,81 @@ input:checked + .pricing-toggle-slider:before {
     animation: fadeIn 0.5s;
 }
 
+/* Golden Thread Diagram v2 (Homepage) */
+#golden-thread-diagram-v2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.thread-node-v2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    padding: 0.5rem 0;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+#golden-thread-diagram-v2:hover .thread-node-v2 {
+    opacity: 1;
+}
+.thread-node-v2:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 1.25rem; /* 20px */
+    top: 3.25rem; /* 52px */
+    width: 2px;
+    height: 1.5rem; /* 24px */
+    background-color: #4a5568; /* gray-600 */
+    transition: background-color 0.3s ease;
+}
+#golden-thread-diagram-v2.active .thread-node-v2.active:not(:last-child)::before,
+#golden-thread-diagram-v2.active .thread-node-v2.in-path:not(:last-child)::before {
+    background: linear-gradient(#8b5cf6, #10b981);
+}
+.thread-node-v2.active, .thread-node-v2.in-path {
+    opacity: 1;
+}
+#golden-thread-diagram-v2.active .thread-node-v2:not(.active):not(.in-path) {
+    opacity: 0.3;
+}
+.node-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 2px solid #4a5568;
+    background-color: #1f2937; /* gray-800 */
+    background-size: 1.25rem 1.25rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s ease;
+}
+.thread-node-v2.active .node-icon, .thread-node-v2.in-path .node-icon {
+    border-color: #10b981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+.node-content .label {
+    font-weight: 600; color: #9ca3af; margin-right: 0.5rem;
+}
+.node-content .text-content {
+    color: #e5e7eb;
+}
+/* Icons for Golden Thread */
+.icon-vision { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%238b5cf6' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z' /%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15 12a3 3 0 11-6 0 3 3 0 016 0z' /%3E%3C/svg%3E%0A"); }
+.icon-pillar { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%233b82f6' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M12 3v18m9-9H3' /%3E%3C/svg%3E%0A"); }
+.icon-objective { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%23f59e0b' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15 10.5a3 3 0 11-6 0 3 3 0 016 0z' /%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z' /%3E%3C/svg%3E%0A"); }
+.icon-kr { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%2310b981' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941' /%3E%3C/svg%3E%0A"); }
+.icon-initiative { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%2306b6d4' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.63 2.18a14.98 14.98 0 00-5.84 7.38m5.84 2.58a14.98 14.98 0 00-5.84-7.38m5.84 7.38a14.98 14.98 0 005.84 7.38' /%3E%3C/svg%3E%0A"); }
+.icon-feedback { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='%239ca3af' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.455.09-.934.09-1.423A7.927 7.927 0 013 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z' /%3E%3C/svg%3E%0A"); }
 
+/* Inline icons for code blocks */
+.node-icon-inline {
+    width: 1rem; height: 1rem; flex-shrink: 0; background-size: contain; background-repeat: no-repeat; background-position: center;
+}
 /*
 ==============================================
-Animations & Interactive "Wodotryski"
+Animations & Interactive Elements
 ==============================================
 */
 
@@ -575,22 +683,6 @@ main {
     margin-left: 2px;
 }
 
-/* Golden Thread Diagram */
-.golden-thread-diagram .thread-node, .golden-thread-diagram .thread-line {
-    transition: opacity 0.3s ease;
-    cursor: pointer;
-}
-.golden-thread-diagram .thread-node:hover .thread-text {
-    font-weight: bold;
-}
-.golden-thread-diagram .dimmed {
-    opacity: 0.3;
-}
-.golden-thread-diagram .thread-text {
-    font-size: 10px;
-    font-family: 'Inter', sans-serif;
-    fill: #E2E8F0;
-}
 
 /* Staggered Animations */
 @keyframes card-in {
@@ -603,12 +695,25 @@ main {
         transform: translateY(0);
     }
 }
-[data-stagger-group] .animate-on-scroll {
+[data-stagger-group] .animate-on-scroll, [data-stagger-group] .use-case-card {
     opacity: 0; /* Keep hidden until observer triggers */
 }
-[data-stagger-group].is-visible .animate-on-scroll {
+[data-stagger-group].is-visible .animate-on-scroll, [data-stagger-group].is-visible .use-case-card {
     animation: card-in 0.5s ease-out forwards;
 }
+
+/* Use Case Card Filtering Animation */
+.use-case-card {
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+    opacity: 1;
+    transform: scale(1);
+}
+.use-case-card.fade-out-card {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
 
 /* Other Keyframes */
 @keyframes mainFadeIn {
@@ -632,8 +737,8 @@ Accessibility
 ==============================================
 */
 *:focus-visible {
-    outline: 2px solid #10b981; /* emerald-500 */
+    outline: 2px solid #34d399; /* emerald-400 */
     outline-offset: 2px;
-    border-radius: 2px;
+    border-radius: 4px;
     box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.5);
 }

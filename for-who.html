@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +8,7 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="productflow.online is built for every member of the modern product team and tailored for high-stakes industries like FinTech, SaaS, and Healthcare.">
     <meta name="keywords" content="product manager tools, ux research tools, head of product, product team collaboration, fintech saas, healthcare saas">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://productflow.online/for-who.html" />
     
     <!-- Open Graph / Facebook -->
@@ -23,7 +23,117 @@
 </head>
 <body class="bg-black text-gray-200 font-sans">
 
-    <div id="header-placeholder"></div>
+    <!-- Header -->
+    <header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-30 border-b border-gray-900">
+        <a href="/index.html" class="flex items-center" data-ga-event="Nav:Click:Logo">
+            <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+            <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+        </a>
+        <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold">
+            <!-- Mega Menu: Product -->
+            <div class="mega-menu-container">
+                <a href="/features.html" class="text-gray-400 hover:text-white flex items-center" data-ga-event="Nav:Hover:Product">
+                    Product
+                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="mega-menu">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-nav-column">
+                            <h4 class="mega-menu-column-header">Features</h4>
+                            <a href="/features-feedback.html" class="mega-menu-nav-link" data-title="Feedback Hub" data-description="Turn customer noise into product signal. Aggregate, analyze, and act on user feedback from any source." data-ga-event="Nav:Click:Features_FeedbackHub">Feedback Hub</a>
+                            <a href="/features-strategy.html" class="mega-menu-nav-link" data-title="Strategy Suite" data-description="Connect your strategy to daily execution. Visualize the 'Golden Thread' from company vision to user stories." data-ga-event="Nav:Click:Features_StrategySuite">Strategy Suite</a>
+                            <a href="/features-upstream.html" class="mega-menu-nav-link" data-title="Upstream Workflow" data-description="From a vague idea to a bulletproof plan. Standardize your discovery process with our guided Kanban workflow." data-ga-event="Nav:Click:Features_UpstreamWorkflow">Upstream Workflow</a>
+                        </div>
+                         <div class="mega-menu-nav-column">
+                            <h4 class="mega-menu-column-header">Use Cases</h4>
+                            <a href="/use-cases/roadmap-prioritization.html" class="mega-menu-nav-link" data-title="Prioritize Your Roadmap" data-description="Make confident, data-driven decisions about what to build next based on user impact and strategic fit." data-ga-event="Nav:Click:UseCases_Prioritize">Prioritize Your Roadmap</a>
+                            <a href="/use-cases/justify-decisions.html" class="mega-menu-nav-link" data-title="Justify Decisions" data-description="Build a bulletproof business case for every feature by tracing it back to the problem it solves and goal it serves." data-ga-event="Nav:Click:UseCases_Justify">Justify Decisions</a>
+                            <a href="/use-cases/align-stakeholders.html" class="mega-menu-nav-link" data-title="Align Stakeholders" data-description="Create a single source of truth that engineering, marketing, and leadership can rally behind." data-ga-event="Nav:Click:UseCases_Align">Align Stakeholders</a>
+                        </div>
+                        <div class="mega-menu-details-column">
+                            <!-- JS will populate this -->
+                            <div class="details-content">
+                                <h4 id="mega-menu-details-title">Explore Our Product</h4>
+                                <p id="mega-menu-details-description">Hover over an item to learn more about how productflow.online can help your team build better products.</p>
+                                <a id="mega-menu-details-link" href="/features.html" class="mega-menu-link" data-ga-event="Nav:Click:Product_ViewAll">View all features &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mega Menu: Solutions -->
+            <div class="mega-menu-container">
+                <a href="/for-who.html" class="text-gray-400 hover:text-white flex items-center" data-ga-event="Nav:Hover:Solutions">
+                    Solutions
+                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="mega-menu">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-nav-column">
+                            <h4 class="mega-menu-column-header">By Role</h4>
+                            <a href="/for-who.html#role-pm" class="mega-menu-nav-link" data-title="Product Managers" data-description="Take control of your entire workflow from feedback analysis to roadmap planning in one place." data-ga-event="Nav:Click:Solutions_Role_PM">For Product Managers</a>
+                            <a href="/for-who.html#role-ux" class="mega-menu-nav-link" data-title="UX Researchers" data-description="Ensure your research makes an impact by linking findings directly to product initiatives." data-ga-event="Nav:Click:Solutions_Role_UX">For UX Researchers</a>
+                            <a href="/for-who.html#role-head" class="mega-menu-nav-link" data-title="Heads of Product" data-description="Get a high-level overview of your portfolio and ensure your teams are focused on outcomes." data-ga-event="Nav:Click:Solutions_Role_Head">For Heads of Product</a>
+                        </div>
+                         <div class="mega-menu-nav-column">
+                            <h4 class="mega-menu-column-header">By Industry</h4>
+                            <a href="/for-who.html#industry-saas" class="mega-menu-nav-link" data-title="B2B SaaS" data-description="Balance the needs of enterprise clients with your long-term vision and strategic goals." data-ga-event="Nav:Click:Solutions_Industry_SaaS">For B2B SaaS</a>
+                            <a href="/for-who.html#industry-fintech" class="mega-menu-nav-link" data-title="FinTech" data-description="Maintain a clear audit trail from customer feedback to feature release, ensuring compliance." data-ga-event="Nav:Click:Solutions_Industry_Fintech">For FinTech</a>
+                            <a href="/for-who.html#industry-healthcare" class="mega-menu-nav-link" data-title="Healthcare" data-description="Securely manage sensitive feedback while navigating complex regulations." data-ga-event="Nav:Click:Solutions_Industry_Healthcare">For Healthcare</a>
+                        </div>
+                        <div class="mega-menu-details-column">
+                            <!-- JS will populate this -->
+                             <div class="details-content">
+                                <h4 id="mega-menu-details-title-solutions">Solutions For Your Team</h4>
+                                <p id="mega-menu-details-description-solutions">Discover how our platform adapts to your specific context, whether defined by your role, industry, or company maturity.</p>
+                                <a id="mega-menu-details-link-solutions" href="/for-who.html" class="mega-menu-link" data-ga-event="Nav:Click:Solutions_ViewAll">See all solutions &rarr;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="/pricing.html" class="text-gray-400 hover:text-white" data-ga-event="Nav:Click:Pricing">Pricing</a>
+            <a href="/knowledge-hub.html" class="text-gray-400 hover:text-white" data-ga-event="Nav:Click:KnowledgeHub">Knowledge Hub</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-x-4">
+            <a href="https://app.productflow.online" class="text-sm font-medium text-gray-400 hover:text-white" data-ga-event="Nav:Click:SignIn">Sign In</a>
+            <a href="https://app.productflow.online" class="px-4 py-2 text-sm font-semibold rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors" data-ga-event="Nav:Click:GetStarted">Get Started FREE</a>
+        </div>
+        <!-- Hamburger Button -->
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-400 hover:text-white focus:outline-none" data-ga-event="Nav:Click:MobileMenuOpen">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black/95 z-50">
+        <div class="container mx-auto px-4 pt-4 pb-4">
+            <div class="flex justify-between items-center">
+                <a href="/index.html" class="flex items-center" data-ga-event="Nav:Click:MobileLogo">
+                    <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+                    <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+                </a>
+                <button id="mobile-menu-close-button" class="text-gray-400 hover:text-white" data-ga-event="Nav:Click:MobileMenuClose">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <nav class="mt-8 space-y-2 text-center">
+                <a href="/features.html" class="block text-gray-300 hover:text-white py-2" data-ga-event="Nav:Click:Mobile_Features">Features</a>
+                <a href="/for-who.html" class="block text-gray-300 hover:text-white py-2" data-ga-event="Nav:Click:Mobile_Solutions">Solutions</a>
+                <a href="/pricing.html" class="block text-gray-300 hover:text-white py-2" data-ga-event="Nav:Click:Mobile_Pricing">Pricing</a>
+                <a href="/knowledge-hub.html" class="block text-gray-300 hover:text-white py-2" data-ga-event="Nav:Click:Mobile_KnowledgeHub">Knowledge Hub</a>
+                <div class="border-t border-gray-800 my-4"></div>
+                <a href="https://app.productflow.online" class="block text-gray-300 hover:text-white py-2" data-ga-event="Nav:Click:Mobile_SignIn">Sign In</a>
+                <a href="https://app.productflow.online" class="inline-block mt-2 px-6 py-2 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors" data-ga-event="Nav:Click:Mobile_GetStarted">Get Started FREE</a>
+            </nav>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-16">
@@ -35,9 +145,10 @@
         </section>
 
         <section id="for-who-tabs" class="py-20">
-            <div class="tab-buttons flex justify-center space-x-2 md:space-x-4 mb-12" role="tablist">
-                <button class="tab-button active" data-tab="tab-role" role="tab" aria-selected="true">By Role</button>
-                <button class="tab-button" data-tab="tab-industry" role="tab" aria-selected="false">By Industry</button>
+            <div class="tab-buttons flex flex-wrap justify-center space-x-2 md:space-x-4 mb-12" role="tablist">
+                <button class="tab-button active" data-tab="tab-role" role="tab" aria-selected="true" data-ga-event="Tab:Click:ForWho_Role">By Role</button>
+                <button class="tab-button" data-tab="tab-industry" role="tab" aria-selected="false" data-ga-event="Tab:Click:ForWho_Industry">By Industry</button>
+                <button class="tab-button" data-tab="tab-maturity" role="tab" aria-selected="false" data-ga-event="Tab:Click:ForWho_Maturity">By Maturity</button>
             </div>
 
             <div class="tab-content">
@@ -45,76 +156,55 @@
                 <div id="tab-role" class="tab-pane active" role="tabpanel">
                     <div class="space-y-16" data-stagger-group>
                         <!-- For Product Managers -->
-                        <div id="role-pm" class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
-                             <div class="space-y-4">
-                                <h3 class="text-2xl font-bold text-emerald-400">For Product Managers</h3>
-                                <p class="text-gray-400">Stop juggling a dozen disconnected tools. Take control of your entire workflow from feedback analysis to roadmap planning in one place. Connect user needs to your roadmap and clearly communicate the 'why' behind your priorities to stakeholders.</p>
-                                <div class="border-t border-gray-800 pt-4">
-                                    <h4 class="font-semibold text-white mb-2">How productflow.online Helps:</h4>
-                                    <ul class="text-sm space-y-2 text-gray-300">
-                                        <li>✓ Use the <strong>Feedback Hub</strong> to centralize insights and stop hunting through Slack.</li>
-                                        <li>✓ Use the <strong>Upstream Workflow</strong> to build data-backed cases for new initiatives.</li>
-                                        <li>✓ Use the <strong>Strategy Suite</strong> to justify your roadmap and align stakeholders.</li>
-                                    </ul>
-                                </div>
+                        <div id="role-pm" class="animate-on-scroll scroll-mt-24">
+                             <div class="space-y-4 text-center max-w-2xl mx-auto">
+                                <h3 class="text-3xl font-bold text-emerald-400">For Product Managers</h3>
+                                <p class="text-gray-300">Stop juggling a dozen disconnected tools. Take control of your entire workflow from feedback analysis to roadmap planning in one place. Connect user needs to your roadmap and clearly communicate the 'why' behind your priorities to stakeholders.</p>
                             </div>
-                            <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated">
-                                 <p class="font-mono text-xs text-emerald-400 mb-2">&gt; PM Daily View</p>
-                                <div class="font-mono text-sm text-gray-300 space-y-1">
-                                    <p>New Insights: 15</p>
-                                    <p>Upstream Board: 3 items in 'Analysing'</p>
-                                    <p>Roadmap Confidence: 95%</p>
-                                    <p>Next Meeting: Q4 Planning Sync</p>
+                            <div class="pain-points-table mt-8">
+                                <div class="pain-point-row">
+                                    <div class="pain-point-cell pain"><strong>Pain Point:</strong> "I waste hours manually collating feedback from Slack, Intercom, and email."</div>
+                                    <div class="pain-point-cell solution"><strong>Solution:</strong> The <strong>Feedback Hub</strong> automatically aggregates insights into one searchable place.</div>
+                                </div>
+                                <div class="pain-point-row">
+                                    <div class="pain-point-cell pain"><strong>Pain Point:</strong> "Stakeholders constantly challenge my roadmap priorities."</div>
+                                    <div class="pain-point-cell solution"><strong>Solution:</strong> The <strong>Strategy Suite</strong> provides a "Golden Thread" to justify every decision with data and strategic alignment.</div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- For UX Researchers -->
-                        <div id="role-ux" class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
-                             <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl md:order-last">
-                                 <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Research Repository</p>
-                                <div class="font-mono text-sm text-gray-300 space-y-1">
-                                    <p>Project: "Onboarding Study"</p>
-                                    <p>Interviews Logged: 12</p>
-                                    <p>Key Insight: "Users miss the initial setup checklist."</p>
-                                    <p>Impact: Linked to 3 product opportunities.</p>
-                                </div>
+                        <div id="role-ux" class="animate-on-scroll scroll-mt-24">
+                             <div class="space-y-4 text-center max-w-2xl mx-auto">
+                                 <h3 class="text-3xl font-bold text-emerald-400">For UX Researchers</h3>
+                                <p class="text-gray-300">Your research deserves to make an impact. Centralize qualitative data, identify emerging themes with AI, and link your findings directly to product initiatives. Ensure your insights are not just heard, but acted upon.</p>
                             </div>
-                             <div class="space-y-4">
-                                 <h3 class="text-2xl font-bold text-emerald-400">For UX Researchers</h3>
-                                <p class="text-gray-400">Your research deserves to make an impact. Centralize qualitative data from all sources, identify emerging themes with AI, and link your findings directly to product initiatives. Ensure your insights are not just heard, but acted upon.</p>
-                                 <div class="border-t border-gray-800 pt-4">
-                                    <h4 class="font-semibold text-white mb-2">How productflow.online Helps:</h4>
-                                    <ul class="text-sm space-y-2 text-gray-300">
-                                        <li>✓ Create a single, searchable <strong>Research Repository</strong> for all qualitative data.</li>
-                                        <li>✓ Identify cross-study themes and trends with <strong>AI-powered analysis</strong>.</li>
-                                        <li>✓ Directly link findings to opportunities, creating a <strong>clear line of sight to impact</strong>.</li>
-                                    </ul>
+                             <div class="pain-points-table mt-8">
+                                <div class="pain-point-row">
+                                    <div class="pain-point-cell pain"><strong>Pain Point:</strong> "My research findings get lost in a report that nobody reads."</div>
+                                    <div class="pain-point-cell solution"><strong>Solution:</strong> Link insights directly to opportunities, making research an actionable part of the discovery process.</div>
+                                </div>
+                                <div class="pain-point-row">
+                                    <div class="pain-point-cell pain"><strong>Pain Point:</strong> "It's hard to spot trends across different research studies."</div>
+                                    <div class="pain-point-cell solution"><strong>Solution:</strong> The <strong>Feedback Hub</strong> acts as a central repository, using AI to surface themes across all qualitative data.</div>
                                 </div>
                             </div>
                         </div>
                         
                         <!-- For Heads of Product -->
-                        <div id="role-head" class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll">
-                             <div class="space-y-4">
-                                <h3 class="text-2xl font-bold text-emerald-400">For Heads of Product</h3>
-                                <p class="text-gray-400">Lead with strategy, not gut feelings. Get a high-level overview of your entire product portfolio, monitor strategic alignment, and ensure your teams are focused on the outcomes that drive business growth. Standardize your product process and scale with confidence.</p>
-                                 <div class="border-t border-gray-800 pt-4">
-                                    <h4 class="font-semibold text-white mb-2">How productflow.online Helps:</h4>
-                                    <ul class="text-sm space-y-2 text-gray-300">
-                                       <li>✓ Get a portfolio-level view of <strong>strategic alignment</strong> across all teams.</li>
-                                       <li>✓ Ensure a consistent, high-quality <strong>discovery process</strong> is followed everywhere.</li>
-                                       <li>✓ Confidently report on <strong>product's contribution to business goals</strong> with OKR tracking.</li>
-                                    </ul>
-                                </div>
+                        <div id="role-head" class="animate-on-scroll scroll-mt-24">
+                            <div class="space-y-4 text-center max-w-2xl mx-auto">
+                                <h3 class="text-3xl font-bold text-emerald-400">For Heads of Product</h3>
+                                <p class="text-gray-300">Lead with strategy, not gut feelings. Get a high-level overview of your entire product portfolio, monitor strategic alignment, and ensure your teams are focused on the outcomes that drive business growth.</p>
                             </div>
-                            <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated">
-                                 <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Leadership Dashboard</p>
-                                <div class="font-mono text-sm text-gray-300 space-y-1">
-                                    <p>OKR: "Market Leadership" -> 75% on track</p>
-                                    <p>Strategic Alignment: 92% of roadmap</p>
-                                    <p>Portfolio Health: Green</p>
-                                    <p>Team Focus: 80% on 'Retention' initiatives</p>
+                            <div class="pain-points-table mt-8">
+                                <div class="pain-point-row">
+                                    <div class="pain-point-cell pain"><strong>Pain Point:</strong> "I'm not confident my teams are working on the most important things."</div>
+                                    <div class="pain-point-cell solution"><strong>Solution:</strong> <strong>Portfolio-level views</strong> provide a real-time dashboard of strategic alignment across all initiatives.</div>
+                                </div>
+                                <div class="pain-point-row">
+                                    <div class="pain-point-cell pain"><strong>Pain Point:</strong> "Each of my PMs has a different discovery process."</div>
+                                    <div class="pain-point-cell solution"><strong>Solution:</strong> The <strong>Upstream Workflow</strong> allows you to standardize a best-practice discovery process for the whole organization.</div>
                                 </div>
                             </div>
                         </div>
@@ -124,29 +214,104 @@
                 <!-- By Industry Pane -->
                 <div id="tab-industry" class="tab-pane" role="tabpanel">
                     <div class="grid md:grid-cols-2 gap-8" data-stagger-group>
-                        <div id="industry-fintech" class="feature-card animate-on-scroll">
+                        <div id="industry-fintech" class="feature-card animate-on-scroll scroll-mt-24">
                             <h4 class="font-bold text-white text-xl">FinTech & InsurTech</h4>
                             <p class="text-gray-400 mt-2">Maintain a clear audit trail from customer feedback to feature release. Our "Golden Thread" traceability is perfect for ensuring compliance and justifying every product decision with data in a highly regulated environment.</p>
                         </div>
-                         <div id="industry-saas" class="feature-card animate-on-scroll">
+                         <div id="industry-saas" class="feature-card animate-on-scroll scroll-mt-24">
                             <h4 class="font-bold text-white text-xl">B2B SaaS</h4>
                             <p class="text-gray-400 mt-2">Balance the needs of large enterprise clients with your long-term product vision. Quantify feedback from high-value accounts, segment by company size or MRR, and align your roadmap with strategic expansion goals.</p>
                         </div>
-                         <div id="industry-healthcare" class="feature-card animate-on-scroll">
+                         <div id="industry-healthcare" class="feature-card animate-on-scroll scroll-mt-24">
                             <h4 class="font-bold text-white text-xl">Healthcare Tech</h4>
                             <p class="text-gray-400 mt-2">Securely manage sensitive feedback from patients and providers. Our platform helps you prioritize features that improve patient outcomes and user experience while navigating the complexities of healthcare regulations.</p>
                         </div>
-                         <div id="industry-ecommerce" class="feature-card animate-on-scroll">
+                         <div id="industry-ecommerce" class="feature-card animate-on-scroll scroll-mt-24">
                             <h4 class="font-bold text-white text-xl">E-commerce & D2C</h4>
                             <p class="text-gray-400 mt-2">Rapidly analyze thousands of customer reviews, support tickets, and survey responses. Use our AI tools to identify conversion-blocking issues and prioritize the UX improvements that have the biggest impact on your bottom line.</p>
                         </div>
                     </div>
                 </div>
+
+                <!-- By Maturity Pane -->
+                <div id="tab-maturity" class="tab-pane" role="tabpanel">
+                     <div class="grid md:grid-cols-3 gap-8" data-stagger-group>
+                        <div class="feature-card animate-on-scroll">
+                            <h4 class="font-bold text-white text-xl">The Feature Factory</h4>
+                            <p class="text-gray-400 mt-2 mb-4"><strong>Challenge:</strong> Success is measured by output ("features shipped"), not outcomes. The team is disconnected from customers and lacks a clear strategy.</p>
+                            <p class="text-gray-300 text-sm"><strong>How we help:</strong> The <strong>Feedback Hub</strong> introduces a direct line to customer needs, while the <strong>Upstream Workflow</strong> adds a crucial first layer of problem validation before building. This creates the foundation for outcome-oriented thinking.</p>
+                        </div>
+                         <div class="feature-card animate-on-scroll">
+                            <h4 class="font-bold text-white text-xl">The Scaling Company</h4>
+                            <p class="text-gray-400 mt-2 mb-4"><strong>Challenge:</strong> What worked for one team is breaking with five. Processes are inconsistent, and keeping everyone aligned is a daily struggle as communication overhead grows.</p>
+                            <p class="text-gray-300 text-sm"><strong>How we help:</strong> The <strong>Strategy Suite</strong> aligns multiple teams around shared OKRs. <strong>Tailored roadmaps</strong> create a cohesive plan, and a standardized <strong>Upstream Workflow</strong> ensures quality and consistency as you scale.</p>
+                        </div>
+                         <div class="feature-card animate-on-scroll">
+                            <h4 class="font-bold text-white text-xl">The Mature Organization</h4>
+                            <p class="text-gray-400 mt-2 mb-4"><strong>Challenge:</strong> The team is high-performing, but needs to optimize for maximum impact and maintain a strategic advantage by finding untapped opportunities.</p>
+                            <p class="text-gray-300 text-sm"><strong>How we help:</strong> <strong>Advanced segmentation</strong> in the Feedback Hub uncovers deep insights to serve key personas. A sophisticated discovery process and <strong>portfolio-level views</strong> ensure investments drive the North Star Metric.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
 
-    <div id="footer-placeholder"></div>
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 border-t border-gray-800">
+      <div class="container mx-auto px-4 py-12">
+    
+        <!-- Newsletter CTA -->
+        <div class="newsletter-section rounded-lg p-8 md:p-12 mb-12 text-center animate-on-scroll">
+            <h3 class="text-3xl font-bold text-white">Stay Ahead of the Curve</h3>
+            <p class="text-gray-300 mt-3 max-w-2xl mx-auto">Subscribe to our newsletter for the latest in product management, strategy, and exclusive updates from productflow.online.</p>
+            <form id="newsletter-form" class="mt-6 max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="Enter your email" class="flex-grow w-full bg-gray-800/50 p-3 rounded-md border border-gray-600 text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" required>
+                <button type="submit" class="px-5 py-3 rounded-md bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors" data-ga-event="Form:Submit:Newsletter">Subscribe</button>
+            </form>
+        </div>
+    
+        <div class="grid md:grid-cols-5 gap-8 text-sm">
+            <div class="md:col-span-2">
+                 <a href="/index.html" class="flex items-center" data-ga-event="Footer:Click:Logo">
+                    <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+                    <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+                </a>
+                <p class="text-gray-400 mt-3 max-w-xs">The command center for outcome-driven product teams.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white mb-3">Product</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/features.html" class="hover:text-white" data-ga-event="Footer:Click:Product_Features">Features</a></li>
+                    <li><a href="/roadmap.html" class="hover:text-white" data-ga-event="Footer:Click:Product_Roadmap">Roadmap</a></li>
+                    <li><a href="/use-cases.html" class="hover:text-white" data-ga-event="Footer:Click:Product_UseCases">Use Cases</a></li>
+                    <li><a href="/pricing.html" class="hover:text-white" data-ga-event="Footer:Click:Product_Pricing">Pricing</a></li>
+                    <li><a href="/for-who.html" class="hover:text-white" data-ga-event="Footer:Click:Product_ForWho">For Who</a></li>
+                </ul>
+            </div>
+             <div>
+                <h4 class="font-semibold text-white mb-3">Resources</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/knowledge-hub.html" class="hover:text-white" data-ga-event="Footer:Click:Resources_KnowledgeHub">Knowledge Hub</a></li>
+                    <li><a href="/methodology.html" class="hover:text-white" data-ga-event="Footer:Click:Resources_Methodology">Methodology</a></li>
+                    <li><a href="/about.html" class="hover:text-white" data-ga-event="Footer:Click:Resources_About">About Us</a></li>
+                    <li><a href="/contact.html" class="hover:text-white" data-ga-event="Footer:Click:Resources_Contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                 <h4 class="font-semibold text-white mb-3">Legal</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/privacy.html" class="hover:text-white" data-ga-event="Footer:Click:Legal_Privacy">Privacy Policy</a></li>
+                    <li><a href="/terms.html" class="hover:text-white" data-ga-event="Footer:Click:Legal_Terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            <p>&copy; 2024 productflow.online. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
     <script src="/assets/js/index.js" defer></script>
 </body>
 </html>

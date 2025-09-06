@@ -22,7 +22,83 @@
 </head>
 <body class="bg-black text-gray-200 font-sans">
 
-    <div id="header-placeholder"></div>
+    <!-- Header -->
+    <header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-30 border-b border-gray-900">
+        <a href="/index.html" class="flex items-center">
+            <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+            <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+        </a>
+        <nav class="hidden md:flex items-center space-x-6 text-sm">
+            <div class="relative mega-menu-container">
+                <a href="/features.html" class="text-gray-400 hover:text-white flex items-center">
+                    Features
+                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="dropdown-menu hidden absolute mt-2 z-30 mega-menu">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-column">
+                            <h4 class="mega-menu-header">Feedback Hub</h4>
+                            <p class="mega-menu-description">Turn customer noise into product signal. Aggregate, analyze, and act on user feedback from any source.</p>
+                            <a href="/features-feedback.html" class="mega-menu-link">Learn more &rarr;</a>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h4 class="mega-menu-header">Strategy Suite</h4>
+                            <p class="mega-menu-description">Connect your strategy to daily execution. Visualize the "Golden Thread" from company vision to user stories.</p>
+                            <a href="/features-strategy.html" class="mega-menu-link">Learn more &rarr;</a>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h4 class="mega-menu-header">Upstream Workflow</h4>
+                            <p class="mega-menu-description">From a vague idea to a bulletproof plan. Standardize your discovery process with our guided Kanban workflow.</p>
+                            <a href="/features-upstream.html" class="mega-menu-link">Learn more &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="/roadmap.html" class="text-gray-400 hover:text-white">Roadmap</a>
+            <a href="/use-cases.html" class="text-gray-400 hover:text-white">Use Cases</a>
+            <a href="/pricing.html" class="text-gray-400 hover:text-white">Pricing</a>
+            <a href="/knowledge-hub.html" class="text-gray-400 hover:text-white">Knowledge Hub</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-x-4">
+            <a href="https://app.productflow.online/demo" class="text-sm font-medium text-gray-400 hover:text-white cta-button-secondary">View Demo</a>
+            <a href="https://app.productflow.online" class="text-sm font-medium text-gray-400 hover:text-white">Sign In</a>
+            <a href="https://app.productflow.online" class="px-4 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Get Started FREE</a>
+        </div>
+        <!-- Hamburger Button -->
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-400 hover:text-white focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black/95 z-50">
+        <div class="container mx-auto px-4 pt-4 pb-4">
+            <div class="flex justify-between items-center">
+                <a href="/index.html" class="flex items-center">
+                    <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+                    <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+                </a>
+                <button id="mobile-menu-close-button" class="text-gray-400 hover:text-white">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <nav class="mt-8 space-y-2 text-center">
+                <a href="/features.html" class="block text-gray-300 hover:text-white py-2">Features</a>
+                <a href="/roadmap.html" class="block text-gray-300 hover:text-white py-2">Roadmap</a>
+                <a href="/use-cases.html" class="block text-gray-300 hover:text-white py-2">Use Cases</a>
+                <a href="/pricing.html" class="block text-gray-300 hover:text-white py-2">Pricing</a>
+                <a href="/knowledge-hub.html" class="block text-gray-300 hover:text-white py-2">Knowledge Hub</a>
+                <div class="border-t border-gray-800 my-4"></div>
+                 <a href="https://app.productflow.online/demo" class="block text-gray-300 hover:text-white py-2">View Demo</a>
+                <a href="https://app.productflow.online" class="block text-gray-300 hover:text-white py-2">Sign In</a>
+                <a href="https://app.productflow.online" class="inline-block mt-2 px-6 py-2 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Get Started FREE</a>
+            </nav>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-16">
@@ -76,99 +152,3 @@
                         <li class="flex items-center"><span class="text-emerald-500 mr-3">&#10003;</span>10,000 Insights / month</li>
                         <li class="flex items-center"><span class="text-emerald-500 mr-3">&#10003;</span>Everything in Starter, plus:</li>
                         <li class="flex items-center"><span class="text-emerald-500 mr-3">&#10003;</span>Upstream & Strategy Suites</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-3">&#10003;</span>Unlimited Integrations</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-3">&#10003;</span>AI Co-Pilot</li>
-                    </ul>
-                </div>
-
-                <!-- Enterprise Plan -->
-                <div class="feature-card flex flex-col p-8 animate-on-scroll">
-                    <h3 class="text-2xl font-bold">Enterprise</h3>
-                    <p class="text-gray-400 mt-2">For large organizations with advanced needs.</p>
-                    <p class="mt-6 text-4xl font-extrabold text-white">Let's Talk</p>
-                    <a href="/contact.html" class="mt-6 block w-full text-center py-3 rounded-md bg-gray-700 text-white hover:bg-gray-600 transition-colors">Contact Sales</a>
-                    <ul class="mt-8 space-y-3 text-sm text-gray-300 flex-1">
-                        <li class="flex items-center"><span class="text-emerald-500 mr-3">&#10003;</span>Unlimited Users</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-3">&#10003;</span>Unlimited Insights</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-3">&#10003;</span>Everything in Growth, plus:</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-3">&#10003;</span>Advanced Security & SSO</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-3">&#10003;</span>Dedicated Support</li>
-                        <li class="flex items-center"><span class="text-emerald-500 mr-3">&#10003;</span>Custom Onboarding</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-20 animate-on-scroll">
-            <h2 class="text-3xl font-bold text-center text-white mb-10">Feature Comparison</h2>
-            <div class="max-w-5xl mx-auto overflow-x-auto">
-                <table class="pricing-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th class="plan-header text-center">Starter</th>
-                            <th class="plan-header text-center text-emerald-400">Growth</th>
-                            <th class="plan-header text-center">Enterprise</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td colspan="4" class="feature-group">Core Features</td></tr>
-                        <tr><td>Feedback Hub</td><td class="text-center"><span class="check-mark">&#10003;</span></td><td class="text-center"><span class="check-mark">&#10003;</span></td><td class="text-center"><span class="check-mark">&#10003;</span></td></tr>
-                        <tr><td>Upstream Workflow</td><td class="text-center">-</td><td class="text-center"><span class="check-mark">&#10003;</span></td><td class="text-center"><span class="check-mark">&#10003;</span></td></tr>
-                        <tr><td>Strategy Suite</td><td class="text-center">-</td><td class="text-center"><span class="check-mark">&#10003;</span></td><td class="text-center"><span class="check-mark">&#10003;</span></td></tr>
-                        <tr><td>AI Co-Pilot</td><td class="text-center">-</td><td class="text-center"><span class="check-mark">&#10003;</span></td><td class="text-center"><span class="check-mark">&#10003;</span></td></tr>
-                        
-                        <tr><td colspan="4" class="feature-group">Limits</td></tr>
-                        <tr><td>Users</td><td class="text-center">1</td><td class="text-center">Up to 20</td><td class="text-center">Unlimited</td></tr>
-                        <tr><td>Insights / month</td><td class="text-center">500</td><td class="text-center">10,000</td><td class="text-center">Unlimited</td></tr>
-                        <tr><td>Integrations</td><td class="text-center">1</td><td class="text-center">Unlimited</td><td class="text-center">Unlimited</td></tr>
-
-                        <tr><td colspan="4" class="feature-group">Support & Security</td></tr>
-                        <tr><td>Standard Support</td><td class="text-center"><span class="check-mark">&#10003;</span></td><td class="text-center"><span class="check-mark">&#10003;</span></td><td class="text-center"><span class="check-mark">&#10003;</span></td></tr>
-                        <tr><td>Dedicated Support</td><td class="text-center">-</td><td class="text-center">-</td><td class="text-center"><span class="check-mark">&#10003;</span></td></tr>
-                        <tr><td>SSO & Advanced Security</td><td class="text-center">-</td><td class="text-center">-</td><td class="text-center"><span class="check-mark">&#10003;</span></td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section class="py-20 max-w-3xl mx-auto animate-on-scroll">
-            <h2 class="text-3xl font-bold text-center text-white mb-10">Frequently Asked Questions</h2>
-            <div class="space-y-4">
-                <details class="bg-gray-900/50 p-4 rounded-lg">
-                    <summary class="font-semibold cursor-pointer">Do you offer a free trial?</summary>
-                    <p class="text-gray-400 mt-2 text-sm">Yes! All new accounts start with a 14-day free trial of our Growth plan, no credit card required. At the end of the trial, you can choose a plan or be automatically moved to our free Starter plan.</p>
-                </details>
-                <details class="bg-gray-900/50 p-4 rounded-lg">
-                    <summary class="font-semibold cursor-pointer">What happens when my 14-day trial ends?</summary>
-                    <p class="text-gray-400 mt-2 text-sm">We'll send you a reminder a few days before your trial expires. You can add your payment details to upgrade to the Growth plan at any time. If you do nothing, your account will be automatically moved to the free Starter plan. You won't lose any of your data.</p>
-                </details>
-                 <details class="bg-gray-900/50 p-4 rounded-lg">
-                    <summary class="font-semibold cursor-pointer">How does user billing work?</summary>
-                    <p class="text-gray-400 mt-2 text-sm">For the Growth plan, you are billed per user per month (or year). You can add or remove users at any time. When you add a new user, we'll charge a prorated amount for the remainder of the current billing cycle. When you remove a user, a credit will be applied to your next invoice.</p>
-                </details>
-                 <details class="bg-gray-900/50 p-4 rounded-lg">
-                    <summary class="font-semibold cursor-pointer">Is my data secure?</summary>
-                    <p class="text-gray-400 mt-2 text-sm">Absolutely. Data security is our top priority. All data is encrypted in transit and at rest. We are SOC 2 Type II compliant and perform regular security audits. For more advanced security needs, our Enterprise plan offers features like SSO and custom security reviews.</p>
-                </details>
-                <details class="bg-gray-900/50 p-4 rounded-lg">
-                    <summary class="font-semibold cursor-pointer">What counts as an "insight"?</summary>
-                    <p class="text-gray-400 mt-2 text-sm">An insight is any single piece of feedback processed by our system. This could be a support ticket, a tweet, a line from an interview transcript, or an app store review. We count them as they are imported into the Feedback Hub.</p>
-                </details>
-                 <details class="bg-gray-900/50 p-4 rounded-lg">
-                    <summary class="font-semibold cursor-pointer">Can I change my plan later?</summary>
-                    <p class="text-gray-400 mt-2 text-sm">Absolutely. You can upgrade, downgrade, or cancel your plan at any time from your account settings. Changes will be prorated.</p>
-                </details>
-                 <details class="bg-gray-900/50 p-4 rounded-lg">
-                    <summary class="font-semibold cursor-pointer">Do you offer discounts for non-profits or startups?</summary>
-                    <p class="text-gray-400 mt-2 text-sm">Yes, we do! Please get in touch with our sales team via the contact page to discuss special pricing for non-profits, educational institutions, and early-stage startups.</p>
-                </details>
-            </div>
-        </section>
-
-    </main>
-
-    <div id="footer-placeholder"></div>
-    <script src="/assets/js/index.js" defer></script>
-</body>
-</html>

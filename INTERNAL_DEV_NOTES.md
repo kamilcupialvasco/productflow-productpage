@@ -1,4 +1,3 @@
-
 # Internal Developer Notes for productflow.online Marketing Site
 
 **Objective:** This document is for internal developers (human or AI) to understand the critical technical aspects of this static site. Read this before making changes to prevent common bugs.
@@ -7,9 +6,9 @@
 
 ## 1. Core Architecture
 
-- **Static Site:** This is a pure HTML, CSS, and JavaScript project. There is no backend server or build step required.
-- **Styling:** Primarily uses **Tailwind CSS** via a CDN. Custom overrides and new component styles are in `/assets/css/style.css`.
-- **JavaScript:** All client-side logic is in `/assets/js/index.js`. It is loaded with `defer` on all pages and organized into logical modules.
+-   **Static Site:** This is a pure HTML, CSS, and JavaScript project. There is no backend server or build step required.
+-   **Styling:** Primarily uses **Tailwind CSS** via a CDN. Custom overrides and new component styles are in `/assets/css/style.css`.
+-   **JavaScript:** All client-side logic is in `/assets/js/index.js`. It is loaded with `defer` on all pages and organized into logical modules.
 
 ---
 
@@ -22,7 +21,7 @@ Previous versions of this site used a JavaScript-based mechanism to dynamically 
 ### **Rules for Modification:**
 
 -   **DO NOT re-introduce dynamic loading.** The current method is intentional and prioritizes stability over DRY (Don't Repeat Yourself) principles for the layout.
--   To update the header or footer, you must update it in **all** `.html` files. A multi-file search and replace is recommended for this.
+-   To update the header or footer, you must update it in **all** `.html` files. A multi-file search and replace is the required and recommended method for this.
 -   All scripts in `/assets/js/index.js` now safely assume that the header and footer elements exist in the DOM when they execute.
 
 ---
@@ -31,19 +30,23 @@ Previous versions of this site used a JavaScript-based mechanism to dynamically 
 
 The `index.js` file is organized into several modules for clarity.
 
--   `Nav`: Handles all navigation-related logic, including the mobile menu and **active link highlighting**. The mega menu is now handled primarily by CSS for reliability.
+-   `Nav`: Handles all navigation-related logic, including the mobile menu and **active link highlighting**.
 -   `Animations`: Manages all visual animations, including scroll-triggered effects, the hero headline, and "typing" code blocks.
 -   `UI`: Initializes interactive UI components like tabs, carousels, and the pricing toggle.
 -   `Forms`: Handles form-related logic, such as the submission feedback on the contact page.
+-   **`Analytics` (New):** Manages event tracking for Google Analytics.
 
 ---
 
-## 4. Active Navigation Link
+## 4. Google Analytics Event Tracking
 
--   The `Nav.highlightActiveLink()` function in `index.js` is responsible for adding the `.active-nav-link` class to the current page's link in the header.
--   It compares the current `window.location.pathname` with the `href` of each navigation link.
--   It includes special logic to correctly highlight the "Features" parent link when viewing a sub-page like "Feedback Hub".
--   The corresponding styles are in `assets/css/style.css`.
+A new event tracking system has been implemented to monitor user interactions.
+
+-   **Mechanism:** An event listener on the `document.body` checks for a `data-ga-event` attribute on clicked elements.
+-   **Attribute:** To make an element trackable, add the `data-ga-event` attribute.
+-   **Format:** The attribute value is a string with three parts separated by colons: `Category:Action:Label`.
+    -   **Example:** `data-ga-event="CTA:Click:Hero_StartTrial"`
+-   **Output:** The `Analytics` module in `index.js` will parse this string and log a structured object to the console. This is designed to be easily piped into a proper analytics service like Google Analytics (`gtag`).
 
 ---
 
@@ -57,7 +60,7 @@ The `index.js` file is organized into several modules for clarity.
 
 ## 6. Adding New Pages or Content
 
--   **New Page:** Create a new `.html` file. Copy the full content from an existing page (like `about.html`) to ensure it includes the complete, embedded `<header>` and `<footer>`.
+-   **New Page:** Create a new `.html` file. Copy the full content from an existing page (like `about.html`) to ensure it includes the complete, embedded `<header>` and `<footer>`, the `noindex` meta tag, and the script reference.
 -   **New Blog Post:** Create a new file in the `/blog/` directory. Update the `knowledge-hub.html` page to include a card linking to it, with the correct `data-category="blog"`.
 -   **New Interactive Component:**
     1.  Add the HTML for your component.

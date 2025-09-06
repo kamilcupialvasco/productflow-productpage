@@ -1,4 +1,3 @@
-
 // --- MODULES for page initialization ---
 
 const Nav = {
@@ -16,11 +15,14 @@ const Nav = {
 
             let isMatch = (currentPath === linkPath) || (currentPath === '' && (linkPath.endsWith('/index.html') || linkPath === ''));
             if (currentPath.endsWith('/index.html') && linkPath === '') isMatch = true;
-
+            
             if (currentPath.startsWith('/features') && link.getAttribute('href') === '/features.html') {
                  isMatch = true;
             }
             if (currentPath.startsWith('/use-cases') && link.getAttribute('href') === '/use-cases.html') {
+                 isMatch = true;
+            }
+             if (currentPath.startsWith('/for-who') && link.getAttribute('href') === '/for-who.html') {
                  isMatch = true;
             }
             
@@ -60,7 +62,7 @@ const Animations = {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
                     if (entry.target.dataset.staggerGroup !== undefined) {
-                        const children = entry.target.querySelectorAll('.animate-on-scroll');
+                        const children = entry.target.querySelectorAll('.animate-on-scroll, .use-case-card');
                         children.forEach((child, i) => {
                             child.style.transitionDelay = `${i * 100}ms`;
                         });
@@ -157,6 +159,53 @@ const UI = {
         this.initPricingToggle();
         this.initKnowledgeHubFilters();
         this.initGoldenThread();
+        this.initUseCaseFilters();
+        this.initMegaMenu();
+    },
+    
+    initMegaMenu() {
+        const megaMenuContainers = document.querySelectorAll('.mega-menu-container');
+        megaMenuContainers.forEach(container => {
+            const links = container.querySelectorAll('.mega-menu-nav-link');
+            const detailsColumn = container.querySelector('.mega-menu-details-column .details-content');
+            if (!detailsColumn) return;
+
+            const titleEl = detailsColumn.querySelector('h4');
+            const descEl = detailsColumn.querySelector('p');
+            const linkEl = detailsColumn.querySelector('a.mega-menu-link');
+
+            const originalState = {
+                title: titleEl.innerHTML,
+                description: descEl.innerHTML,
+                href: linkEl.href
+            };
+
+            links.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    const title = link.dataset.title;
+                    const description = link.dataset.description;
+                    const href = link.href;
+
+                    detailsColumn.classList.add('fade-out-details');
+                    setTimeout(() => {
+                        titleEl.textContent = title;
+                        descEl.textContent = description;
+                        linkEl.href = href;
+                        detailsColumn.classList.remove('fade-out-details');
+                    }, 150);
+                });
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                 detailsColumn.classList.add('fade-out-details');
+                 setTimeout(() => {
+                    titleEl.innerHTML = originalState.title;
+                    descEl.innerHTML = originalState.description;
+                    linkEl.href = originalState.href;
+                    detailsColumn.classList.remove('fade-out-details');
+                }, 150);
+            });
+        });
     },
 
     initTabs(containerSelector) {
@@ -262,26 +311,85 @@ const UI = {
     },
 
     initGoldenThread() {
-        const diagram = document.getElementById('golden-thread-diagram');
+        const diagram = document.getElementById('golden-thread-diagram-v2');
         if (!diagram) return;
-        const nodes = diagram.querySelectorAll('.thread-node');
-        
+
+        const nodes = diagram.querySelectorAll('.thread-node-v2');
+        const hierarchy = ['vision', 'pillar', 'objective', 'kr', 'initiative', 'feedback'];
+
         nodes.forEach(node => {
             node.addEventListener('mouseenter', () => {
-                const id = node.dataset.threadId;
-                diagram.querySelectorAll('.thread-line, .thread-node').forEach(el => el.classList.add('dimmed'));
-                diagram.querySelectorAll(`[data-thread-id="${id}"]`).forEach(el => el.classList.remove('dimmed'));
-            });
-            node.addEventListener('mouseleave', () => {
-                 diagram.querySelectorAll('.thread-line, .thread-node').forEach(el => el.classList.remove('dimmed'));
+                const currentId = node.dataset.threadId;
+                const currentIndex = hierarchy.indexOf(currentId);
+                
+                diagram.classList.add('active');
+                
+                nodes.forEach((el, index) => {
+                    el.classList.remove('active', 'in-path');
+                    if (index === currentIndex) {
+                        el.classList.add('active');
+                    }
+                    if (index <= currentIndex) {
+                        el.classList.add('in-path');
+                    }
+                });
             });
         });
-    }
+        
+        diagram.addEventListener('mouseleave', () => {
+             diagram.classList.remove('active');
+             nodes.forEach(el => el.classList.remove('active', 'in-path'));
+        });
+    },
+
+    initUseCaseFilters() {
+        const container = document.querySelector('.interactive-workflow');
+        if (!container) return;
+
+        const filterButtons = container.querySelectorAll('.workflow-stage');
+        const cardsContainer = document.getElementById('use-cases-grid');
+        const cards = cardsContainer.querySelectorAll('.use-case-card');
+
+        let activeFilter = 'all';
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.category;
+
+                // Toggle behavior: if clicking the same filter again, show all
+                if (activeFilter === filter) {
+                    activeFilter = 'all';
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                } else {
+                    activeFilter = filter;
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                }
+                
+                cards.forEach(card => {
+                    const cardCategories = card.dataset.usecaseCategory.split(' ');
+                    const shouldShow = activeFilter === 'all' || cardCategories.includes(activeFilter);
+                    
+                    if (shouldShow) {
+                        card.style.display = 'flex';
+                        card.classList.remove('fade-out-card');
+                    } else {
+                        card.classList.add('fade-out-card');
+                        setTimeout(() => {
+                           if (!card.classList.contains('fade-out-card')) return; // Check if state changed
+                           card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    },
 };
 
 const Forms = {
     init() {
         this.initContactForm();
+        this.initNewsletterForm();
     },
     initContactForm() {
         const form = document.getElementById('contact-form');
@@ -290,11 +398,47 @@ const Forms = {
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            form.classList.add('hidden');
+            // In a real app, you'd send data here.
+            // For analytics, the button click is tracked.
+            form.style.display = 'none';
             successMessage.classList.remove('hidden');
+        });
+    },
+    initNewsletterForm() {
+        const form = document.getElementById('newsletter-form');
+        if (!form) return;
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real app, you'd send data here.
+            // For analytics, the button click is tracked.
+            form.querySelector('input').disabled = true;
+            const button = form.querySelector('button');
+            button.textContent = 'Subscribed!';
+            button.disabled = true;
         });
     }
 };
+
+const Analytics = {
+    init() {
+        document.body.addEventListener('click', this.trackEvent.bind(this));
+    },
+
+    trackEvent(e) {
+        const targetElement = e.target.closest('[data-ga-event]');
+        if (targetElement) {
+            const eventString = targetElement.dataset.gaEvent;
+            const [category, action, label] = eventString.split(':');
+            
+            if (category && action) {
+                // In a real implementation, you would send this to Google Analytics
+                // For example: gtag('event', action, { 'event_category': category, 'event_label': label });
+                console.log(`GA Event: { Category: '${category}', Action: '${action}', Label: '${label || 'not_set'}' }`);
+            }
+        }
+    }
+};
+
 
 // --- MAIN EXECUTION ---
 document.addEventListener('DOMContentLoaded', () => {
@@ -302,4 +446,5 @@ document.addEventListener('DOMContentLoaded', () => {
     Animations.init();
     UI.init();
     Forms.init();
+    Analytics.init(); // Initialize analytics tracking
 });
