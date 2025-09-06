@@ -40,7 +40,83 @@
 </head>
 <body class="bg-black text-gray-200 font-sans">
 
-    <div id="header-placeholder"></div>
+    <!-- Header -->
+    <header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-30 border-b border-gray-900">
+        <a href="/index.html" class="flex items-center">
+            <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+            <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+        </a>
+        <nav class="hidden md:flex items-center space-x-6 text-sm">
+            <div class="relative mega-menu-container">
+                <a href="/features.html" class="text-gray-400 hover:text-white flex items-center">
+                    Features
+                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <div class="dropdown-menu hidden absolute mt-2 z-30 mega-menu">
+                    <div class="mega-menu-content">
+                        <div class="mega-menu-column">
+                            <h4 class="mega-menu-header">Feedback Hub</h4>
+                            <p class="mega-menu-description">Turn customer noise into product signal. Aggregate, analyze, and act on user feedback from any source.</p>
+                            <a href="/features-feedback.html" class="mega-menu-link">Learn more &rarr;</a>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h4 class="mega-menu-header">Strategy Suite</h4>
+                            <p class="mega-menu-description">Connect your strategy to daily execution. Visualize the "Golden Thread" from company vision to user stories.</p>
+                            <a href="/features-strategy.html" class="mega-menu-link">Learn more &rarr;</a>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h4 class="mega-menu-header">Upstream Workflow</h4>
+                            <p class="mega-menu-description">From a vague idea to a bulletproof plan. Standardize your discovery process with our guided Kanban workflow.</p>
+                            <a href="/features-upstream.html" class="mega-menu-link">Learn more &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="/roadmap.html" class="text-gray-400 hover:text-white">Roadmap</a>
+            <a href="/use-cases.html" class="text-gray-400 hover:text-white">Use Cases</a>
+            <a href="/pricing.html" class="text-gray-400 hover:text-white">Pricing</a>
+            <a href="/knowledge-hub.html" class="text-gray-400 hover:text-white">Knowledge Hub</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-x-4">
+            <a href="https://app.productflow.online/demo" class="text-sm font-medium text-gray-400 hover:text-white cta-button-secondary">View Demo</a>
+            <a href="https://app.productflow.online" class="text-sm font-medium text-gray-400 hover:text-white">Sign In</a>
+            <a href="https://app.productflow.online" class="px-4 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Get Started FREE</a>
+        </div>
+        <!-- Hamburger Button -->
+        <div class="md:hidden">
+            <button id="mobile-menu-button" class="text-gray-400 hover:text-white focus:outline-none">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black/95 z-50">
+        <div class="container mx-auto px-4 pt-4 pb-4">
+            <div class="flex justify-between items-center">
+                <a href="/index.html" class="flex items-center">
+                    <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+                    <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+                </a>
+                <button id="mobile-menu-close-button" class="text-gray-400 hover:text-white">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <nav class="mt-8 space-y-2 text-center">
+                <a href="/features.html" class="block text-gray-300 hover:text-white py-2">Features</a>
+                <a href="/roadmap.html" class="block text-gray-300 hover:text-white py-2">Roadmap</a>
+                <a href="/use-cases.html" class="block text-gray-300 hover:text-white py-2">Use Cases</a>
+                <a href="/pricing.html" class="block text-gray-300 hover:text-white py-2">Pricing</a>
+                <a href="/knowledge-hub.html" class="block text-gray-300 hover:text-white py-2">Knowledge Hub</a>
+                <div class="border-t border-gray-800 my-4"></div>
+                 <a href="https://app.productflow.online/demo" class="block text-gray-300 hover:text-white py-2">View Demo</a>
+                <a href="https://app.productflow.online" class="block text-gray-300 hover:text-white py-2">Sign In</a>
+                <a href="https://app.productflow.online" class="inline-block mt-2 px-6 py-2 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Get Started FREE</a>
+            </nav>
+        </div>
+    </div>
     
     <main>
         <!-- Home Page -->
@@ -327,7 +403,60 @@
         </div>
     </main>
 
-    <div id="footer-placeholder"></div>
-    <script src="/assets/js/index.js" defer></script>
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 border-t border-gray-800">
+      <div class="container mx-auto px-4 py-12">
+    
+        <!-- Newsletter CTA -->
+        <div class="newsletter-section rounded-lg p-8 md:p-12 mb-12 text-center animate-on-scroll">
+            <h3 class="text-3xl font-bold text-white">Stay Ahead of the Curve</h3>
+            <p class="text-gray-300 mt-3 max-w-2xl mx-auto">Subscribe to our newsletter for the latest in product management, strategy, and exclusive updates from productflow.online.</p>
+            <form class="mt-6 max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="Enter your email" class="flex-grow w-full bg-gray-800/50 p-3 rounded-md border border-gray-600 text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" required>
+                <button type="submit" class="px-5 py-3 rounded-md bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors">Subscribe</button>
+            </form>
+        </div>
+    
+        <div class="grid md:grid-cols-5 gap-8 text-sm">
+            <div class="md:col-span-2">
+                 <a href="/index.html" class="flex items-center">
+                    <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+                    <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+                </a>
+                <p class="text-gray-400 mt-3 max-w-xs">The command center for outcome-driven product teams.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white mb-3">Product</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/features.html" class="hover:text-white">Features</a></li>
+                    <li><a href="/roadmap.html" class="hover:text-white">Roadmap</a></li>
+                    <li><a href="/use-cases.html" class="hover:text-white">Use Cases</a></li>
+                    <li><a href="/pricing.html" class="hover:text-white">Pricing</a></li>
+                    <li><a href="/for-who.html" class="hover:text-white">For Who</a></li>
+                </ul>
+            </div>
+             <div>
+                <h4 class="font-semibold text-white mb-3">Resources</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/knowledge-hub.html" class="hover:text-white">Knowledge Hub</a></li>
+                    <li><a href="/methodology.html" class="hover:text-white">Methodology</a></li>
+                    <li><a href="/about.html" class="hover:text-white">About Us</a></li>
+                    <li><a href="/contact.html" class="hover:text-white">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                 <h4 class="font-semibold text-white mb-3">Legal</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/privacy.html" class="hover:text-white">Privacy Policy</a></li>
+                    <li><a href="/terms.html" class="hover:text-white">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            <p>&copy; 2024 productflow.online. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/js/index.js"></script>
 </body>
 </html>

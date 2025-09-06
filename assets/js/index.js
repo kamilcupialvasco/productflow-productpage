@@ -1,59 +1,22 @@
-// --- CRITICAL LAYOUT LOADER ---
-// This function MUST run first and complete before any other scripts that rely on the full DOM are initialized.
-async function loadLayout() {
-    const headerPlaceholder = document.getElementById('header-placeholder');
-    const footerPlaceholder = document.getElementById('footer-placeholder');
-    
-    const headerPath = '/assets/html/_header.html';
-    const footerPath = '/assets/html/_footer.html';
-
-    try {
-        const [headerResponse, footerResponse] = await Promise.all([
-            fetch(headerPath),
-            fetch(footerPath)
-        ]);
-
-        if (headerPlaceholder && headerResponse.ok) {
-            headerPlaceholder.outerHTML = await headerResponse.text();
-        } else if (!headerPlaceholder) {
-            console.error('CRITICAL: Header placeholder not found in HTML.');
-        } else if (!headerResponse.ok) {
-            console.error('CRITICAL: Failed to load header HTML partial:', headerResponse.statusText);
-        }
-
-        if (footerPlaceholder && footerResponse.ok) {
-            footerPlaceholder.outerHTML = await footerResponse.text();
-        } else if (!footerPlaceholder) {
-             console.error('CRITICAL: Footer placeholder not found in HTML.');
-        } else if (!footerResponse.ok) {
-            console.error('CRITICAL: Failed to load footer HTML partial:', footerResponse.statusText);
-        }
-        
-    } catch (error) {
-        console.error('CRITICAL: Error loading layout partials. Header/footer will be missing.', error);
-    }
-}
-
-
 // --- MODULES for page initialization ---
 
 const Nav = {
     init() {
         this.highlightActiveLink();
         this.initMobileMenu();
-        this.initDropdowns();
+        this.initMegaMenu();
         this.initStickyNav();
     },
 
     highlightActiveLink() {
-        const currentPath = window.location.pathname;
+        const currentPath = window.location.pathname.replace(/\/$/, ""); // Normalize path by removing trailing slash
         const navLinks = document.querySelectorAll('header nav a');
 
         navLinks.forEach(link => {
-            const linkPath = new URL(link.href).pathname;
-            
-            // Exact match or matches index.html for root path
-            let isMatch = (linkPath === currentPath) || (currentPath === '/' && linkPath.endsWith('/index.html'));
+            const linkPath = new URL(link.href).pathname.replace(/\/$/, "");
+
+            // Handle index.html vs root path
+            let isMatch = (currentPath === linkPath) || (currentPath === '' && (linkPath.endsWith('/index.html') || linkPath === ''));
 
             // Special case for features parent link
             if (currentPath.startsWith('/features') && linkPath.endsWith('/features.html')) {
@@ -66,7 +29,7 @@ const Nav = {
             
             if (isMatch) {
                 link.classList.add('active-nav-link');
-                const dropdown = link.closest('.dropdown');
+                const dropdown = link.closest('.mega-menu-container');
                 if (dropdown) {
                     dropdown.querySelector('a').classList.add('active-nav-link');
                 }
@@ -85,8 +48,8 @@ const Nav = {
         }
     },
 
-    initDropdowns() {
-        const dropdowns = document.querySelectorAll('.dropdown');
+    initMegaMenu() {
+        const dropdowns = document.querySelectorAll('.mega-menu-container');
         dropdowns.forEach(dropdown => {
             const menu = dropdown.querySelector('.dropdown-menu');
             if (menu) {
@@ -368,13 +331,5 @@ function initializePageScripts() {
 }
 
 // --- MAIN EXECUTION ---
-// This new structure guarantees that initializePageScripts() is ONLY called
-// after the layout has been fetched and injected into the DOM.
-loadLayout().then(() => {
-    // We use a minimal timeout to push the initialization to the end of the event loop.
-    // This gives the browser a moment to process the newly injected DOM,
-    // preventing race conditions where scripts try to access elements that aren't ready yet.
-    setTimeout(initializePageScripts, 0);
-}).catch(error => {
-    console.error("Layout loading failed, page scripts will not be initialized.", error);
-});
+// This robust approach ensures scripts run only after the DOM is fully parsed and ready.
+document.addEventListener('DOMContentLoaded', initializePageScripts);

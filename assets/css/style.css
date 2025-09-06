@@ -63,18 +63,71 @@ Components
 ==============================================
 */
 
-/* Active Navigation Link */
+/* --- Navigation --- */
 .active-nav-link {
     color: #ffffff !important;
     font-weight: 600;
 }
-header .dropdown .active-nav-link {
+header .mega-menu-container .active-nav-link {
     color: #ffffff !important; /* Keep top-level dropdown link white */
 }
-.dropdown-menu a.active-nav-link {
-    color: #34d399 !important; /* Highlight item within dropdown menu */
-}
 
+/* Mega Menu */
+.mega-menu-container .dropdown-menu {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+.mega-menu-container:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+.mega-menu {
+    width: 680px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(24, 24, 27, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(63, 63, 70, 0.5);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+}
+.mega-menu-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+.mega-menu-column {
+    border-left: 1px solid #333;
+    padding-left: 1.5rem;
+}
+.mega-menu-column:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+.mega-menu-header {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+.mega-menu-description {
+    font-size: 0.875rem;
+    color: #a0aec0;
+    line-height: 1.5;
+}
+.mega-menu-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #34d399;
+}
+.mega-menu-link:hover {
+    color: #6ee7b7;
+}
 
 /* Buttons */
 .cta-button-secondary {
@@ -89,7 +142,6 @@ header .dropdown .active-nav-link {
     color: #fff;
 }
 
-
 /* Cards */
 .feature-card, .industry-card, .use-case-card {
     background-color: #1a1a1a;
@@ -100,19 +152,16 @@ header .dropdown .active-nav-link {
     height: 100%;
 }
 
-.feature-card:hover, .industry-card:hover, .use-case-card:hover {
+.feature-card:hover, a.industry-card:hover, .use-case-card:hover {
     border-color: #10b981;
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.2);
 }
 
-/* Dropdown Menu */
-.dropdown-menu {
-    background-color: rgba(24, 24, 27, 0.85); /* zinc-950 with transparency */
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(63, 63, 70, 0.5); /* zinc-700 with transparency */
+a.industry-card:hover h4 {
+    color: #34d399;
 }
+
 
 nav a {
     transition: color 0.2s ease-in-out;
@@ -342,21 +391,26 @@ input:checked + .pricing-toggle-slider:before {
     scroll-margin-top: 120px; /* Adjust based on sticky nav height + breathing room */
 }
 
-/* Knowledge Hub Filters */
-#knowledge-hub-filters button {
+/* Knowledge Hub Filters Redesign */
+#knowledge-hub-filters .filter-button {
     padding: 0.5rem 1.25rem;
     border-radius: 9999px;
-    background-color: #1a1a1a;
+    background-color: transparent;
     border: 1px solid #4a5568;
     color: #a0aec0;
     transition: all 0.2s ease-in-out;
 }
-#knowledge-hub-filters button.active {
+#knowledge-hub-filters .filter-button:hover {
+    color: #fff;
+    border-color: #666;
+}
+#knowledge-hub-filters .filter-button.active {
     background-color: #10b981;
     color: white;
     font-weight: 600;
     border-color: #10b981;
 }
+
 
 /* Interactive Product Workflow */
 .product-workflow {
