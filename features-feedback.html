@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,79 +16,139 @@
     <meta property="og:description" content="Turn customer noise into product signal. Aggregate user feedback from any source and analyze with AI in the productflow.online Feedback Hub.">
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/index.js" defer></script>
 </head>
 <body class="bg-black text-gray-200 font-sans">
 
-    <!-- Header -->
-    <header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-20">
-        <a href="index.html" class="flex items-center">
-            <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
-            <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
-        </a>
-        <nav class="hidden md:flex items-center space-x-6 text-sm">
-            <div class="relative dropdown">
-                <a href="features.html" class="text-white font-semibold flex items-center">
-                    Features
-                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </a>
-                <div class="dropdown-menu hidden absolute mt-2 w-56 bg-gray-900 rounded-md shadow-lg z-30 border border-gray-800 py-1">
-                    <a href="features-strategy.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Strategy Suite</a>
-                    <a href="features-feedback.html" class="block px-4 py-2 text-sm text-emerald-400 bg-gray-800 font-semibold">Feedback Hub</a>
-                    <a href="features-upstream.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Upstream Workflow</a>
-                </div>
-            </div>
-            <a href="use-cases.html" class="text-gray-400 hover:text-white">Use Cases</a>
-            <a href="for-who.html" class="text-gray-400 hover:text-white">For Who</a>
-            <a href="pricing.html" class="text-gray-400 hover:text-white">Pricing</a>
-        </nav>
-        <div>
-             <a href="https://app.productflow.online" class="px-4 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Access your Hub</a>
-        </div>
-    </header>
+    <div id="header-placeholder"></div>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-16">
         <section class="text-center feature-hero pt-16 pb-24">
-            <h1 class="text-5xl font-extrabold tracking-tight text-white">Turn Customer Noise into Product Signal.</h1>
-            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400">
+            <h1 class="text-5xl font-extrabold tracking-tight text-white animate-on-scroll">Turn Customer Noise into Product Signal.</h1>
+            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400 animate-on-scroll" style="transition-delay: 150ms;">
                 Your users are telling you what to build. Are you listening? productflow.online brings every piece of feedback—from support tickets to app store reviews—into one intelligent, actionable hub.
             </p>
         </section>
 
+        <section class="py-20 max-w-4xl mx-auto">
+             <div class="animate-on-scroll text-center">
+                <h2 class="text-3xl font-bold text-white">The Problem: Feedback is Everywhere and Nowhere</h2>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Valuable user feedback is scattered across a dozen different channels: Zendesk, Slack, Twitter, sales calls, app reviews. It's a full-time job just to keep track of it all. Important insights get lost, trends are missed, and product decisions are made in a vacuum.</p>
+            </div>
+        </section>
+        
         <section class="py-20">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="feature-card md:order-last">
-                    <p class="font-mono text-xs text-emerald-400 mb-2">&gt; AI Analysis Complete</p>
-                    <div class="bg-gray-900 p-4 rounded-md space-y-3">
-                       <p><strong class="text-white">Theme:</strong> Poor battery life on V4</p>
-                       <p><strong class="text-white">Sentiment:</strong> Negative (Frustration)</p>
-                       <p><strong class="text-white">Problem:</strong> "A segment of users is experiencing rapid battery drain..."</p>
-                       <p><strong class="text-white">Impact Score:</strong> <span class="font-bold text-red-400">75</span></p>
-                    </div>
+            <div class="tabs-container animate-on-scroll max-w-5xl mx-auto">
+                 <div class="tab-buttons flex flex-wrap justify-center gap-2 md:gap-4 mb-8" role="tablist">
+                    <button class="tab-button active" data-tab="tab-aggregate" role="tab" aria-selected="true">1. Aggregate</button>
+                    <button class="tab-button" data-tab="tab-analyze" role="tab" aria-selected="false">2. Analyze</button>
+                    <button class="tab-button" data-tab="tab-act" role="tab" aria-selected="false">3. Act</button>
                 </div>
-                 <div class="space-y-6">
-                    <h2 class="text-3xl font-bold text-white">Aggregate. Analyze. Act.</h2>
-                    <p class="text-gray-400">
-                        Connect all your data sources and let our AI do the heavy lifting. We automatically cluster similar feedback, analyze sentiment, and generate concise problem descriptions so your team can focus on solving problems, not sorting spreadsheets.
-                    </p>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Connect Everything:</strong> Integrates with Zendesk, Jira, Slack, App Stores, and more.</span></li>
-                        <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Find Signal in the Noise:</strong> AI-powered clustering and anomaly detection finds what's important.</span></li>
-                        <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Close the Loop:</strong> Link feedback directly to hypotheses and initiatives to track impact.</span></li>
-                    </ul>
+                <div class="tab-content">
+                    <div id="tab-aggregate" class="tab-pane active" role="tabpanel">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-4">
+                                <h3 class="text-2xl font-bold text-emerald-400">Bring Everything Together</h3>
+                                <p class="text-gray-300">Connect all your data sources in minutes. Our powerful integrations pull feedback from the tools you already use, creating a single, searchable repository for all qualitative user data. Stop the endless copy-pasting.</p>
+                                <ul class="text-sm space-y-2 text-gray-300">
+                                    <li>✓ Integrates with Zendesk, Jira, Slack, Intercom, App Stores, and more.</li>
+                                    <li>✓ Use our API or Zapier for custom data sources.</li>
+                                    <li>✓ Never lose an important piece of feedback again.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl">
+                                <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Incoming Feedback Feed</p>
+                                <div class="font-mono text-sm text-gray-300 space-y-1">
+                                    <p>[Zendesk] Ticket #4521: "Can't find export button"</p>
+                                    <p>[Twitter] @User123: "Your mobile app is kinda slow"</p>
+                                    <p>[App Store] ★★★☆☆: "Great app but needs better sharing"</p>
+                                    <p>[Slack] #sales: "Customer Acme needs SSO"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-analyze" class="tab-pane" role="tabpanel">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-4">
+                                <h3 class="text-2xl font-bold text-emerald-400">Find the Signal in the Noise</h3>
+                                <p class="text-gray-300">Let our AI do the heavy lifting. We automatically cluster similar feedback, analyze sentiment, and generate concise problem descriptions so your team can focus on solving problems, not sorting spreadsheets. Identify trends and surface critical issues before they escalate.</p>
+                                <ul class="text-sm space-y-2 text-gray-300">
+                                    <li>✓ AI-powered clustering and anomaly detection.</li>
+                                    <li>✓ Automatic sentiment and keyword analysis.</li>
+                                    <li>✓ Filter and segment feedback by user property (e.g., plan, company size).</li>
+                                </ul>
+                            </div>
+                           <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated">
+                                <p class="font-mono text-xs text-emerald-400 mb-2">&gt; AI Summary of Feedback Cluster #14</p>
+                                <div class="font-mono text-sm text-gray-300 space-y-1">
+                                    <p>Problem: Users find the mobile export process confusing and slow.</p>
+                                    <p>Sentiment: Negative (-0.8)</p>
+                                    <p>Sources: App Store (12), Zendesk (8), Twitter (5)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-act" class="tab-pane" role="tabpanel">
+                         <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-4">
+                                <h3 class="text-2xl font-bold text-emerald-400">Turn Insights into Action</h3>
+                                <p class="text-gray-300">This is where the magic happens. Link a validated user problem directly to an opportunity in your Upstream Workflow. Now you have a traceable link from raw feedback to a potential solution, creating the foundation for a truly data-driven roadmap.</p>
+                                <ul class="text-sm space-y-2 text-gray-300">
+                                    <li>✓ Promote insights to your discovery board with one click.</li>
+                                    <li>✓ Quantify opportunities by seeing how many users are affected.</li>
+                                    <li>✓ Close the loop by tracking an insight all the way to release.</li>
+                                </ul>
+                            </div>
+                             <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl">
+                                <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Action: Promote to Upstream</p>
+                                <div class="font-mono text-sm text-gray-300 space-y-1">
+                                    <p>Opportunity: "Improve Mobile Export Flow"</p>
+                                    <p>Linked Feedback: 25 items</p>
+                                    <p>Stage: Analysing</p>
+                                    <p>Assignee: @Alicja</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <section class="py-20 bg-gray-900/50 rounded-lg animate-on-scroll">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl font-bold text-center text-white mb-10">Who Is This For?</h2>
+                <div class="grid md:grid-cols-2 gap-8 text-center">
+                    <div>
+                        <h4 class="text-xl font-semibold text-emerald-400">Product Managers</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Stop wasting hours every week manually collating feedback. Get straight to the 'so what' with AI-powered summaries and build a data-backed backlog of user problems to solve.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-emerald-400">UX Researchers</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Create a single, searchable repository for all your qualitative data. Tag interview notes, survey responses, and usability tests to surface cross-study insights and ensure your research makes a lasting impact.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 animate-on-scroll">
+             <div class="max-w-3xl mx-auto">
+                 <figure class="border-l-4 border-emerald-500 pl-6">
+                    <blockquote class="text-lg italic text-white">
+                        <p>"The Feedback Hub is our collective brain. We used to have valuable insights buried in Slack threads and Notion docs. Now, it's all in one place, easily searchable, and connected to our roadmap. We're no longer guessing what our users' biggest problems are—we know."</p>
+                    </blockquote>
+                    <figcaption class="mt-4">
+                        <div class="font-semibold">Ben Carter</div>
+                        <div class="text-gray-400 text-sm">Lead Product Manager, DataStream</div>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900/50 border-t border-gray-800">
-      <div class="container mx-auto px-4 py-12 text-center text-sm text-gray-500">
-        <p>&copy; 2024 productflow.online. All rights reserved.</p>
-      </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
 </body>
 </html>

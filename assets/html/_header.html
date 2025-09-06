@@ -1,0 +1,71 @@
+<!-- Header -->
+<header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-20 border-b border-gray-900">
+    <a href="/index.html" class="flex items-center">
+        <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+        <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+    </a>
+    <nav class="hidden md:flex items-center space-x-6 text-sm">
+        <div class="relative dropdown">
+            <a href="/features.html" class="text-gray-400 hover:text-white flex items-center">
+                Features
+                <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+            <div class="dropdown-menu hidden absolute mt-2 w-56 rounded-md shadow-lg z-30 py-1">
+                <a href="/features-feedback.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Feedback Hub</a>
+                <a href="/features-strategy.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Strategy Suite</a>
+                <a href="/features-upstream.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Upstream Workflow</a>
+            </div>
+        </div>
+        <a href="/use-cases.html" class="text-gray-400 hover:text-white">Use Cases</a>
+        <a href="/pricing.html" class="text-gray-400 hover:text-white">Pricing</a>
+        <div class="relative dropdown">
+            <a href="#" class="text-gray-400 hover:text-white flex items-center">
+                Resources
+                <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </a>
+            <div class="dropdown-menu hidden absolute mt-2 w-56 rounded-md shadow-lg z-30 py-1">
+                <a href="/blog/index.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Blog</a>
+                <a href="/success-stories/index.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Success Stories</a>
+                <a href="/methodology.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Our Methodology</a>
+            </div>
+        </div>
+    </nav>
+    <div class="hidden md:block">
+        <a href="https://app.productflow.online" class="text-sm font-medium text-gray-400 hover:text-white mr-4">Sign In</a>
+        <a href="https://app.productflow.online" class="px-4 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Get Started FREE</a>
+    </div>
+    <!-- Hamburger Button -->
+    <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-gray-400 hover:text-white focus:outline-none">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black/95 z-50">
+    <div class="container mx-auto px-4 pt-4 pb-4">
+        <div class="flex justify-between items-center">
+            <a href="/index.html" class="flex items-center">
+                <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+                <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+            </a>
+            <button id="mobile-menu-close-button" class="text-gray-400 hover:text-white">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+        </div>
+        <nav class="mt-8 space-y-2 text-center">
+            <a href="/features.html" class="block text-gray-300 hover:text-white py-2">Features</a>
+            <a href="/use-cases.html" class="block text-gray-300 hover:text-white py-2">Use Cases</a>
+            <a href="/pricing.html" class="block text-gray-300 hover:text-white py-2">Pricing</a>
+            <a href="/blog/index.html" class="block text-gray-300 hover:text-white py-2">Blog</a>
+            <a href="/success-stories/index.html" class="block text-gray-300 hover:text-white py-2">Success Stories</a>
+            <a href="/methodology.html" class="block text-gray-300 hover:text-white py-2">Methodology</a>
+            <div class="border-t border-gray-800 my-4"></div>
+            <a href="https://app.productflow.online" class="block text-gray-300 hover:text-white py-2">Sign In</a>
+            <a href="https://app.productflow.online" class="inline-block mt-2 px-6 py-2 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Get Started FREE</a>
+        </nav>
+    </div>
+</div>

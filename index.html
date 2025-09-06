@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -17,146 +16,212 @@
     <meta property="og:description" content="Stop building feature factories. Connect scattered user feedback directly to your product strategy and ensure every feature you build delivers real business impact.">
     
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://aistudiocdn.com/react@^19.1.1",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
-    "react/": "https://aistudiocdn.com/react@^19.1.1/",
-    "recharts": "https://aistudiocdn.com/recharts@^3.1.2"
-  }
-}
-</script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/index.js" defer></script>
 </head>
 <body class="bg-black text-gray-200 font-sans">
 
-    <!-- Header -->
-    <header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-20">
-        <a href="index.html" class="flex items-center">
-            <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
-            <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
-        </a>
-        <nav class="hidden md:flex items-center space-x-6 text-sm">
-            <div class="relative dropdown">
-                <a href="features.html" class="text-gray-400 hover:text-white flex items-center">
-                    Features
-                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </a>
-                <div class="dropdown-menu hidden absolute mt-2 w-56 bg-gray-900 rounded-md shadow-lg z-30 border border-gray-800 py-1">
-                    <a href="features-feedback.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Feedback Hub</a>
-                    <a href="features-strategy.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Strategy Suite</a>
-                    <a href="features-upstream.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Upstream Workflow</a>
-                </div>
-            </div>
-            <a href="use-cases.html" class="text-gray-400 hover:text-white">Use Cases</a>
-            <a href="for-who.html" class="text-gray-400 hover:text-white">For Who</a>
-            <a href="pricing.html" class="text-gray-400 hover:text-white">Pricing</a>
-        </nav>
-        <div class="hidden md:block">
-            <a href="https://app.productflow.online" class="text-sm font-medium text-gray-400 hover:text-white mr-4">Sign In</a>
-            <a href="https://app.productflow.online" class="px-4 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Get Started FREE</a>
-        </div>
-        <!-- Hamburger Button -->
-        <div class="md:hidden">
-            <button id="mobile-menu-button" class="text-gray-400 hover:text-white focus:outline-none">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-        </div>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-black/95">
-        <nav class="container mx-auto px-4 pt-2 pb-4 space-y-2 text-center">
-            <a href="features.html" class="block text-gray-300 hover:text-white py-2">Features</a>
-            <a href="use-cases.html" class="block text-gray-300 hover:text-white py-2">Use Cases</a>
-            <a href="for-who.html" class="block text-gray-300 hover:text-white py-2">For Who</a>
-            <a href="pricing.html" class="block text-gray-300 hover:text-white py-2">Pricing</a>
-            <div class="border-t border-gray-800 my-4"></div>
-            <a href="https://app.productflow.online" class="block text-gray-300 hover:text-white py-2">Sign In</a>
-            <a href="https://app.productflow.online" class="inline-block px-6 py-2 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Get Started FREE</a>
-        </nav>
-    </div>
+    <div id="header-placeholder"></div>
     
     <main>
         <!-- Home Page -->
         <div id="page-home">
             <section class="text-center pt-20 pb-24 feature-hero">
                 <div class="container mx-auto px-4">
-                    <h1 class="text-5xl font-extrabold tracking-tight text-white sm:text-6xl">
-                        The Command Center for<br/><span class="text-emerald-400">Outcome-Driven Product Teams</span>
+                    <h1 id="hero-headline" class="text-5xl font-extrabold tracking-tight text-white sm:text-6xl animate-on-scroll min-h-[144px] sm:min-h-[156px]">
+                        The Command Center for<br/><span class="text-emerald-400" data-text="Outcome-Driven Product Teams"></span>
                     </h1>
-                    <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-400">
+                    <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-400 animate-on-scroll" style="transition-delay: 150ms;">
                         Stop building feature factories. Connect scattered user feedback directly to your product strategy and ensure every feature you build delivers real business impact.
                     </p>
-                    <div class="mt-8 flex justify-center gap-x-4">
-                        <a href="https://app.productflow.online" class="px-8 py-3 text-lg rounded-md bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg">
+                     <p class="mt-4 text-sm text-emerald-300 animate-on-scroll" style="transition-delay: 250ms;">Join 500+ teams building better products, faster.</p>
+                    <div class="mt-8 flex justify-center gap-x-4 animate-on-scroll" style="transition-delay: 300ms;">
+                        <a href="https://app.productflow.online" class="px-8 py-4 text-lg font-semibold rounded-md bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg cta-button-prominent">
                             Start Your Free Trial
                         </a>
                     </div>
                 </div>
             </section>
-
-            <section class="py-12">
-                <div class="container mx-auto px-4">
+            
+            <section class="py-12 animate-on-scroll">
+                 <div class="container mx-auto px-4">
                     <p class="text-center text-sm font-semibold text-gray-500 uppercase tracking-wider">TRUSTED BY MODERN PRODUCT TEAMS</p>
-                    <div class="mt-6 flex justify-center items-center space-x-8 md:space-x-12 text-gray-600">
-                        <p class="font-bold text-2xl">InnovateCorp</p>
-                        <p class="font-bold text-2xl">NextGen SaaS</p>
-                        <p class="font-bold text-2xl">QuantumLeap</p>
-                        <p class="font-bold text-2xl">DigitalMovers</p>
+                    <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-8 items-center text-gray-500">
+                        <div class="flex justify-center">
+                           <svg class="h-8 w-auto" viewBox="0 0 125 30" fill="currentColor"><path d="M6.3 29.5C2.4 25.8 0 20.3 0 14.8 0 6.6 3.3 0 10.7 0c3.6 0 6.2 1.6 8.3 4.3l-4.2 3.9c-1-1.6-2.5-2.5-4.1-2.5-2.9 0-5.4 2.4-5.4 5.9s2.5 6 5.4 6c1.6 0 3.1-.9 4.1-2.5l4.2 3.9c-2.1 2.7-4.7 4.3-8.3 4.3-3.1 0-5.6-1.3-7.6-3.4zM26.2 29.1h5.8V0h-5.8v29.1zM42.3 29.5c-6.2 0-10.4-4.5-10.4-10.4V0h5.8v18.8c0 3.6 2.1 6.3 5.4 6.3s5.4-2.7 5.4-6.3V0h5.8v19.1c0 5.9-4.2 10.4-11.2 10.4zM70.3 29.1h5.8V16.3l6.4 12.8h6.4l-9.1-18.2L88.9 0h-6.8l-7.8 14.8V0h-5.8v29.1zM102.3 29.5c-6.2 0-10.4-4.5-10.4-10.4V0h5.8v18.8c0 3.6 2.1 6.3 5.4 6.3s5.4-2.7 5.4-6.3V0h5.8v19.1c0 5.9-4.2 10.4-11.2 10.4z"></path></svg>
+                        </div>
+                        <div class="flex justify-center">
+                            <svg class="h-8 w-auto" viewBox="0 0 120 30" fill="currentColor"><path d="M16.4 29.1h5.8V0h-5.8v29.1zM34.8 29.5c-6.2 0-10.4-4.5-10.4-10.4V0h5.8v18.8c0 3.6 2.1 6.3 5.4 6.3s5.4-2.7 5.4-6.3V0h5.8v19.1c0 5.9-4.2 10.4-11.2 10.4zM55.3 29.1l-6-14.8h-1.6v14.8h-5.8V0h9.3c5.3 0 8.5 2.7 8.5 7.1 0 3.3-1.8 5.6-4.8 6.6l6.8 15.4h-6.4zM51.2 5.6v5.8h2.3c2.3 0 3.8-1.2 3.8-2.9s-1.5-2.9-3.8-2.9h-2.3zM85.3 29.1h5.8V16.3l6.4 12.8h6.4l-9.1-18.2L103.9 0h-6.8l-7.8 14.8V0h-5.8v29.1zM114.7 29.1h5.8V0h-5.8v29.1z"></path></svg>
+                        </div>
+                        <div class="flex justify-center">
+                            <svg class="h-8 w-auto" viewBox="0 0 130 30" fill="currentColor"><path d="M6.3 29.5C2.4 25.8 0 20.3 0 14.8 0 6.6 3.3 0 10.7 0c3.6 0 6.2 1.6 8.3 4.3l-4.2 3.9c-1-1.6-2.5-2.5-4.1-2.5-2.9 0-5.4 2.4-5.4 5.9s2.5 6 5.4 6c1.6 0 3.1-.9 4.1-2.5l4.2 3.9c-2.1 2.7-4.7 4.3-8.3 4.3-3.1 0-5.6-1.3-7.6-3.4zM26.2 29.1h5.8V0h-5.8v29.1zM42.3 29.5c-6.2 0-10.4-4.5-10.4-10.4V0h5.8v18.8c0 3.6 2.1 6.3 5.4 6.3s5.4-2.7 5.4-6.3V0h5.8v19.1c0 5.9-4.2 10.4-11.2 10.4zM70.3 29.1h5.8V16.3l6.4 12.8h6.4l-9.1-18.2L88.9 0h-6.8l-7.8 14.8V0h-5.8v29.1zM102.3 29.5c-6.2 0-10.4-4.5-10.4-10.4V0h5.8v18.8c0 3.6 2.1 6.3 5.4 6.3s5.4-2.7 5.4-6.3V0h5.8v19.1c0 5.9-4.2 10.4-11.2 10.4zM124.7 29.1h5.8V0h-5.8v29.1z"></path></svg>
+                        </div>
+                        <div class="flex justify-center">
+                           <svg class="h-8 w-auto" viewBox="0 0 120 30" fill="currentColor"><path d="M16.4 29.1h5.8V0h-5.8v29.1zM34.8 29.5c-6.2 0-10.4-4.5-10.4-10.4V0h5.8v18.8c0 3.6 2.1 6.3 5.4 6.3s5.4-2.7 5.4-6.3V0h5.8v19.1c0 5.9-4.2 10.4-11.2 10.4zM55.3 29.1l-6-14.8h-1.6v14.8h-5.8V0h9.3c5.3 0 8.5 2.7 8.5 7.1 0 3.3-1.8 5.6-4.8 6.6l6.8 15.4h-6.4zM51.2 5.6v5.8h2.3c2.3 0 3.8-1.2 3.8-2.9s-1.5-2.9-3.8-2.9h-2.3zM85.3 29.1h5.8V16.3l6.4 12.8h6.4l-9.1-18.2L103.9 0h-6.8l-7.8 14.8V0h-5.8v29.1z"></path></svg>
+                        </div>
                     </div>
                 </div>
             </section>
             
             <section class="py-24 bg-gray-900/50">
                 <div class="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center">
-                    <div>
+                    <div class="animate-on-scroll">
                         <h2 class="text-3xl font-bold text-white">What if your strategy was a living part of your daily work?</h2>
                         <p class="mt-4 text-gray-400">Most product strategies live in slide decks, forgotten after the quarterly planning meeting. This disconnect leads to feature factories, where teams are busy but not impactful. We solve this.</p>
                         <p class="mt-4 text-gray-400">productflow.online creates a <strong class="text-emerald-400">traceable, "golden thread"</strong> from high-level company vision down to the individual piece of user feedback that sparked an idea. This ensures every decision is justified, every stakeholder is aligned, and every feature has a purpose.</p>
                     </div>
-                    <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl font-mono text-sm text-gray-300 space-y-1">
-                        <p><span class="text-purple-400">Vision:</span> Democratize Data Analysis</p>
-                        <p>└ <span class="text-blue-400">Pillar:</span> Unmatched Ease of Use</p>
-                        <p>⠀└ <span class="text-cyan-400">Objective:</span> Increase New User Activation</p>
-                        <p>⠀ ⠀└ <span class="text-green-400">Key Result:</span> ↑ 30-day Retention to 40%</p>
-                        <p>⠀ ⠀ ⠀└ <span class="text-yellow-400">Initiative:</span> Redesign Onboarding Flow</p>
-                        <p>⠀ ⠀ ⠀ ⠀└ <span class="text-red-400">Feedback:</span> "I was confused by the initial setup."</p>
+                    <div class="animate-on-scroll" style="transition-delay: 150ms;">
+                        <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated">
+                             <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Traceability View</p>
+                            <div class="font-mono text-sm text-gray-300 space-y-1">
+                                <p>Vision: Break Down Barriers</p>
+                                <p>└ Pillar: Unmatched Accuracy</p>
+                                <p>⠀└ Objective: Market Leadership</p>
+                                <p>⠀ ⠀└ KR: ↑ Market Share to 25%</p>
+                                <p>⠀ ⠀ ⠀└ Initiative: Improve Photo Translator</p>
+                                <p>⠀ ⠀ ⠀ ⠀└ Feedback: "Slow on menus"</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
             
-             <section class="py-24">
+            <section class="py-24">
                 <div class="container mx-auto px-4 text-center">
-                    <h2 class="text-3xl font-bold text-white mb-12">An End-to-End Product Management Workflow</h2>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="feature-card text-left">
-                             <h3 class="text-xl font-semibold mb-2 text-white">1. Centralize & Analyze Feedback</h3>
-                             <p class="text-gray-400 text-sm">Aggregate insights from any source. Let AI find the signal in the noise by clustering feedback, analyzing sentiment, and generating clear problem statements.</p>
+                    <h2 class="text-3xl font-bold text-white mb-4 animate-on-scroll">Achieve True Product Excellence</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll" style="transition-delay: 150ms;">Our integrated modules provide a complete workflow for modern product teams.</p>
+                    
+                    <div class="tabs-container max-w-4xl mx-auto animate-on-scroll" style="transition-delay: 300ms;">
+                        <div class="tab-buttons flex justify-center space-x-2 md:space-x-4 mb-8" role="tablist">
+                            <button class="tab-button active" data-tab="tab-eliminate" role="tab" aria-selected="true">Eliminate Guesswork</button>
+                            <button class="tab-button" data-tab="tab-align" role="tab" aria-selected="false">Align Your Teams</button>
+                            <button class="tab-button" data-tab="tab-ship" role="tab" aria-selected="false">Ship with Confidence</button>
                         </div>
-                        <div class="feature-card text-left">
-                             <h3 class="text-xl font-semibold mb-2 text-white">2. Validate & Prioritize Opportunities</h3>
-                             <p class="text-gray-400 text-sm">Move validated problems into a structured discovery workflow. De-risk ideas, define success metrics, and prioritize what to build next using data, not just intuition.</p>
-                        </div>
-                        <div class="feature-card text-left">
-                             <h3 class="text-xl font-semibold mb-2 text-white">3. Align & Execute Strategy</h3>
-                             <p class="text-gray-400 text-sm">Connect initiatives to measurable OKRs and strategic pillars. Give your entire organization visibility into why you're building what you're building.</p>
+                        <div class="tab-content text-left">
+                            <div id="tab-eliminate" class="tab-pane active" role="tabpanel">
+                                <div class="grid md:grid-cols-2 gap-8 items-center">
+                                    <div class="space-y-4">
+                                        <h3 class="text-2xl font-bold text-emerald-400">Make Data-Driven Decisions</h3>
+                                        <p class="text-gray-300">Centralize all user feedback, from Intercom to App Store reviews. Use AI to surface the most critical insights, see which problems affect the most users, and link feedback directly to your product initiatives. Stop relying on gut feelings.</p>
+                                    </div>
+                                    <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl">
+                                        <p class="font-mono text-xs text-emerald-400 mb-2">&gt; AI Summary of Feedback Cluster #14</p>
+                                        <div class="font-mono text-sm text-gray-300 space-y-1">
+                                            <p>Problem: Users find the mobile export process confusing and slow.</p>
+                                            <p>Sentiment: Negative (-0.8)</p>
+                                            <p>Key Quote: "It took me five taps to export a simple report, I almost gave up."</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-align" class="tab-pane" role="tabpanel">
+                                 <div class="grid md:grid-cols-2 gap-8 items-center">
+                                    <div class="space-y-4">
+                                        <h3 class="text-2xl font-bold text-emerald-400">Create a Single Source of Truth</h3>
+                                        <p class="text-gray-300">Connect your company's vision and OKRs to the daily work of your product team. Our Strategy Suite makes your goals visible and actionable, ensuring everyone from engineering to marketing is pushing in the same direction.</p>
+                                    </div>
+                                    <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl">
+                                        <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Initiative: Improve Photo Translator</p>
+                                        <div class="font-mono text-sm text-gray-300 space-y-1">
+                                            <p>Objective: Market Leadership</p>
+                                            <p>KR: ↑ Market Share to 25%</p>
+                                            <p>Status: In Progress</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tab-ship" class="tab-pane" role="tabpanel">
+                                 <div class="grid md:grid-cols-2 gap-8 items-center">
+                                    <div class="space-y-4">
+                                        <h3 class="text-2xl font-bold text-emerald-400">Build Bulletproof Roadmaps</h3>
+                                        <p class="text-gray-300">Use our Upstream Workflow to systematically de-risk ideas before they hit the roadmap. Build strong business cases with supporting evidence, define success metrics, and enter your planning cycles with a prioritized list of validated opportunities.</p>
+                                    </div>
+                                    <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl">
+                                         <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Opportunity Status</p>
+                                        <div class="font-mono text-sm text-gray-300 space-y-1">
+                                            <p>Problem Validated: Yes</p>
+                                            <p>Risks Assessed: Yes</p>
+                                            <p>Success Metrics: Defined</p>
+                                            <p>Status: Ready for Roadmap</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <a href="features.html" class="mt-12 inline-block text-emerald-500 font-semibold hover:text-emerald-400">Explore all features &rarr;</a>
+                </div>
+            </section>
+            
+
+             <section class="py-24 bg-gray-900/50">
+                <div class="container mx-auto px-4 max-w-4xl animate-on-scroll">
+                    <div class="carousel-container relative">
+                        <div class="carousel-slides">
+                            <div class="carousel-slide active">
+                                <figure>
+                                    <blockquote class="text-center text-xl italic text-white leading-loose">
+                                        <p>"productflow.online transformed our process. We now make decisions with clarity and confidence, backed by data. It's our single source of truth for what to build next and why."</p>
+                                    </blockquote>
+                                    <figcaption class="mt-6 text-center">
+                                        <img class="w-12 h-12 rounded-full mx-auto" src="https://i.pravatar.cc/150?u=alice" alt="Photo of Alicja Nowak">
+                                        <div class="font-semibold mt-2">Alicja Nowak</div>
+                                        <div class="text-gray-400 text-sm">Head of Product, InnovateCorp</div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="carousel-slide">
+                                <figure>
+                                    <blockquote class="text-center text-xl italic text-white leading-loose">
+                                        <p>"The ability to trace a feature from a customer comment all the way to a company OKR is a game-changer. It has completely aligned our engineering and product teams."</p>
+                                    </blockquote>
+                                    <figcaption class="mt-6 text-center">
+                                        <img class="w-12 h-12 rounded-full mx-auto" src="https://i.pravatar.cc/150?u=ben" alt="Photo of Ben Carter">
+                                        <div class="font-semibold mt-2">Ben Carter</div>
+                                        <div class="text-gray-400 text-sm">Lead Product Manager, DataStream</div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+                         <button class="carousel-nav carousel-prev" aria-label="Previous testimonial">&#8249;</button>
+                        <button class="carousel-nav carousel-next" aria-label="Next testimonial">&#8250;</button>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="py-24">
+                <div class="container mx-auto px-4 text-center">
+                    <h2 class="text-3xl font-bold text-white mb-4 animate-on-scroll">Built on a Modern Methodology</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll" style="transition-delay: 150ms;">We're inspired by the best minds in product. Our workflows are designed around proven frameworks to help you achieve continuous discovery and delivery.</p>
+                    <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto text-left">
+                        <div class="methodology-card animate-on-scroll">
+                            <img class="w-16 h-16 rounded-full grayscale mb-4" src="https://i.imgur.com/vHsoB72.jpg" alt="Teresa Torres">
+                            <h4 class="font-bold text-white">Teresa Torres</h4>
+                            <p class="text-sm text-gray-400 mb-3">Continuous Discovery</p>
+                            <p class="text-sm text-gray-300 border-l-2 border-emerald-500 pl-3">"We need to move from a world where we are delivering features to a world where we are delivering outcomes."</p>
+                        </div>
+                         <div class="methodology-card animate-on-scroll" style="transition-delay: 200ms;">
+                            <img class="w-16 h-16 rounded-full grayscale mb-4" src="https://i.imgur.com/3o1t3aG.jpg" alt="Marty Cagan">
+                            <h4 class="font-bold text-white">Marty Cagan</h4>
+                            <p class="text-sm text-gray-400 mb-3">Empowered Teams</p>
+                             <p class="text-sm text-gray-300 border-l-2 border-emerald-500 pl-3">"The product manager's job is to discover a product that is valuable, usable, and feasible."</p>
+                        </div>
+                         <div class="methodology-card animate-on-scroll" style="transition-delay: 400ms;">
+                            <img class="w-16 h-16 rounded-full grayscale mb-4" src="https://i.imgur.com/uR1G0Gm.jpg" alt="John Cutler">
+                            <h4 class="font-bold text-white">John Cutler</h4>
+                             <p class="text-sm text-gray-400 mb-3">The North Star Framework</p>
+                             <p class="text-sm text-gray-300 border-l-2 border-emerald-500 pl-3">"Focus on the 'why' and the 'who' before jumping into the 'what' and 'how'."</p>
+                        </div>
+                    </div>
+                     <a href="/methodology.html" class="mt-12 inline-block text-emerald-500 font-semibold hover:text-emerald-400 animate-on-scroll">Learn about our methodology &rarr;</a>
                 </div>
             </section>
             
             <section class="py-24 bg-gray-900/50">
-                <div class="container mx-auto px-4 text-center max-w-4xl">
-                    <h2 class="text-3xl font-bold text-white">Stop Building the Wrong Thing</h2>
+                <div class="container mx-auto px-4 text-center max-w-4xl animate-on-scroll">
+                    <h2 class="text-4xl font-bold text-white">Stop Building the Wrong Thing.</h2>
                     <p class="mt-4 text-lg text-gray-400">Give your team the clarity and confidence to build products that customers love and that drive the business forward.</p>
                     <div class="mt-8">
-                         <a href="https://app.productflow.online" class="px-8 py-3 text-lg rounded-md bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg">
+                         <a href="https://app.productflow.online" class="px-8 py-4 text-lg font-semibold rounded-md bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg cta-button-prominent">
                             Get Started for Free
                         </a>
                     </div>
@@ -165,45 +230,7 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900/50 border-t border-gray-800">
-      <div class="container mx-auto px-4 py-12">
-        <div class="grid md:grid-cols-4 gap-8 text-sm">
-            <div>
-                <h4 class="font-semibold text-white mb-3">Product</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <li><a href="features.html" class="hover:text-white">Features</a></li>
-                    <li><a href="use-cases.html" class="hover:text-white">Use Cases</a></li>
-                    <li><a href="for-who.html" class="hover:text-white">For Who</a></li>
-                    <li><a href="pricing.html" class="hover:text-white">Pricing</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-semibold text-white mb-3">Company</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <li><a href="about.html" class="hover:text-white">About Us</a></li>
-                    <li><a href="contact.html" class="hover:text-white">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                 <h4 class="font-semibold text-white mb-3">Legal</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
-                    <li><a href="terms.html" class="hover:text-white">Terms of Service</a></li>
-                </ul>
-            </div>
-             <div class="text-center md:text-right">
-                 <h2 class="text-lg font-bold text-white">Ready to build what matters?</h2>
-                 <p class="text-gray-400 mt-2">Start your free trial today. No credit card required.</p>
-                 <a href="https://app.productflow.online" class="mt-4 px-5 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg">
-                    Get Started FREE
-                </a>
-            </div>
-        </div>
-        <div class="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
-            <p>&copy; 2024 productflow.online. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+    <div id="footer-placeholder"></div>
+
 </body>
 </html>

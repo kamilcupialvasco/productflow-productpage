@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,141 +16,67 @@
     <meta property="og:description" content="From prioritizing your roadmap to aligning stakeholders, discover how productflow.online helps you solve your toughest product management challenges.">
     
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/index.js" defer></script>
 </head>
 <body class="bg-black text-gray-200 font-sans">
 
-    <!-- Header -->
-    <header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-20">
-        <a href="index.html" class="flex items-center">
-            <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
-            <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
-        </a>
-        <nav class="hidden md:flex items-center space-x-6 text-sm">
-            <div class="relative dropdown">
-                <a href="features.html" class="text-gray-400 hover:text-white flex items-center">
-                    Features
-                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </a>
-                <div class="dropdown-menu hidden absolute mt-2 w-56 bg-gray-900 rounded-md shadow-lg z-30 border border-gray-800 py-1">
-                    <a href="features-feedback.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Feedback Hub</a>
-                    <a href="features-strategy.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Strategy Suite</a>
-                    <a href="features-upstream.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Upstream Workflow</a>
-                </div>
-            </div>
-            <a href="use-cases.html" class="text-white font-semibold">Use Cases</a>
-            <a href="for-who.html" class="text-gray-400 hover:text-white">For Who</a>
-            <a href="pricing.html" class="text-gray-400 hover:text-white">Pricing</a>
-        </nav>
-        <div class="hidden md:block">
-            <a href="https://app.productflow.online" class="text-sm font-medium text-gray-400 hover:text-white mr-4">Sign In</a>
-            <a href="https://app.productflow.online" class="px-4 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Get Started FREE</a>
-        </div>
-        <!-- Hamburger Button -->
-        <div class="md:hidden">
-            <button id="mobile-menu-button" class="text-gray-400 hover:text-white focus:outline-none">
-                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-        </div>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-black/95">
-        <nav class="container mx-auto px-4 pt-2 pb-4 space-y-2 text-center">
-            <a href="features.html" class="block text-gray-300 hover:text-white py-2">Features</a>
-            <a href="use-cases.html" class="block text-white font-semibold py-2">Use Cases</a>
-            <a href="for-who.html" class="block text-gray-300 hover:text-white py-2">For Who</a>
-            <a href="pricing.html" class="block text-gray-300 hover:text-white py-2">Pricing</a>
-            <div class="border-t border-gray-800 my-4"></div>
-            <a href="https://app.productflow.online" class="block text-gray-300 hover:text-white py-2">Sign In</a>
-            <a href="https://app.productflow.online" class="inline-block px-6 py-2 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Get Started FREE</a>
-        </nav>
-    </div>
+    <div id="header-placeholder"></div>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-16">
         <section class="text-center feature-hero pt-16 pb-24">
-            <h1 class="text-5xl font-extrabold tracking-tight text-white">Solve Your Toughest Product Challenges.</h1>
-            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400">
+            <h1 class="text-5xl font-extrabold tracking-tight text-white animate-on-scroll">Solve Your Toughest Product Challenges.</h1>
+            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400 animate-on-scroll" style="transition-delay: 150ms;">
                 From prioritizing the next big feature to aligning your roadmap with company goals, see how productflow.online helps you solve real-world problems.
             </p>
         </section>
 
         <section id="use-cases" class="py-20">
-            <div class="container mx-auto px-4 text-center">
+            <div class="container mx-auto px-4">
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
-                    <div class="p-6 bg-gray-900 rounded-lg border border-gray-800">
+                    
+                    <a href="/use-cases/roadmap-prioritization.html" class="feature-card animate-on-scroll hover:border-emerald-400 block">
                         <h4 class="text-xl font-bold text-emerald-400 mb-2">Prioritize Your Roadmap</h4>
                         <p class="text-gray-400 text-sm">Connect user feedback directly to feature ideas. Use impact and frequency data to make confident, data-driven decisions about what to build next, eliminating guesswork.</p>
-                    </div>
-                    <div class="p-6 bg-gray-900 rounded-lg border border-gray-800">
+                        <span class="text-sm font-semibold text-emerald-500 mt-4 inline-block">Learn more &rarr;</span>
+                    </a>
+                    
+                    <a href="#" class="feature-card animate-on-scroll hover:border-emerald-400 block" style="transition-delay: 150ms;">
                         <h4 class="text-xl font-bold text-emerald-400 mb-2">Justify Product Decisions</h4>
                         <p class="text-gray-400 text-sm">Build a bulletproof business case for new initiatives. With the "Golden Thread," you can trace any feature back to the strategic pillar it supports and the user problem it solves.</p>
-                    </div>
-                    <div class="p-6 bg-gray-900 rounded-lg border border-gray-800">
+                        <span class="text-sm font-semibold text-gray-600 mt-4 inline-block">Coming soon</span>
+                    </a>
+
+                    <a href="#" class="feature-card animate-on-scroll hover:border-emerald-400 block" style="transition-delay: 300ms;">
                         <h4 class="text-xl font-bold text-emerald-400 mb-2">Align Stakeholders</h4>
                         <p class="text-gray-400 text-sm">Create a single source of truth that engineering, marketing, and leadership can all rally behind. Share visual roadmaps and progress on OKRs to keep everyone on the same page.</p>
-                    </div>
-                     <div class="p-6 bg-gray-900 rounded-lg border border-gray-800">
+                        <span class="text-sm font-semibold text-gray-600 mt-4 inline-block">Coming soon</span>
+                    </a>
+
+                     <a href="#" class="feature-card animate-on-scroll hover:border-emerald-400 block">
                         <h4 class="text-xl font-bold text-emerald-400 mb-2">Standardize Discovery</h4>
                         <p class="text-gray-400 text-sm">Bring order to the chaos of product discovery. Our upstream Kanban workflow provides a repeatable process for validating ideas and ensuring due diligence is done before a single line of code is written.</p>
-                    </div>
-                     <div class="p-6 bg-gray-900 rounded-lg border border-gray-800">
+                        <span class="text-sm font-semibold text-gray-600 mt-4 inline-block">Coming soon</span>
+                    </a>
+
+                     <a href="#" class="feature-card animate-on-scroll hover:border-emerald-400 block" style="transition-delay: 150ms;">
                         <h4 class="text-xl font-bold text-emerald-400 mb-2">Understand User Segments</h4>
                         <p class="text-gray-400 text-sm">Go beyond surface-level feedback. Analyze trends by user segment—'New User', 'Power User', 'Enterprise'—to understand how different groups experience your product.</p>
-                    </div>
-                     <div class="p-6 bg-gray-900 rounded-lg border border-gray-800">
+                        <span class="text-sm font-semibold text-gray-600 mt-4 inline-block">Coming soon</span>
+                    </a>
+
+                     <a href="#" class="feature-card animate-on-scroll hover:border-emerald-400 block" style="transition-delay: 300ms;">
                         <h4 class="text-xl font-bold text-emerald-400 mb-2">Close the Feedback Loop</h4>
                         <p class="text-gray-400 text-sm">Track a user's suggestion from the initial idea all the way to release. Know exactly which pieces of feedback were addressed by a new feature launch and measure the impact.</p>
-                    </div>
+                        <span class="text-sm font-semibold text-gray-600 mt-4 inline-block">Coming soon</span>
+                    </a>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900/50 border-t border-gray-800">
-      <div class="container mx-auto px-4 py-12">
-        <div class="grid md:grid-cols-4 gap-8 text-sm">
-            <div>
-                <h4 class="font-semibold text-white mb-3">Product</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <li><a href="features.html" class="hover:text-white">Features</a></li>
-                    <li><a href="use-cases.html" class="hover:text-white">Use Cases</a></li>
-                    <li><a href="for-who.html" class="hover:text-white">For Who</a></li>
-                    <li><a href="pricing.html" class="hover:text-white">Pricing</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-semibold text-white mb-3">Company</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <li><a href="about.html" class="hover:text-white">About Us</a></li>
-                    <li><a href="contact.html" class="hover:text-white">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                 <h4 class="font-semibold text-white mb-3">Legal</h4>
-                <ul class="space-y-2 text-gray-400">
-                    <li><a href="privacy.html" class="hover:text-white">Privacy Policy</a></li>
-                    <li><a href="terms.html" class="hover:text-white">Terms of Service</a></li>
-                </ul>
-            </div>
-             <div class="text-center md:text-right">
-                 <h2 class="text-lg font-bold text-white">Ready to build what matters?</h2>
-                 <p class="text-gray-400 mt-2">Start your free trial today. No credit card required.</p>
-                 <a href="https://app.productflow.online" class="mt-4 px-5 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg">
-                    Get Started FREE
-                </a>
-            </div>
-        </div>
-        <div class="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
-            <p>&copy; 2024 productflow.online. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,81 +16,140 @@
     <meta property="og:description" content="Visualize the 'Golden Thread' from company vision to user stories with the productflow.online Strategy Suite.">
     
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/index.js" defer></script>
 </head>
 <body class="bg-black text-gray-200 font-sans">
 
-    <!-- Header -->
-    <header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-20">
-        <a href="index.html" class="flex items-center">
-            <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
-            <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
-        </a>
-        <nav class="hidden md:flex items-center space-x-6 text-sm">
-            <div class="relative dropdown">
-                <a href="features.html" class="text-white font-semibold flex items-center">
-                    Features
-                    <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </a>
-                <div class="dropdown-menu hidden absolute mt-2 w-56 bg-gray-900 rounded-md shadow-lg z-30 border border-gray-800 py-1">
-                    <a href="features-strategy.html" class="block px-4 py-2 text-sm text-emerald-400 bg-gray-800 font-semibold">Strategy Suite</a>
-                    <a href="features-feedback.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Feedback Hub</a>
-                    <a href="features-upstream.html" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800">Upstream Workflow</a>
-                </div>
-            </div>
-            <a href="use-cases.html" class="text-gray-400 hover:text-white">Use Cases</a>
-            <a href="for-who.html" class="text-gray-400 hover:text-white">For Who</a>
-            <a href="pricing.html" class="text-gray-400 hover:text-white">Pricing</a>
-        </nav>
-        <div>
-             <a href="https://app.productflow.online" class="px-4 py-2 text-sm rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">Access your Hub</a>
-        </div>
-    </header>
+    <div id="header-placeholder"></div>
     
     <!-- Main Content -->
      <main class="container mx-auto px-4 py-16">
         <section class="text-center feature-hero pt-16 pb-24">
-            <h1 class="text-5xl font-extrabold tracking-tight text-white">Connect Strategy to Execution.</h1>
-            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400">
+            <h1 class="text-5xl font-extrabold tracking-tight text-white animate-on-scroll">Connect Strategy to Execution.</h1>
+            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400 animate-on-scroll" style="transition-delay: 150ms;">
                 Stop building feature factories. With the Strategy Suite, you can visualize the "Golden Thread" from high-level company vision down to a single user story, ensuring every piece of work drives a meaningful outcome.
             </p>
         </section>
 
-        <section class="py-20">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <h2 class="text-3xl font-bold text-white">Your Single Source of Truth</h2>
-                    <p class="text-gray-400">
-                        Define your company vision, product mission, and strategic pillars. Then, link them to measurable OKRs that your team can rally behind. productflow.online makes your strategy a living, breathing part of your daily workflow, not a slide deck that gathers dust.
-                    </p>
-                    <ul class="space-y-3 text-gray-300">
-                        <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Define Your North Star:</strong> Set clear Vision, Mission, and Strategic Pillars.</span></li>
-                        <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Track What Matters:</strong> Create and monitor Objectives and Key Results (OKRs).</span></li>
-                        <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Visualize Alignment:</strong> Use the Opportunity Solution Tree to map solutions to user problems and business goals.</span></li>
-                    </ul>
+        <section class="py-20 max-w-4xl mx-auto">
+             <div class="animate-on-scroll text-center">
+                <h2 class="text-3xl font-bold text-white">Is Your Strategy Collecting Dust?</h2>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">For most companies, strategy is a deck of slides presented once a quarter. It's disconnected from the tools where work actually happens. This leads to misaligned teams, wasted effort, and a roadmap that doesn't reflect the company's most important goals.</p>
+            </div>
+        </section>
+
+         <section class="py-20">
+            <div class="tabs-container animate-on-scroll max-w-5xl mx-auto">
+                <div class="tab-buttons flex flex-wrap justify-center gap-2 md:gap-4 mb-8" role="tablist">
+                    <button class="tab-button active" data-tab="tab-vision" role="tab" aria-selected="true">Vision & OKRs</button>
+                    <button class="tab-button" data-tab="tab-tree" role="tab" aria-selected="false">Opportunity Trees</button>
+                    <button class="tab-button" data-tab="tab-roadmap" role="tab" aria-selected="false">Dynamic Roadmaps</button>
                 </div>
-                <div class="feature-card">
-                    <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Traceability View</p>
-                    <div class="font-mono text-sm text-gray-300 space-y-1 bg-gray-900 p-4 rounded-md">
-                        <p>Vision: Break Down Barriers</p>
-                        <p>└ Pillar: Unmatched Accuracy</p>
-                        <p>⠀└ Objective: Market Leadership</p>
-                        <p>⠀ ⠀└ KR: ↑ Market Share to 25%</p>
-                        <p>⠀ ⠀ ⠀└ Initiative: Improve Photo Translator</p>
+                <div class="tab-content">
+                    <div id="tab-vision" class="tab-pane active" role="tabpanel">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-4">
+                                <h3 class="text-2xl font-bold text-emerald-400">Your Single Source of Truth</h3>
+                                <p class="text-gray-300">Define your company vision, product mission, and strategic pillars. Then, link them to measurable Objectives and Key Results (OKRs) that your team can rally behind. productflow.online makes your strategy a living part of your daily workflow.</p>
+                                <ul class="text-sm space-y-2 text-gray-300">
+                                    <li>✓ Set a clear North Star for the entire company.</li>
+                                    <li>✓ Track progress against measurable business outcomes.</li>
+                                    <li>✓ Ensure every initiative is aligned with a strategic goal.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated">
+                                <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Traceability View</p>
+                                <div class="font-mono text-sm text-gray-300 space-y-1">
+                                    <p>Vision: Break Down Barriers</p>
+                                    <p>└ Pillar: Unmatched Accuracy</p>
+                                    <p>⠀└ Objective: Market Leadership</p>
+                                    <p>⠀ ⠀└ KR: ↑ Market Share to 25%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-tree" class="tab-pane" role="tabpanel">
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-4">
+                                <h3 class="text-2xl font-bold text-emerald-400">Map Problems to Solutions</h3>
+                                <p class="text-gray-300">Based on Teresa Torres's framework, our Opportunity Solution Tree helps you visually connect user problems to potential solutions and track your experiments. It's the ultimate tool for ensuring your discovery work is focused and outcome-oriented.</p>
+                                <ul class="text-sm space-y-2 text-gray-300">
+                                    <li>✓ Deconstruct big opportunities into smaller, testable ideas.</li>
+                                    <li>✓ Visualize the path from desired outcome to potential solution.</li>
+                                    <li>✓ Keep discovery focused on solving real user needs.</li>
+                                </ul>
+                            </div>
+                           <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl">
+                                <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Opportunity Solution Tree</p>
+                                <div class="font-mono text-sm text-gray-300 space-y-1">
+                                    <p>Outcome: ↑ User Retention by 15%</p>
+                                    <p>└ Opportunity: Users struggle with initial setup</p>
+                                    <p>⠀└ Solution: Build an onboarding wizard (Experiment)</p>
+                                    <p>⠀└ Solution: Create video tutorials (Experiment)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-roadmap" class="tab-pane" role="tabpanel">
+                         <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div class="space-y-4">
+                                <h3 class="text-2xl font-bold text-emerald-400">Communicate Your Plan with Clarity</h3>
+                                <p class="text-gray-300">Create and share dynamic roadmaps that stakeholders actually understand. Group initiatives by strategic theme, display progress on OKRs, and easily communicate the "why" behind your plan. Move beyond static, date-based roadmaps.</p>
+                                 <ul class="text-sm space-y-2 text-gray-300">
+                                    <li>✓ Create roadmaps based on themes, not just timelines.</li>
+                                    <li>✓ Share tailored views for different audiences (e.g., leadership, sales).</li>
+                                    <li>✓ Automatically update progress as work gets done.</li>
+                                </ul>
+                            </div>
+                             <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl">
+                                <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Roadmap: Q4 Themes</p>
+                                <div class="font-mono text-sm text-gray-300 space-y-1">
+                                    <p>Theme: Improve User Retention</p>
+                                    <p>└ Initiative: Onboarding Wizard (80% done)</p>
+                                    <p>└ Initiative: In-app Help Center (20% done)</p>
+                                    <p>Theme: Enterprise Readiness</p>
+                                    <p>└ Initiative: SSO Integration (100% done)</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <section class="py-20 bg-gray-900/50 rounded-lg animate-on-scroll">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl font-bold text-center text-white mb-10">Who Is This For?</h2>
+                <div class="grid md:grid-cols-2 gap-8 text-center">
+                    <div>
+                        <h4 class="text-xl font-semibold text-emerald-400">Product Managers</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Justify your roadmap with a clear line of sight from your initiatives to company OKRs. Stop defending your decisions and start aligning your stakeholders.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-emerald-400">Heads of Product & Leadership</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Get a real-time, portfolio-level view of strategic alignment. See how product investments are tracking against key results and ensure your teams are focused on what matters most.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 animate-on-scroll">
+             <div class="max-w-3xl mx-auto">
+                 <figure class="border-l-4 border-emerald-500 pl-6">
+                    <blockquote class="text-lg italic text-white">
+                        <p>"The Strategy Suite is our single source of truth. For the first time, our board, our product teams, and our go-to-market teams are all speaking the same language. The ability to drill down from a company objective to a specific feature is incredible."</p>
+                    </blockquote>
+                    <figcaption class="mt-4">
+                        <div class="font-semibold">Alicja Nowak</div>
+                        <div class="text-gray-400 text-sm">Head of Product, InnovateCorp</div>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
     </main>
 
-
-    <!-- Footer -->
-    <footer class="bg-gray-900/50 border-t border-gray-800">
-      <div class="container mx-auto px-4 py-12 text-center text-sm text-gray-500">
-        <p>&copy; 2024 productflow.online. All rights reserved.</p>
-      </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
 </body>
 </html>
