@@ -1,4 +1,3 @@
-
 // =================================================================================
 // productflow.online - Main JavaScript File
 //
@@ -10,6 +9,7 @@
 // - Nav: Handles navigation, including mobile menu and the new click-driven mega menu.
 // - Animations: Manages all visual effects, like scroll-triggered animations.
 // - UI: Initializes interactive components like tabs, carousels, and forms.
+// - Blog: Handles enhancements for blog post pages.
 // - Analytics: Provides a lightweight event tracking system.
 //
 // Execution starts at the bottom with the DOMContentLoaded event listener.
@@ -37,10 +37,10 @@ const Nav = {
     },
 
     initClickMegaMenu() {
-        console.log("Nav.initClickMegaMenu() called.");
+        console.log("Nav.initClickMegaMenu() initializing...");
         const containers = document.querySelectorAll('.mega-menu-container');
         if (containers.length === 0) {
-            console.log("No mega menu containers found.");
+            console.warn("No mega menu containers found.");
             return;
         }
         console.log(`${containers.length} mega menu containers found.`);
@@ -56,27 +56,20 @@ const Nav = {
                 // Close all other menus
                 containers.forEach(c => c.classList.remove('is-open'));
                 
-                // If it wasn't open, open it
                 if (!wasOpen) {
                     container.classList.add('is-open');
                     console.log("Mega menu opened.");
                 } else {
-                    console.log("Mega menu closed by clicking trigger.");
+                     console.log("Mega menu closed by trigger click.");
                 }
             });
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (event) => {
-            containers.forEach(container => {
-                if (!container.contains(event.target)) {
-                    container.classList.remove('is-open');
-                }
-            });
+        document.addEventListener('click', () => {
+            containers.forEach(container => container.classList.remove('is-open'));
         });
         
-        // Handle details panel interactivity
-        containers.forEach((container, index) => {
+        containers.forEach((container) => {
             const links = container.querySelectorAll('.mega-menu-nav-link');
             const detailsColumn = container.querySelector('.mega-menu-details-column .details-content');
             
@@ -88,7 +81,8 @@ const Nav = {
                 const originalState = {
                     title: titleEl.innerHTML,
                     description: descEl.innerHTML,
-                    href: linkEl.href
+                    href: linkEl.href,
+                    gaEvent: linkEl.dataset.gaEvent
                 };
 
                 links.forEach(link => {
@@ -100,6 +94,10 @@ const Nav = {
                             titleEl.textContent = title;
                             descEl.textContent = description;
                             linkEl.href = link.href;
+                            // Update GA event for the main link
+                            const baseEvent = linkEl.dataset.gaEvent.split('_')[0];
+                            const newEvent = link.dataset.gaEvent.replace('Nav:Click:', '');
+                            linkEl.dataset.gaEvent = `${baseEvent}_${newEvent}`;
                             detailsColumn.classList.remove('fade-out-details');
                         }, 150);
                     });
@@ -112,6 +110,7 @@ const Nav = {
                         titleEl.innerHTML = originalState.title;
                         descEl.innerHTML = originalState.description;
                         linkEl.href = originalState.href;
+                        linkEl.dataset.gaEvent = originalState.gaEvent;
                         detailsColumn.classList.remove('fade-out-details');
                     }, 150);
                 });
@@ -163,8 +162,7 @@ const Animations = {
         
         const scramble = (element, newText) => {
             let iteration = 0;
-            const originalText = element.innerText;
-            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+";
+            const letters = "!<>-_\\/[]{}—=+*^?#________";
 
             const interval = setInterval(() => {
                 element.innerText = newText
@@ -190,7 +188,7 @@ const Animations = {
             counter = (counter + 1) % phrases.length;
         };
         
-        nextPhrase();
+        setTimeout(nextPhrase, 100);
         setInterval(nextPhrase, 4000);
     },
 
@@ -223,19 +221,18 @@ const Animations = {
                 if (entry.isIntersecting) {
                     const el = entry.target;
                     const target = +el.dataset.animateCounter;
-                    let current = 0;
-                    const increment = target / 100;
+                    const duration = 1500;
+                    let start = null;
 
-                    const updateCounter = () => {
-                        current += increment;
-                        if (current < target) {
-                            el.textContent = Math.ceil(current);
-                            requestAnimationFrame(updateCounter);
-                        } else {
-                            el.textContent = target;
+                    const step = (timestamp) => {
+                        if (!start) start = timestamp;
+                        const progress = Math.min((timestamp - start) / duration, 1);
+                        el.textContent = Math.floor(progress * target);
+                        if (progress < 1) {
+                            requestAnimationFrame(step);
                         }
                     };
-                    updateCounter();
+                    requestAnimationFrame(step);
                     observer.unobserve(el);
                 }
             });
@@ -258,10 +255,12 @@ const UI = {
         this.initDeepLinking();
         this.initPresentationControls();
         this.initInteractiveTour();
+        this.initStickySubNav();
+        this.initKnowledgeHubFilters();
     },
     
     initTabs() {
-        document.querySelectorAll('.tabs-container').forEach(container => {
+        document.querySelectorAll('.tabs-container, #for-who-tabs, #built-for-you-tabs, #roadmap-tabs').forEach(container => {
             const buttons = container.querySelectorAll('.tab-button');
             const panes = container.querySelectorAll('.tab-pane');
             if (!buttons.length || !panes.length) return;
@@ -348,11 +347,6 @@ const UI = {
                     const itemCategories = item.dataset.usecaseCategory.split(' ');
                     const shouldShow = (filter === 'all' || itemCategories.includes(filter));
                     item.style.display = shouldShow ? '' : 'none';
-                    if(shouldShow) {
-                        item.classList.add('is-visible', 'animate-up');
-                    } else {
-                         item.classList.remove('is-visible', 'animate-up');
-                    }
                 });
             });
         });
@@ -405,38 +399,49 @@ const UI = {
     },
 
     initDeepLinking() {
-        const hash = window.location.hash;
-        if (!hash) return;
-    
-        const targetElement = document.querySelector(hash);
-        if (!targetElement) return;
-    
-        const parentTabContainer = targetElement.closest('.tab-content');
-        if (!parentTabContainer) return;
+        const handleHashChange = () => {
+            const hash = window.location.hash;
+            if (!hash) return;
+        
+            const targetElement = document.querySelector(hash);
+            if (!targetElement) return;
+        
+            const tabPane = targetElement.closest('.tab-pane');
+            if (!tabPane) { // Not inside a tab, just scroll
+                 setTimeout(() => {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+                return;
+            }
+        
+            const container = tabPane.closest('.tab-content').parentElement;
+            if(!container) return;
 
-        const parentTabs = parentTabContainer.closest('section');
-        if (!parentTabs) return;
-    
-        const tabPane = targetElement.closest('.tab-pane');
-        if (!tabPane) return;
-    
-        const tabId = tabPane.id;
-        const correspondingButton = parentTabs.querySelector(`.tab-button[data-tab="${tabId}"]`);
-    
-        if (correspondingButton) {
-            // Deactivate all buttons and panes in this group
-            parentTabs.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            parentTabContainer.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
-    
-            // Activate the correct ones
-            correspondingButton.classList.add('active');
-            tabPane.classList.add('active');
-    
-            // Scroll to the element
-            setTimeout(() => {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        }
+            const tabId = tabPane.id;
+            const correspondingButton = container.querySelector(`.tab-button[data-tab="${tabId}"]`);
+        
+            if (correspondingButton) {
+                // Deactivate all buttons and panes in this group
+                container.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
+                container.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        
+                // Activate the correct ones
+                correspondingButton.classList.add('active');
+                correspondingButton.setAttribute('aria-selected', 'true');
+                tabPane.classList.add('active');
+        
+                // Scroll to the element
+                setTimeout(() => {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        };
+
+        window.addEventListener('hashchange', handleHashChange);
+        handleHashChange(); // Run on initial load
     },
 
     initPresentationControls() {
@@ -485,6 +490,103 @@ const UI = {
         });
 
         updateTourState(); // Initialize first step
+    },
+
+    initStickySubNav() {
+        const nav = document.querySelector('.quick-links-nav');
+        const sentinel = document.getElementById('sticky-nav-sentinel');
+        if (!nav || !sentinel) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                nav.classList.toggle('is-sticky', !entry.isIntersecting);
+            },
+            { rootMargin: '-89px 0px 0px 0px' } // 88px header height + 1px
+        );
+
+        observer.observe(sentinel);
+    },
+
+    initKnowledgeHubFilters() {
+        const container = document.getElementById('knowledge-hub-filters');
+        if(!container) return;
+
+        const buttons = container.querySelectorAll('.filter-button');
+        const items = document.querySelectorAll('.knowledge-item');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                items.forEach(item => {
+                    item.style.display = (filter === 'all' || item.dataset.category === filter) ? '' : 'none';
+                });
+            });
+        });
+    }
+};
+
+
+// --- BLOG MODULE ---
+// Handles enhancements for blog post pages.
+const Blog = {
+    init() {
+        this.initProgressBar();
+        this.initStickyTOC();
+    },
+
+    initProgressBar() {
+        const progressBar = document.getElementById('reading-progress-bar');
+        if (!progressBar) return;
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            progressBar.style.width = `${scrollPercent}%`;
+        });
+    },
+
+    initStickyTOC() {
+        const toc = document.getElementById('blog-toc');
+        const article = document.querySelector('article');
+        if (!toc || !article) return;
+        
+        const headings = article.querySelectorAll('h2, h3');
+        if(headings.length === 0) return;
+
+        toc.innerHTML = '<h4 class="font-semibold mb-2">In this article</h4>'; // Clear and add header
+        
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const link = toc.querySelector(`a[href="#${id}"]`);
+                if(link) {
+                    if (entry.intersectionRatio > 0) {
+                        document.querySelectorAll('#blog-toc a').forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                }
+            });
+        }, { rootMargin: '0px 0px -80% 0px' });
+
+        headings.forEach(heading => {
+            const id = heading.textContent.toLowerCase().replace(/\s+/g, '-').replace(/[?]/g, '');
+            heading.setAttribute('id', id);
+            
+            const link = document.createElement('a');
+            link.setAttribute('href', `#${id}`);
+            link.textContent = heading.textContent;
+            link.classList.add('toc-link');
+            if(heading.tagName === 'H3') {
+                link.classList.add('toc-link-h3');
+            }
+            toc.appendChild(link);
+            
+            observer.observe(heading);
+        });
     }
 };
 
@@ -492,7 +594,10 @@ const UI = {
 // Handles lightweight event tracking for analytics.
 const Analytics = {
     init() {
+        console.log("Analytics.init() called.");
         document.body.addEventListener('click', this.trackEvent.bind(this));
+        document.body.addEventListener('submit', this.trackEvent.bind(this));
+
     },
 
     trackEvent(e) {
@@ -522,5 +627,6 @@ document.addEventListener('DOMContentLoaded', () => {
     Nav.init();
     Animations.init();
     UI.init();
+    Blog.init();
     Analytics.init();
 });

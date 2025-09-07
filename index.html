@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -43,8 +42,8 @@
 
     <!-- Header -->
     <header class="p-4 flex justify-between items-center container mx-auto sticky top-0 bg-black/80 backdrop-blur-sm z-30 border-b border-gray-900">
-        <a href="/index.html" class="flex items-center" data-ga-event="Nav:Click:Logo">
-            <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+        <a href="/" class="flex items-center" data-ga-event="Nav:Click:Logo">
+            <svg class="h-8 w-auto text-emerald-500 animated-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
             <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
         </a>
         <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold">
@@ -62,6 +61,8 @@
                             <a href="/features-feedback.html" class="mega-menu-nav-link" data-title="Feedback Hub" data-description="Turn customer noise into product signal. Aggregate, analyze, and act on user feedback from any source." data-ga-event="Nav:Click:Features_FeedbackHub">Feedback Hub</a>
                             <a href="/features-strategy.html" class="mega-menu-nav-link" data-title="Strategy & Analytics" data-description="Connect your strategy to daily execution. Define OKRs and visualize the 'Golden Thread' from vision to user stories." data-ga-event="Nav:Click:Features_StrategySuite">Strategy & Analytics</a>
                             <a href="/features-upstream.html" class="mega-menu-nav-link" data-title="Upstream Workflow" data-description="From a vague idea to a bulletproof plan. Standardize your solution discovery process with our guided Kanban workflow." data-ga-event="Nav:Click:Features_UpstreamWorkflow">Upstream Workflow</a>
+                             <a href="/features-roadmaps.html" class="mega-menu-nav-link" data-title="Dynamic Roadmaps" data-description="Build flexible, outcome-driven roadmaps that align your team and communicate your strategy effectively." data-ga-event="Nav:Click:Features_Roadmaps">Dynamic Roadmaps</a>
+                             <a href="/features-integrations.html" class="mega-menu-nav-link" data-title="Integrations" data-description="Connect the tools you already use to create a single source of truth for product decisions." data-ga-event="Nav:Click:Features_Integrations">Integrations</a>
                         </div>
                          <div class="mega-menu-nav-column">
                             <h4 class="mega-menu-column-header">Use Cases</h4>
@@ -95,6 +96,7 @@
                             <a href="/for-who.html#role-pm" class="mega-menu-nav-link" data-title="Product Managers" data-description="Take control of your entire workflow from feedback analysis to roadmap planning in one place." data-ga-event="Nav:Click:Solutions_Role_PM">For Product Managers</a>
                             <a href="/for-who.html#role-ux" class="mega-menu-nav-link" data-title="UX Researchers" data-description="Ensure your research makes an impact by linking findings directly to product initiatives." data-ga-event="Nav:Click:Solutions_Role_UX">For UX Researchers</a>
                             <a href="/for-who.html#role-head" class="mega-menu-nav-link" data-title="Heads of Product" data-description="Get a high-level overview of your portfolio and ensure your teams are focused on outcomes." data-ga-event="Nav:Click:Solutions_Role_Head">For Heads of Product</a>
+                             <a href="/for-who.html#role-eng" class="mega-menu-nav-link" data-title="Engineering Managers" data-description="Get the context you need to plan effectively and ensure your team works on well-vetted problems." data-ga-event="Nav:Click:Solutions_Role_Eng">For Engineering Managers</a>
                         </div>
                          <div class="mega-menu-nav-column">
                             <h4 class="mega-menu-column-header">By Industry</h4>
@@ -134,7 +136,7 @@
     <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-black/95 z-50">
         <div class="container mx-auto px-4 pt-4 pb-4">
             <div class="flex justify-between items-center">
-                <a href="/index.html" class="flex items-center" data-ga-event="Nav:Click:MobileLogo">
+                <a href="/" class="flex items-center" data-ga-event="Nav:Click:MobileLogo">
                     <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
                     <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
                 </a>
@@ -157,7 +159,7 @@
     <main>
         <!-- Home Page -->
         <div id="page-home">
-            <section class="text-center pt-20 pb-24 feature-hero relative overflow-hidden">
+            <section class="text-center pt-20 pb-24 hero-base relative overflow-hidden">
                 <div id="hero-parallax-bg" class="hero-parallax-bg"></div>
                 <div class="container mx-auto px-4 relative z-10">
                     <h1 id="hero-headline" class="text-5xl font-extrabold tracking-tight text-white sm:text-6xl animate-on-scroll min-h-[144px] sm:min-h-[156px] font-mono">
@@ -171,7 +173,7 @@
                         <a href="https://app.productflow.online" class="px-8 py-4 text-lg font-semibold rounded-md bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg cta-button-prominent" data-ga-event="CTA:Click:Hero_StartTrial">
                             Start Your Free Trial
                         </a>
-                         <a href="https://app.productflow.online/demo" class="text-sm text-gray-400 hover:text-white hover:underline" data-ga-event="CTA:Click:Hero_ExploreDemo">Or explore an interactive demo</a>
+                         <a href="/interactive-tour.html" class="text-sm text-gray-400 hover:text-white hover:underline" data-ga-event="CTA:Click:Hero_ExploreDemo">Or explore an interactive demo</a>
                     </div>
                 </div>
             </section>
@@ -235,8 +237,8 @@
             
             <section class="py-24">
                 <div class="container mx-auto px-4 text-center">
-                    <h2 class="text-3xl font-bold text-white mb-4 animate-on-scroll">Achieve True Product Excellence</h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll" data-stagger-child>Our integrated modules provide a complete workflow for modern product teams.</p>
+                    <h2 class="text-3xl font-bold text-white mb-4 animate-on-scroll">The Integrated Toolkit for Outcome-Driven Products.</h2>
+                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll" data-stagger-child>productflow.online is more than a tool—it's a new way of working. Our interconnected modules provide a seamless workflow from first insight to final impact.</p>
                     
                     <div class="tabs-container max-w-4xl mx-auto animate-on-scroll">
                         <div class="tab-buttons flex justify-center space-x-2 md:space-x-4 mb-8" role="tablist">
@@ -298,15 +300,42 @@
                     </div>
                 </div>
             </section>
+
+             <section class="py-24">
+                <div class="container mx-auto px-4">
+                    <div class="text-center max-w-3xl mx-auto">
+                        <h2 class="text-3xl font-bold text-white mb-4 animate-on-scroll">Unlock Quantifiable Business Impact</h2>
+                        <p class="text-gray-400 mx-auto mb-12 animate-on-scroll">Our customers see tangible improvements in efficiency, alignment, and impact.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto" data-stagger-group>
+                        <div class="benefit-card text-center animate-on-scroll">
+                            <p class="text-6xl font-extrabold text-emerald-400" data-animate-counter="50">0%</p>
+                            <h4 class="mt-2 text-xl font-bold text-white">Faster Discovery Cycles</h4>
+                            <p class="mt-2 text-gray-400 text-sm">Standardize your upstream workflow to validate and de-risk ideas in half the time.</p>
+                        </div>
+                        <div class="benefit-card text-center animate-on-scroll">
+                            <p class="text-6xl font-extrabold text-emerald-400" data-animate-counter="30">0%</p>
+                            <h4 class="mt-2 text-xl font-bold text-white">Increase in Feature Adoption</h4>
+                            <p class="mt-2 text-gray-400 text-sm">Build features based on validated user needs and see a meaningful lift in adoption rates.</p>
+                        </div>
+                        <div class="benefit-card text-center animate-on-scroll">
+                             <p class="text-6xl font-extrabold text-emerald-400" data-animate-counter="95">0%</p>
+                            <h4 class="mt-2 text-xl font-bold text-white">Roadmap Confidence</h4>
+                            <p class="mt-2 text-gray-400 text-sm">Justify every decision with a clear 'Golden Thread' from feedback to strategic goals.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
             
             <section class="py-24 bg-gray-900/50">
                 <div class="container mx-auto px-4 text-center">
                     <h2 class="text-3xl font-bold text-white mb-4 animate-on-scroll">Built For You, However You Work</h2>
-                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll">Our platform adapts to your context, whether you're defined by your industry or your role.</p>
+                    <p class="text-gray-400 max-w-2xl mx-auto mb-12 animate-on-scroll">Our platform adapts to your context, whether you're defined by your industry, your role, or your company's product maturity.</p>
                      <div id="built-for-you-tabs" class="max-w-5xl mx-auto animate-on-scroll">
-                        <div class="tab-buttons flex justify-center space-x-2 md:space-x-4 mb-8" role="tablist">
+                        <div class="tab-buttons flex flex-wrap justify-center space-x-2 md:space-x-4 mb-8" role="tablist">
                             <button class="tab-button active" data-tab="tab-industry" role="tab" aria-selected="true" data-ga-event="Tab:Click:BuiltForYou_Industry">By Industry</button>
                             <button class="tab-button" data-tab="tab-role" role="tab" aria-selected="false" data-ga-event="Tab:Click:BuiltForYou_Role">By Role</button>
+                             <button class="tab-button" data-tab="tab-maturity" role="tab" aria-selected="false" data-ga-event="Tab:Click:BuiltForYou_Maturity">By Product Maturity</button>
                         </div>
                         <div class="tab-content text-left">
                             <div id="tab-industry" class="tab-pane active" role="tabpanel">
@@ -342,6 +371,22 @@
                                     <a href="/for-who.html#role-head" class="industry-card block animate-on-scroll" data-ga-event="Link:Click:BuiltForYou_Role_Head">
                                         <h4 class="font-bold text-white text-lg">Heads of Product</h4>
                                         <p class="text-sm text-gray-400 mt-2">Lead with strategy, not gut feelings. Get a high-level overview of your product portfolio, monitor strategic alignment, and ensure your teams are focused on outcomes.</p>
+                                    </a>
+                                </div>
+                             </div>
+                              <div id="tab-maturity" class="tab-pane" role="tabpanel">
+                                <div class="grid md:grid-cols-3 gap-8" data-stagger-group>
+                                    <a href="/for-who.html#maturity-factory" class="industry-card block animate-on-scroll" data-ga-event="Link:Click:BuiltForYou_Maturity_Factory">
+                                        <h4 class="font-bold text-white text-lg">The Feature Factory</h4>
+                                        <p class="text-sm text-gray-400 mt-2">Struggling to connect your work to customer value? We help introduce a direct line to customer needs and add a crucial layer of problem validation before building.</p>
+                                    </a>
+                                    <a href="/for-who.html#maturity-scaling" class="industry-card block animate-on-scroll" data-ga-event="Link:Click:BuiltForYou_Maturity_Scaling">
+                                        <h4 class="font-bold text-white text-lg">The Scaling Company</h4>
+                                        <p class="text-sm text-gray-400 mt-2">Processes breaking as you grow? We help you standardize a best-practice discovery process and align multiple teams around shared OKRs.</p>
+                                    </a>
+                                    <a href="/for-who.html#maturity-mature" class="industry-card block animate-on-scroll" data-ga-event="Link:Click:BuiltForYou_Maturity_Mature">
+                                        <h4 class="font-bold text-white text-lg">The Mature Organization</h4>
+                                        <p class="text-sm text-gray-400 mt-2">Ready to optimize for maximum impact? Uncover deep insights with advanced segmentation and ensure your investments drive your North Star Metric.</p>
                                     </a>
                                 </div>
                              </div>
@@ -442,7 +487,7 @@
     
         <div class="grid md:grid-cols-5 gap-8 text-sm">
             <div class="md:col-span-2">
-                 <a href="/index.html" class="flex items-center" data-ga-event="Footer:Click:Logo">
+                 <a href="/" class="flex items-center" data-ga-event="Footer:Click:Logo">
                     <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
                     <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
                 </a>
