@@ -1,3 +1,4 @@
+
 // =================================================================================
 // productflow.online - Main JavaScript File
 //
@@ -347,6 +348,11 @@ const UI = {
                     const itemCategories = item.dataset.usecaseCategory.split(' ');
                     const shouldShow = (filter === 'all' || itemCategories.includes(filter));
                     item.style.display = shouldShow ? '' : 'none';
+                    if(shouldShow) {
+                        item.classList.add('is-visible', 'animate-up');
+                    } else {
+                         item.classList.remove('is-visible', 'animate-up');
+                    }
                 });
             });
         });
@@ -408,7 +414,7 @@ const UI = {
         const parentTabContainer = targetElement.closest('.tab-content');
         if (!parentTabContainer) return;
 
-        const parentTabs = parentTabContainer.closest('.py-20'); // Find the main section container for tabs
+        const parentTabs = parentTabContainer.closest('section');
         if (!parentTabs) return;
     
         const tabPane = targetElement.closest('.tab-pane');
@@ -497,6 +503,13 @@ const Analytics = {
             
             if (category && action) {
                 console.log(`GA Event: { Category: '${category}', Action: '${action}', Label: '${label || 'not_set'}' }`);
+                // Example of real integration:
+                // if (typeof gtag === 'function') {
+                //     gtag('event', action, {
+                //         'event_category': category,
+                //         'event_label': label
+                //     });
+                // }
             }
         }
     }
