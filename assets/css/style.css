@@ -23,6 +23,7 @@ Table of Contents
     - Blog Post Enhancements
     - Use Cases (Deep Dive Pages)
     - Related Resources
+    - Public Roadmap
 4. Feature Page Theming
 5. Presentations & Print Styles
 6. Animations & Interactive Elements
@@ -379,7 +380,8 @@ input:checked + .pricing-toggle-slider:before { transform: translateX(26px); }
 .integration-card.coming-soon img { opacity: 0.5; }
 
 /* --- Interactive Tour --- */
-.tour-container { display: grid; grid-template-columns: 300px 1fr; gap: 2rem; background-color: #111; border: 1px solid #333; border-radius: 0.75rem; padding: 1.5rem; }
+.tour-container { display: grid; grid-template-columns: 1fr; gap: 2rem; background-color: #111; border: 1px solid #333; border-radius: 0.75rem; padding: 1.5rem; }
+@media (min-width: 1024px) { .tour-container { grid-template-columns: 350px 1fr; } }
 .tour-sidebar { display: flex; flex-direction: column; }
 .tour-main-content { position: relative; }
 .tour-step { display: none; }
@@ -422,6 +424,19 @@ input:checked + .pricing-toggle-slider:before { transform: translateX(26px); }
 
 /* --- Related Resources --- */
 .related-resources { border-top: 1px solid #333; margin-top: 4rem; padding-top: 4rem; }
+
+/* --- Public Roadmap --- */
+.roadmap-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+.roadmap-column h3 { font-size: 1.25rem; font-weight: 700; padding: 0.75rem 1rem; border-radius: 0.5rem; margin-bottom: 1.5rem; text-align: center; }
+.roadmap-column-now h3 { background-color: #10b981; color: #000; }
+.roadmap-column-next h3 { background-color: #facc15; color: #000; }
+.roadmap-column-later h3 { background-color: #6b7280; color: #fff; }
+.roadmap-card { background-color: #1a1a1d; border: 1px solid #333; border-radius: 0.5rem; padding: 1rem; margin-bottom: 1rem; }
+.roadmap-card h4 { font-weight: 600; color: #fff; }
+.roadmap-card p { font-size: 0.875rem; color: #a0aec0; margin-top: 0.5rem; }
+.roadmap-tag { display: inline-block; font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 9999px; margin-top: 0.75rem; font-weight: 500; }
+.tag-feedback { background-color: rgba(96, 165, 250, 0.2); color: #93c5fd; }
+.tag-strategy { background-color: rgba(192, 132, 252, 0.2); color: #c084fc; }
 
 
 /* 
