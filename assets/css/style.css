@@ -290,7 +290,7 @@ input:checked + .pricing-toggle-slider:before { transform: translateX(26px); }
 /* --- "For Who" Page Layout --- */
 .role-section { background-color: #1a1a1d; border: 1px solid #333; border-radius: 0.75rem; overflow: hidden; }
 .role-section-header { padding: 2rem; }
-.role-section-grid { display: grid; grid-template-columns: 1fr; md:grid-template-columns: 1fr 1fr; gap: 1px; background-color: #333; }
+.role-section-grid { display: grid; grid-template-columns: 1fr; gap: 1px; background-color: #333; }
 .role-column { padding: 1.5rem; background-color: #111; }
 .role-column h4 { font-size: 1.125rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
 .role-column ul { display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.875rem; color: #d1d5db; }
@@ -298,11 +298,34 @@ input:checked + .pricing-toggle-slider:before { transform: translateX(26px); }
 .challenges-column h4 { color: #f87171; } /* red-400 */
 .solutions-column h4 { color: #34d399; } /* emerald-400 */
 .pain-points-table { display: flex; flex-direction: column; gap: 1px; background-color: #333; border: 1px solid #333; border-radius: 0.5rem; overflow: hidden; }
-.pain-point-row { display: grid; grid-template-columns: 1fr; md:grid-template-columns: 1fr 1fr; gap: 1px; }
+.pain-point-row { display: grid; grid-template-columns: 1fr; gap: 1px; }
 .pain-point-cell { padding: 1rem; background-color: #111; }
 .pain-point-cell.pain { border-left: 3px solid #f87171; }
 .pain-point-cell.solution { border-left: 3px solid #34d399; }
-@media (max-width: 767px) { .pain-point-cell::before { content: attr(data-label); display: block; font-weight: 600; color: #9ca3af; margin-bottom: 0.5rem; font-size: 0.75rem; } }
+
+@media (min-width: 768px) {
+    .role-section-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .pain-point-row {
+        grid-template-columns: 1fr 1fr;
+    }
+    .pain-point-cell::before {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) { 
+    .pain-point-cell::before { 
+        content: attr(data-label); 
+        display: block; 
+        font-weight: 600; 
+        color: #9ca3af; 
+        margin-bottom: 0.5rem; 
+        font-size: 0.75rem; 
+    } 
+}
+
 
 /* --- Workflow Diagrams --- */
 .interactive-workflow { display: flex; flex-wrap: wrap; justify-content: space-around; gap: 1rem; border-bottom: 1px solid #333; padding-bottom: 1rem; margin-bottom: 2rem; }
