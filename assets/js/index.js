@@ -1,3 +1,4 @@
+
 // =================================================================================
 // productflow.online - Main JavaScript File
 //
@@ -23,6 +24,7 @@ const Nav = {
         console.log("Nav.init() called.");
         this.initMobileMenu();
         this.initClickMegaMenu();
+        this.initStickySubNav();
     },
 
     initMobileMenu() {
@@ -117,6 +119,38 @@ const Nav = {
             }
         });
     },
+
+    initStickySubNav() {
+        const nav = document.querySelector('.quick-links-nav');
+        const sentinel = document.getElementById('sticky-nav-sentinel');
+        if (!nav || !sentinel) return;
+
+        const links = nav.querySelectorAll('a');
+        const sections = Array.from(links).map(link => document.getElementById(link.hash.substring(1)));
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                nav.classList.toggle('is-sticky', !entry.isIntersecting);
+            },
+            { rootMargin: '-89px 0px 0px 0px' } // 88px header height + 1px
+        );
+
+        observer.observe(sentinel);
+
+        const sectionObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    links.forEach(link => {
+                        link.classList.toggle('active', link.hash === `#${entry.target.id}`);
+                    });
+                }
+            });
+        }, { rootMargin: '-40% 0px -60% 0px' });
+
+        sections.forEach(section => {
+            if (section) sectionObserver.observe(section);
+        });
+    }
 };
 
 // --- ANIMATIONS MODULE ---
@@ -227,7 +261,7 @@ const Animations = {
                     const step = (timestamp) => {
                         if (!start) start = timestamp;
                         const progress = Math.min((timestamp - start) / duration, 1);
-                        el.textContent = Math.floor(progress * target);
+                        el.textContent = Math.floor(progress * target) + (el.textContent.includes('%') ? '%' : '');
                         if (progress < 1) {
                             requestAnimationFrame(step);
                         }
@@ -255,7 +289,6 @@ const UI = {
         this.initDeepLinking();
         this.initPresentationControls();
         this.initInteractiveTour();
-        this.initStickySubNav();
         this.initKnowledgeHubFilters();
     },
     
@@ -492,21 +525,6 @@ const UI = {
         updateTourState(); // Initialize first step
     },
 
-    initStickySubNav() {
-        const nav = document.querySelector('.quick-links-nav');
-        const sentinel = document.getElementById('sticky-nav-sentinel');
-        if (!nav || !sentinel) return;
-
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                nav.classList.toggle('is-sticky', !entry.isIntersecting);
-            },
-            { rootMargin: '-89px 0px 0px 0px' } // 88px header height + 1px
-        );
-
-        observer.observe(sentinel);
-    },
-
     initKnowledgeHubFilters() {
         const container = document.getElementById('knowledge-hub-filters');
         if(!container) return;
@@ -560,16 +578,18 @@ const Blog = {
         toc.innerHTML = '<h4 class="font-semibold mb-2">In this article</h4>'; // Clear and add header
         
         const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                const id = entry.target.getAttribute('id');
-                const link = toc.querySelector(`a[href="#${id}"]`);
+            // Find the last intersecting element
+            const intersectingEntries = entries.filter(e => e.isIntersecting);
+            if (intersectingEntries.length > 0) {
+                const lastIntersecting = intersectingEntries[intersectingEntries.length - 1];
+                 const id = lastIntersecting.target.getAttribute('id');
+                 const link = toc.querySelector(`a[href="#${id}"]`);
                 if(link) {
-                    if (entry.intersectionRatio > 0) {
-                        document.querySelectorAll('#blog-toc a').forEach(l => l.classList.remove('active'));
-                        link.classList.add('active');
-                    }
+                    document.querySelectorAll('#blog-toc a').forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
                 }
-            });
+            }
+           
         }, { rootMargin: '0px 0px -80% 0px' });
 
         headings.forEach(heading => {
