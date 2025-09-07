@@ -21,7 +21,6 @@
 // Handles the main site navigation, including the mobile menu and mega menu.
 const Nav = {
     init() {
-        console.log("Nav.init() called.");
         this.initMobileMenu();
         this.initClickMegaMenu();
         this.initStickySubNav();
@@ -39,13 +38,10 @@ const Nav = {
     },
 
     initClickMegaMenu() {
-        console.log("Nav.initClickMegaMenu() initializing...");
         const containers = document.querySelectorAll('.mega-menu-container');
         if (containers.length === 0) {
-            console.warn("No mega menu containers found.");
             return;
         }
-        console.log(`${containers.length} mega menu containers found.`);
 
         const triggers = document.querySelectorAll('.mega-menu-trigger');
 
@@ -60,9 +56,6 @@ const Nav = {
                 
                 if (!wasOpen) {
                     container.classList.add('is-open');
-                    console.log("Mega menu opened.");
-                } else {
-                     console.log("Mega menu closed by trigger click.");
                 }
             });
         });
@@ -614,7 +607,6 @@ const Blog = {
 // Handles lightweight event tracking for analytics.
 const Analytics = {
     init() {
-        console.log("Analytics.init() called.");
         document.body.addEventListener('click', this.trackEvent.bind(this));
         document.body.addEventListener('submit', this.trackEvent.bind(this));
 
@@ -643,7 +635,6 @@ const Analytics = {
 // --- MAIN EXECUTION ---
 // Initializes all modules after the DOM is fully loaded.
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM fully loaded. Initializing scripts for productflow.online.");
     Nav.init();
     Animations.init();
     UI.init();
