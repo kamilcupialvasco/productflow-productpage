@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,7 @@
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Learn about the mission behind productflow.online - to empower product teams with the tools and workflows they need to connect with customers, align on strategy, and build things that truly matter.">
-    <meta name="robots" content="noindex, nofollow">
+    
     <link rel="canonical" href="https://productflow.online/about.html" />
     
     <!-- Open Graph / Facebook -->
@@ -31,10 +30,10 @@
         <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold">
             <!-- Mega Menu: Product -->
             <div class="mega-menu-container">
-                <a href="/features.html" class="text-gray-400 hover:text-white flex items-center" data-ga-event="Nav:Hover:Product">
+                <button class="mega-menu-trigger" data-ga-event="Nav:Click:Product">
                     Product
                     <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </a>
+                </button>
                 <div class="mega-menu">
                     <div class="mega-menu-content">
                         <div class="mega-menu-nav-column">
@@ -50,7 +49,6 @@
                             <a href="/use-cases/align-stakeholders.html" class="mega-menu-nav-link" data-title="Align Stakeholders" data-description="Create a single source of truth that engineering, marketing, and leadership can rally behind." data-ga-event="Nav:Click:UseCases_Align">Align Stakeholders</a>
                         </div>
                         <div class="mega-menu-details-column">
-                            <!-- JS will populate this -->
                             <div class="details-content">
                                 <h4 id="mega-menu-details-title">Explore Our Product</h4>
                                 <p id="mega-menu-details-description">Hover over an item to learn more about how productflow.online can help your team build better products.</p>
@@ -63,10 +61,10 @@
 
             <!-- Mega Menu: Solutions -->
             <div class="mega-menu-container">
-                <a href="/for-who.html" class="text-gray-400 hover:text-white flex items-center" data-ga-event="Nav:Hover:Solutions">
+                <button class="mega-menu-trigger" data-ga-event="Nav:Click:Solutions">
                     Solutions
                     <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </a>
+                </button>
                 <div class="mega-menu">
                     <div class="mega-menu-content">
                         <div class="mega-menu-nav-column">
@@ -82,7 +80,6 @@
                             <a href="/for-who.html#industry-healthcare" class="mega-menu-nav-link" data-title="Healthcare" data-description="Securely manage sensitive feedback while navigating complex regulations." data-ga-event="Nav:Click:Solutions_Industry_Healthcare">For Healthcare</a>
                         </div>
                         <div class="mega-menu-details-column">
-                            <!-- JS will populate this -->
                              <div class="details-content">
                                 <h4 id="mega-menu-details-title-solutions">Solutions For Your Team</h4>
                                 <p id="mega-menu-details-description-solutions">Discover how our platform adapts to your specific context, whether defined by your role, industry, or company maturity.</p>
@@ -150,12 +147,13 @@
                 <p>We started building productflow.online not as a business, but as the tool we wished we had. A tool that provides a single, unbroken thread from customer insight to business impact. We're a small, bootstrapped team dedicated to solving the real-world problems that modern product teams face every day.</p>
             </div>
             <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated">
-                 <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Our Core Values</p>
+                 <p class="font-mono text-xs text-emerald-400 mb-2">&gt; Our Philosophy</p>
                 <div class="font-mono text-sm text-gray-300 space-y-1">
-                    <p>1. Start with the problem.</p>
-                    <p>2. Default to transparency.</p>
-                    <p>3. Stay close to the customer.</p>
-                    <p>4. Outcomes over output.</p>
+                    <p>1. <strong class="text-white">Start with the problem,</strong> not the solution.</p>
+                    <p>2. <strong class="text-white">Default to transparency,</strong> especially in decision-making.</p>
+                    <p>3. <strong class="text-white">Stay close to the customer,</strong> always.</p>
+                    <p>4. <strong class="text-white">Value outcomes over output,</strong> measure what matters.</p>
+                    <p>5. <strong class="text-white">Build tools that empower,</strong> not prescribe.</p>
                 </div>
             </div>
         </section>

@@ -1,4 +1,3 @@
-
 // =================================================================================
 // productflow.online - Main JavaScript File
 //
@@ -7,7 +6,7 @@
 // interactivity, animations, and analytics.
 //
 // Modules:
-// - Nav: Handles navigation, including mobile menu and active link highlighting.
+// - Nav: Handles navigation, including mobile menu and the new click-driven mega menu.
 // - Animations: Manages all visual effects, like scroll-triggered animations.
 // - UI: Initializes interactive components like tabs, carousels, and forms.
 // - Analytics: Provides a lightweight event tracking system.
@@ -20,8 +19,9 @@
 // Handles the main site navigation, including the mobile menu and mega menu.
 const Nav = {
     init() {
+        console.log("Nav.init() called.");
         this.initMobileMenu();
-        this.initMegaMenuInteractivity();
+        this.initClickMegaMenu();
     },
 
     initMobileMenu() {
@@ -34,24 +34,52 @@ const Nav = {
             closeButton.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         }
     },
-    
-    // Mega Menu visibility is now handled by pure CSS :hover for reliability.
-    // This function ONLY handles the interactive details panel inside the menu.
-    initMegaMenuInteractivity() {
-        console.log("Initializing Mega Menu Details Panels...");
+
+    initClickMegaMenu() {
+        console.log("Nav.initClickMegaMenu() called.");
         const containers = document.querySelectorAll('.mega-menu-container');
-        
         if (containers.length === 0) {
-            console.log("No mega menu containers found. Skipping details panel interactivity.");
+            console.log("No mega menu containers found.");
             return;
         }
+        console.log(`${containers.length} mega menu containers found.`);
 
+        const triggers = document.querySelectorAll('.mega-menu-trigger');
+
+        triggers.forEach(trigger => {
+            const container = trigger.closest('.mega-menu-container');
+            trigger.addEventListener('click', (event) => {
+                event.stopPropagation();
+                const wasOpen = container.classList.contains('is-open');
+                
+                // Close all other menus
+                containers.forEach(c => c.classList.remove('is-open'));
+                
+                // If it wasn't open, open it
+                if (!wasOpen) {
+                    container.classList.add('is-open');
+                    console.log("Mega menu opened.");
+                } else {
+                    console.log("Mega menu closed by clicking trigger.");
+                }
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (event) => {
+            containers.forEach(container => {
+                if (!container.contains(event.target)) {
+                    container.classList.remove('is-open');
+                }
+            });
+        });
+        
+        // Handle details panel interactivity
         containers.forEach((container, index) => {
             const links = container.querySelectorAll('.mega-menu-nav-link');
             const detailsColumn = container.querySelector('.mega-menu-details-column .details-content');
             
             if (detailsColumn && links.length > 0) {
-                console.log(`Found details panel for menu ${index + 1}. Initializing interactivity.`);
                 const titleEl = detailsColumn.querySelector('h4');
                 const descEl = detailsColumn.querySelector('p');
                 const linkEl = detailsColumn.querySelector('a.mega-menu-link');
@@ -76,7 +104,8 @@ const Nav = {
                     });
                 });
                 
-                container.addEventListener('mouseleave', () => {
+                const megaMenu = container.querySelector('.mega-menu');
+                megaMenu.addEventListener('mouseleave', () => {
                      detailsColumn.classList.add('fade-out-details');
                      setTimeout(() => {
                         titleEl.innerHTML = originalState.title;
@@ -101,8 +130,6 @@ const Animations = {
         this.initCounterAnimation();
     },
 
-    // Initializes scroll-triggered animations for elements with `.animate-on-scroll`.
-    // Supports staggered animations and different directions.
     initScrollAnimations() {
         const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -127,26 +154,43 @@ const Animations = {
     },
 
     initHeroAnimation() {
-        const headline = document.getElementById('hero-headline');
-        if (!headline) return;
+        const headlineSpan = document.querySelector('#hero-headline span');
+        if (!headlineSpan) return;
+        
+        const phrases = ["Outcome-Driven Teams.", "Data-Informed Products.", "Strategic Alignment."];
+        let counter = 0;
+        
+        const scramble = (element, newText) => {
+            let iteration = 0;
+            const originalText = element.innerText;
+            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+";
 
-        const mainText = "The Command Center for";
-        const rotatingTexts = ["Modern B2B SaaS.", "Outcome-Driven Teams.", "High-Stakes FinTech."];
+            const interval = setInterval(() => {
+                element.innerText = newText
+                    .split("")
+                    .map((letter, index) => {
+                        if (index < iteration) {
+                            return newText[index];
+                        }
+                        return letters[Math.floor(Math.random() * letters.length)];
+                    })
+                    .join("");
+
+                if (iteration >= newText.length) {
+                    clearInterval(interval);
+                }
+
+                iteration += 1 / 3;
+            }, 30);
+        };
         
-        headline.innerHTML = `${mainText}<br/><span class="text-emerald-400 transition-opacity duration-500"></span>`;
-        const newSpan = headline.querySelector('span');
-        let textIndex = 0;
+        const nextPhrase = () => {
+            scramble(headlineSpan, phrases[counter]);
+            counter = (counter + 1) % phrases.length;
+        };
         
-        const rotate = () => {
-            newSpan.classList.add('fade-out');
-            setTimeout(() => {
-                newSpan.textContent = rotatingTexts[textIndex];
-                textIndex = (textIndex + 1) % rotatingTexts.length;
-                newSpan.classList.remove('fade-out');
-            }, 500);
-        }
-        rotate();
-        setInterval(rotate, 3000);
+        nextPhrase();
+        setInterval(nextPhrase, 4000);
     },
 
     initHeroParallax() {
@@ -210,6 +254,9 @@ const UI = {
         this.initUseCaseFilters();
         this.initGoldenThread();
         this.initForms();
+        this.initDeepLinking();
+        this.initPresentationControls();
+        this.initInteractiveTour();
     },
     
     initTabs() {
@@ -349,6 +396,89 @@ const UI = {
                 button.disabled = true;
             });
         }
+    },
+
+    initDeepLinking() {
+        const hash = window.location.hash;
+        if (!hash) return;
+    
+        const targetElement = document.querySelector(hash);
+        if (!targetElement) return;
+    
+        const parentTabContainer = targetElement.closest('.tab-content');
+        if (!parentTabContainer) return;
+
+        const parentTabs = parentTabContainer.closest('.py-20'); // Find the main section container for tabs
+        if (!parentTabs) return;
+    
+        const tabPane = targetElement.closest('.tab-pane');
+        if (!tabPane) return;
+    
+        const tabId = tabPane.id;
+        const correspondingButton = parentTabs.querySelector(`.tab-button[data-tab="${tabId}"]`);
+    
+        if (correspondingButton) {
+            // Deactivate all buttons and panes in this group
+            parentTabs.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            parentTabContainer.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+    
+            // Activate the correct ones
+            correspondingButton.classList.add('active');
+            tabPane.classList.add('active');
+    
+            // Scroll to the element
+            setTimeout(() => {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    },
+
+    initPresentationControls() {
+        const printButton = document.querySelector('[data-action="print"]');
+        if(printButton) {
+            printButton.addEventListener('click', () => {
+                window.print();
+            });
+        }
+    },
+
+    initInteractiveTour() {
+        const tourContainer = document.getElementById('interactive-tour');
+        if (!tourContainer) return;
+
+        const steps = tourContainer.querySelectorAll('.tour-step');
+        const nextButtons = tourContainer.querySelectorAll('[data-action="next-step"]');
+        const prevButtons = tourContainer.querySelectorAll('[data-action="prev-step"]');
+        const progressFill = tourContainer.querySelector('.tour-progress-fill');
+        let currentStep = 0;
+
+        const updateTourState = () => {
+            steps.forEach((step, index) => {
+                step.classList.toggle('active', index === currentStep);
+            });
+            const progressPercentage = ((currentStep + 1) / steps.length) * 100;
+            progressFill.style.width = `${progressPercentage}%`;
+        };
+
+        nextButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    updateTourState();
+                }
+            });
+        });
+        
+        prevButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    updateTourState();
+                }
+            });
+        });
+
+        updateTourState(); // Initialize first step
     }
 };
 
@@ -366,8 +496,6 @@ const Analytics = {
             const [category, action, label] = eventString.split(':');
             
             if (category && action) {
-                // In a real implementation, you would send this to an analytics service.
-                // e.g., gtag('event', action, { 'event_category': category, 'event_label': label });
                 console.log(`GA Event: { Category: '${category}', Action: '${action}', Label: '${label || 'not_set'}' }`);
             }
         }
@@ -377,7 +505,7 @@ const Analytics = {
 // --- MAIN EXECUTION ---
 // Initializes all modules after the DOM is fully loaded.
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOM fully loaded and parsed. Initializing scripts for productflow.online.");
+    console.log("DOM fully loaded. Initializing scripts for productflow.online.");
     Nav.init();
     Animations.init();
     UI.init();

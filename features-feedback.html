@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,6 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="Turn customer noise into product signal. Aggregate user feedback from any source, analyze with AI, and link insights directly to your product roadmap with the Feedback Hub.">
     <meta name="keywords" content="feedback management, user feedback, sentiment analysis, feedback analysis, customer insights">
-    <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://productflow.online/features-feedback.html" />
     
     <!-- Open Graph / Facebook -->
@@ -32,10 +32,10 @@
         <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold">
             <!-- Mega Menu: Product -->
             <div class="mega-menu-container">
-                <a href="/features.html" class="text-gray-400 hover:text-white flex items-center" data-ga-event="Nav:Hover:Product">
+                <button class="mega-menu-trigger" data-ga-event="Nav:Click:Product">
                     Product
                     <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </a>
+                </button>
                 <div class="mega-menu">
                     <div class="mega-menu-content">
                         <div class="mega-menu-nav-column">
@@ -51,7 +51,6 @@
                             <a href="/use-cases/align-stakeholders.html" class="mega-menu-nav-link" data-title="Align Stakeholders" data-description="Create a single source of truth that engineering, marketing, and leadership can rally behind." data-ga-event="Nav:Click:UseCases_Align">Align Stakeholders</a>
                         </div>
                         <div class="mega-menu-details-column">
-                            <!-- JS will populate this -->
                             <div class="details-content">
                                 <h4 id="mega-menu-details-title">Explore Our Product</h4>
                                 <p id="mega-menu-details-description">Hover over an item to learn more about how productflow.online can help your team build better products.</p>
@@ -64,10 +63,10 @@
 
             <!-- Mega Menu: Solutions -->
             <div class="mega-menu-container">
-                <a href="/for-who.html" class="text-gray-400 hover:text-white flex items-center" data-ga-event="Nav:Hover:Solutions">
+                <button class="mega-menu-trigger" data-ga-event="Nav:Click:Solutions">
                     Solutions
                     <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </a>
+                </button>
                 <div class="mega-menu">
                     <div class="mega-menu-content">
                         <div class="mega-menu-nav-column">
@@ -83,7 +82,6 @@
                             <a href="/for-who.html#industry-healthcare" class="mega-menu-nav-link" data-title="Healthcare" data-description="Securely manage sensitive feedback while navigating complex regulations." data-ga-event="Nav:Click:Solutions_Industry_Healthcare">For Healthcare</a>
                         </div>
                         <div class="mega-menu-details-column">
-                            <!-- JS will populate this -->
                              <div class="details-content">
                                 <h4 id="mega-menu-details-title-solutions">Solutions For Your Team</h4>
                                 <p id="mega-menu-details-description-solutions">Discover how our platform adapts to your specific context, whether defined by your role, industry, or company maturity.</p>
@@ -120,4 +118,158 @@
                     <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
                 </a>
                 <button id="mobile-menu-close-button" class="text-gray-400 hover:text-white" data-ga-event="Nav:Click:MobileMenuClose">
-                    <svg class="h-6 w-6" fill="none" viewBox="0 0 2
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <nav class="mt-8 space-y-2 text-center">
+                <a href="/features.html" class="block text-gray-300 hover:text-white py-2" data-ga-event="Nav:Click:Mobile_Features">Features</a>
+                <a href="/for-who.html" class="block text-gray-300 hover:text-white py-2" data-ga-event="Nav:Click:Mobile_Solutions">Solutions</a>
+                <a href="/pricing.html" class="block text-gray-300 hover:text-white py-2" data-ga-event="Nav:Click:Mobile_Pricing">Pricing</a>
+                <a href="/knowledge-hub.html" class="block text-gray-300 hover:text-white py-2" data-ga-event="Nav:Click:Mobile_KnowledgeHub">Knowledge Hub</a>
+                <div class="border-t border-gray-800 my-4"></div>
+                <a href="https://app.productflow.online" class="block text-gray-300 hover:text-white py-2" data-ga-event="Nav:Click:Mobile_SignIn">Sign In</a>
+                <a href="https://app.productflow.online" class="inline-block mt-2 px-6 py-2 rounded-md bg-emerald-600 text-white hover:bg-emerald-700 transition-colors" data-ga-event="Nav:Click:Mobile_GetStarted">Get Started FREE</a>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+     <main class="container mx-auto px-4 py-16">
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs mb-8 animate-on-scroll">
+            <a href="/features.html">Features</a>
+            <span>/</span>
+            <strong>Feedback Hub</strong>
+        </div>
+
+        <section class="text-center feature-hero pt-16 pb-24">
+            <h1 class="text-5xl font-extrabold tracking-tight text-white animate-on-scroll">Turn Customer Noise into Product Signal.</h1>
+            <p class="mt-6 max-w-3xl mx-auto text-lg text-gray-400 animate-on-scroll" data-stagger-child>
+                Stop juggling spreadsheets and Slack channels. Aggregate user insights from any source, analyze them with AI, and connect them directly to your product initiatives.
+            </p>
+        </section>
+
+        <section class="py-20 max-w-4xl mx-auto">
+             <div class="animate-on-scroll text-center">
+                <h2 class="text-3xl font-bold text-white">Is Your Feedback a Mess?</h2>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Valuable user feedback is scattered everywhere: support tickets, sales calls, app store reviews, Twitter, and a dozen other places. Without a central hub, important insights get lost, trends are missed, and you end up prioritizing based on the loudest voice, not the most critical need.</p>
+            </div>
+        </section>
+
+        <section class="py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll max-w-5xl mx-auto">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold text-white">Our Solution: Your Central Insights Hub</h2>
+                    <p class="text-gray-400">
+                        The Feedback Hub is your single source of truth for what your users are thinking and feeling. Connect all your feedback channels and let our AI get to work.
+                    </p>
+                    <ul class="space-y-3 text-gray-300">
+                        <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Aggregate Everything:</strong> Pull in feedback from Zendesk, Intercom, App Stores, Slack, Zapier, and more.</span></li>
+                        <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Find Signal with AI:</strong> Automatically cluster similar feedback, analyze sentiment, and generate problem statements.</span></li>
+                        <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Segment Your Insights:</strong> Filter feedback by user segment, company size, plan type, or any custom attribute.</span></li>
+                         <li class="flex items-start"><span class="text-emerald-500 mr-3 mt-1">&#10003;</span><span><strong>Make it Actionable:</strong> Link insights directly to product opportunities and initiatives with one click.</span></li>
+                    </ul>
+                </div>
+                 <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated">
+                     <p class="font-mono text-xs text-emerald-400 mb-2">&gt; 🔍 AI Summary of Feedback Cluster #14</p>
+                    <div class="font-mono text-sm text-gray-300 space-y-1">
+                        <p><strong class="text-white">Problem:</strong> Users find the mobile export process confusing and slow.</p>
+                        <p><strong class="text-white">Sentiment:</strong> <span class="text-red-400">Negative (-0.8)</span></p>
+                        <p><strong class="text-white">Sources:</strong> App Store (12), Zendesk (8), Twitter (5)</p>
+                        <p><strong class="text-white">Key Quote:</strong> "It took me five taps to export a simple report, I almost gave up."</p>
+                        <p><strong class="text-white">Action:</strong> <a href="#" class="text-cyan-400 hover:underline">Link to new "Improve Mobile Export" initiative</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gray-900/50 rounded-lg animate-on-scroll">
+            <div class="container mx-auto px-4 max-w-4xl">
+                <h2 class="text-3xl font-bold text-center text-white mb-10">Who Is This For?</h2>
+                <div class="grid md:grid-cols-2 gap-8 text-center">
+                    <div>
+                        <h4 class="text-xl font-semibold text-emerald-400">Product Managers</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Stop relying on anecdotal evidence. Quantify user needs, identify the most impactful problems to solve, and build a data-driven case for your roadmap priorities.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-semibold text-emerald-400">UX Researchers</h4>
+                        <p class="text-gray-400 mt-2 text-sm">Centralize all your qualitative data in one place. Use AI to surface themes and trends across interviews, surveys, and usability tests, and make your research actionable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 animate-on-scroll">
+             <div class="max-w-3xl mx-auto">
+                 <figure class="border-l-4 border-emerald-500 pl-6">
+                    <blockquote class="text-lg italic text-white">
+                        <p>"The AI-powered feedback analysis saves us hours every week. We're surfacing insights from our support tickets that we would have completely missed before. It's like having a dedicated research assistant on the team."</p>
+                    </blockquote>
+                    <figcaption class="mt-4">
+                        <div class="font-semibold">Chloe Davis</div>
+                        <div class="text-gray-400 text-sm">Senior UX Researcher, Sparkflow</div>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/50 border-t border-gray-800">
+      <div class="container mx-auto px-4 py-12">
+    
+        <!-- Newsletter CTA -->
+        <div class="newsletter-section rounded-lg p-8 md:p-12 mb-12 text-center animate-on-scroll">
+            <h3 class="text-3xl font-bold text-white">Stay Ahead of the Curve</h3>
+            <p class="text-gray-300 mt-3 max-w-2xl mx-auto">Subscribe to our newsletter for the latest in product management, strategy, and exclusive updates from productflow.online.</p>
+            <form id="newsletter-form" class="mt-6 max-w-md mx-auto flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="Enter your email" class="flex-grow w-full bg-gray-800/50 p-3 rounded-md border border-gray-600 text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none" required>
+                <button type="submit" class="px-5 py-3 rounded-md bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-colors" data-ga-event="Form:Submit:Newsletter">Subscribe</button>
+            </form>
+        </div>
+    
+        <div class="grid md:grid-cols-5 gap-8 text-sm">
+            <div class="md:col-span-2">
+                 <a href="/index.html" class="flex items-center" data-ga-event="Footer:Click:Logo">
+                    <svg class="h-8 w-auto text-emerald-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 12h2"/><path d="M10 12h2"/><path d="M14 12h2"/><path d="M18 12h2"/><path d="M12 2v2"/><path d="M12 6v2"/><path d="M12 10v2"/><path d="M12 14v2"/><path d="M12 18v2"/></svg>
+                    <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
+                </a>
+                <p class="text-gray-400 mt-3 max-w-xs">The command center for outcome-driven product teams.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold text-white mb-3">Product</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/features.html" class="hover:text-white" data-ga-event="Footer:Click:Product_Features">Features</a></li>
+                    <li><a href="/roadmap.html" class="hover:text-white" data-ga-event="Footer:Click:Product_Roadmap">Roadmap</a></li>
+                    <li><a href="/use-cases.html" class="hover:text-white" data-ga-event="Footer:Click:Product_UseCases">Use Cases</a></li>
+                    <li><a href="/pricing.html" class="hover:text-white" data-ga-event="Footer:Click:Product_Pricing">Pricing</a></li>
+                    <li><a href="/for-who.html" class="hover:text-white" data-ga-event="Footer:Click:Product_ForWho">For Who</a></li>
+                </ul>
+            </div>
+             <div>
+                <h4 class="font-semibold text-white mb-3">Resources</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/knowledge-hub.html" class="hover:text-white" data-ga-event="Footer:Click:Resources_KnowledgeHub">Knowledge Hub</a></li>
+                    <li><a href="/methodology.html" class="hover:text-white" data-ga-event="Footer:Click:Resources_Methodology">Methodology</a></li>
+                    <li><a href="/about.html" class="hover:text-white" data-ga-event="Footer:Click:Resources_About">About Us</a></li>
+                    <li><a href="/contact.html" class="hover:text-white" data-ga-event="Footer:Click:Resources_Contact">Contact Us</a></li>
+                    <li><a href="/presentations.html" class="hover:text-white" data-ga-event="Footer:Click:Resources_Presentations">Presentations</a></li>
+                </ul>
+            </div>
+            <div>
+                 <h4 class="font-semibold text-white mb-3">Legal</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/privacy.html" class="hover:text-white" data-ga-event="Footer:Click:Legal_Privacy">Privacy Policy</a></li>
+                    <li><a href="/terms.html" class="hover:text-white" data-ga-event="Footer:Click:Legal_Terms">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            <p>&copy; 2024 productflow.online. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="/assets/js/index.js" defer></script>
+</body>
+</html>

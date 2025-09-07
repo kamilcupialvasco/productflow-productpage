@@ -37,7 +37,24 @@ The `index.js` file is organized into several modules for clarity.
 
 ---
 
-## 4. Google Analytics Event Tracking
+## 4. New Components & Features
+
+### 4.1. Interactive Product Tour (`interactive-tour.html`)
+
+-   **Mechanism:** A multi-step guided tour controlled by the `initInteractiveTour` function in the `UI` module of `index.js`.
+-   **State Management:** The current step is managed by a `currentStep` variable within the function. `updateTourState()` is called to toggle the `.active` class on the appropriate `.tour-step` container.
+-   **Hotspots:** Hotspots are simply `<button>` elements with absolute positioning. They are placed within each step's image container. Their `data-action` attributes (`next-step`, `prev-step`) are used as selectors to attach event listeners.
+-   **Modification:** To add a step, simply create a new `.tour-step` div in the HTML, add your content and image, and the script will automatically include it in the tour progression.
+
+### 4.2. Animated SVG Logo
+
+-   **Mechanism:** The logo animation is pure CSS and is applied to any SVG with the class `.animated-logo`.
+-   **How it Works:** The key is the `stroke-dasharray` and `stroke-dashoffset` properties. We set them both to a high value (e.g., 100) to make the path's stroke effectively "invisible." The `@keyframes draw-logo` animation then transitions `stroke-dashoffset` to `0`, which "draws" the line.
+-   **Staggering:** The animation for each `<path>` inside the SVG is staggered using `animation-delay` in `style.css`. To adjust the timing, modify these delay values.
+
+---
+
+## 5. Google Analytics Event Tracking
 
 A lightweight event tracking system has been implemented.
 
@@ -49,7 +66,7 @@ A lightweight event tracking system has been implemented.
 
 ---
 
-## 5. SEO & Site Structure
+## 6. SEO & Site Structure
 
 -   **Production Ready:** The site has been audited for SEO and is ready for public launch. All `noindex` tags have been removed.
 -   **Breadcrumbs:** A breadcrumb component has been added to every page for improved navigation and SEO. This includes `BreadcrumbList` schema.org structured data.
@@ -57,7 +74,7 @@ A lightweight event tracking system has been implemented.
 
 ---
 
-## 6. Adding New Pages or Content
+## 7. Adding New Pages or Content
 
 -   **New Page:** Create a new `.html` file. Copy the full content from an existing page (like `about.html`) to ensure it includes the complete, embedded `<header>` and `<footer>`, breadcrumbs, and script reference. **Remember to update the breadcrumb links and text, title, meta description, and canonical URL for the new page.**
 -   **New Interactive Component:**

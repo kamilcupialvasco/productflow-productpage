@@ -47,7 +47,22 @@ The site has been architected to be SEO-friendly. Before deploying, ensure that:
 
 ---
 
-## 5. Post-Launch
+## 5. Post-Launch Monitoring (Recommended)
 
--   **Submit Sitemap:** Once the site is live, consider creating a `sitemap.xml` file and submitting it to Google Search Console to encourage faster indexing.
--   **Analytics:** Ensure your analytics tool (e.g., Google Analytics) is properly configured to receive the events being sent by the `Analytics` module in `index.js`. You will need to replace the `console.log` with the actual tracking snippet from your provider.
+Launching is just the beginning. To ensure the site is performing optimally, consider setting up the following:
+
+-   **Web Analytics:**
+    -   **Action:** Connect the `Analytics` module in `index.js` to a real analytics provider like Google Analytics 4. This involves replacing the `console.log` with the `gtag('event', ...)` function.
+    -   **Purpose:** To track page views, user engagement, and goal conversions (e.g., clicks on "Get Started"). This will help you measure the effectiveness of the marketing site.
+
+-   **User Behavior Analytics:**
+    -   **Action:** Install a tool like Hotjar or Microsoft Clarity. These tools are easy to set up by adding a small JavaScript snippet to the `<head>` of every page.
+    -   **Purpose:** To generate heatmaps (to see where users click) and record user sessions. This is invaluable for identifying user friction, understanding how people interact with your content, and finding opportunities for UX improvements.
+
+-   **Uptime Monitoring:**
+    -   **Action:** Use a service like UptimeRobot or StatusCake to monitor the site's availability.
+    -   **Purpose:** To get instant alerts if the website ever goes down, allowing you to respond quickly and minimize downtime.
+
+-   **SEO Monitoring:**
+    -   **Action:** Set up a project in Google Search Console. Submit a `sitemap.xml` to help Google index your pages efficiently.
+    -   **Purpose:** To monitor your site's search performance, check for indexing errors, and see which keywords are driving traffic.

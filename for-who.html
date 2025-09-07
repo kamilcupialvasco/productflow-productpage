@@ -8,7 +8,7 @@
     <!-- SEO Meta Tags -->
     <meta name="description" content="productflow.online is built for every member of the modern product team and tailored for high-stakes industries like FinTech, SaaS, and Healthcare.">
     <meta name="keywords" content="product manager tools, ux research tools, head of product, product team collaboration, fintech saas, healthcare saas">
-    <meta name="robots" content="noindex, nofollow">
+    
     <link rel="canonical" href="https://productflow.online/for-who.html" />
     
     <!-- Open Graph / Facebook -->
@@ -32,10 +32,10 @@
         <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold">
             <!-- Mega Menu: Product -->
             <div class="mega-menu-container">
-                <a href="/features.html" class="text-gray-400 hover:text-white flex items-center" data-ga-event="Nav:Hover:Product">
+                <button class="mega-menu-trigger" data-ga-event="Nav:Click:Product">
                     Product
                     <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </a>
+                </button>
                 <div class="mega-menu">
                     <div class="mega-menu-content">
                         <div class="mega-menu-nav-column">
@@ -51,7 +51,6 @@
                             <a href="/use-cases/align-stakeholders.html" class="mega-menu-nav-link" data-title="Align Stakeholders" data-description="Create a single source of truth that engineering, marketing, and leadership can rally behind." data-ga-event="Nav:Click:UseCases_Align">Align Stakeholders</a>
                         </div>
                         <div class="mega-menu-details-column">
-                            <!-- JS will populate this -->
                             <div class="details-content">
                                 <h4 id="mega-menu-details-title">Explore Our Product</h4>
                                 <p id="mega-menu-details-description">Hover over an item to learn more about how productflow.online can help your team build better products.</p>
@@ -64,10 +63,10 @@
 
             <!-- Mega Menu: Solutions -->
             <div class="mega-menu-container">
-                <a href="/for-who.html" class="text-gray-400 hover:text-white flex items-center" data-ga-event="Nav:Hover:Solutions">
+                <button class="mega-menu-trigger" data-ga-event="Nav:Click:Solutions">
                     Solutions
                     <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </a>
+                </button>
                 <div class="mega-menu">
                     <div class="mega-menu-content">
                         <div class="mega-menu-nav-column">
@@ -83,7 +82,6 @@
                             <a href="/for-who.html#industry-healthcare" class="mega-menu-nav-link" data-title="Healthcare" data-description="Securely manage sensitive feedback while navigating complex regulations." data-ga-event="Nav:Click:Solutions_Industry_Healthcare">For Healthcare</a>
                         </div>
                         <div class="mega-menu-details-column">
-                            <!-- JS will populate this -->
                              <div class="details-content">
                                 <h4 id="mega-menu-details-title-solutions">Solutions For Your Team</h4>
                                 <p id="mega-menu-details-description-solutions">Discover how our platform adapts to your specific context, whether defined by your role, industry, or company maturity.</p>
@@ -233,6 +231,59 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- For Product Ops -->
+                        <div id="role-ops" class="role-section animate-on-scroll scroll-mt-24">
+                            <div class="role-section-header">
+                                <h3 class="text-3xl font-bold text-emerald-400">For Product Ops</h3>
+                                <p class="text-gray-300 mt-4">You are the engine of product excellence. Our platform is your command center for creating the systems, templates, and processes that enable the entire product organization to do their best work.</p>
+                            </div>
+                            <div class="role-section-grid">
+                                <div class="challenges-column role-column">
+                                    <h4><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>Challenges</h4>
+                                    <ul>
+                                        <li><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>Onboarding new PMs to a complex, inconsistent tool stack.</li>
+                                        <li><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>Manually generating reports on roadmap progress and feedback trends.</li>
+                                        <li><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>No centralized way to manage and enforce best practices.</li>
+                                    </ul>
+                                </div>
+                                <div class="solutions-column role-column">
+                                    <h4><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>How We Help</h4>
+                                     <ul>
+                                        <li><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>A <strong>single, integrated platform</strong> simplifies the product stack.</li>
+                                        <li><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg><strong>Customizable workflows and templates</strong> ensure consistency.</li>
+                                        <li><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg><strong>Automated reports</strong> on OKR progress and feedback insights save hours.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- For Engineering Managers -->
+                        <div id="role-eng" class="role-section animate-on-scroll scroll-mt-24">
+                            <div class="role-section-header">
+                                <h3 class="text-3xl font-bold text-emerald-400">For Engineering Managers</h3>
+                                <p class="text-gray-300 mt-4">Protect your team from whiplash and half-baked ideas. Get the context you need to plan effectively and ensure your engineers are working on well-vetted, impactful problems.</p>
+                            </div>
+                            <div class="role-section-grid">
+                                <div class="challenges-column role-column">
+                                    <h4><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>Challenges</h4>
+                                    <ul>
+                                        <li><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>Engineers are given solutions without understanding the "why".</li>
+                                        <li><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>Priorities change last-minute, causing churn and wasted work.</li>
+                                        <li><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>Lack of visibility into what's coming down the pipeline.</li>
+                                    </ul>
+                                </div>
+                                <div class="solutions-column role-column">
+                                    <h4><svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>How We Help</h4>
+                                     <ul>
+                                        <li><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>The <strong>Upstream Workflow</strong> ensures ideas are vetted before they reach engineering.</li>
+                                        <li><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>The <strong>"Golden Thread"</strong> provides strategic context for every initiative.</li>
+                                        <li><svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg><strong>Dynamic Roadmaps</strong> give engineering early visibility into upcoming themes.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 

@@ -20,6 +20,9 @@ The repository is organized to separate assets from the root-level HTML pages. A
 │
 ├── ... (html pages like index.html, features.html, etc.)
 |
+├── interactive-tour.html       # NEW: The interactive product tour page
+├── roadmap.html                # NEW: The expanded roadmap page
+|
 ├── DEPLOYMENT_GUIDE.md
 └── PRODUCT_PAGE_DOCUMENTATION.md
 ```
@@ -40,16 +43,29 @@ All client-side interactivity is contained within `assets/js/index.js`, which is
 
 ## 5. Key Components & Features
 
-### 5.1. Universal Breadcrumbs
+### 5.1. Interactive Product Tour
+A new, high-value marketing asset has been added: an interactive product tour located at `/interactive-tour.html`.
+-   **Purpose:** To allow potential customers to experience the product's UI and key workflows in a guided manner without needing to sign up for a trial.
+-   **Structure:** The tour is a single-page experience. The layout consists of a sidebar for instructions and a main content area displaying a mockup of the application UI.
+-   **Interactivity:** The tour is powered by the `initInteractiveTour` function in `assets/js/index.js`. It manages the state of the current step, updates the descriptive text, and controls the visibility of "hotspots" on the UI mockup.
+-   **Maintenance:** To update the tour, modify the `.tour-step` elements within `interactive-tour.html`. Each step contains the text and the corresponding UI image with absolutely positioned hotspots (`<button>`).
+
+### 5.2. Animated SVG Logo
+The static SVG logo in the header of every page has been replaced with an animated version.
+-   **Effect:** The logo appears to "draw" itself on page load.
+-   **Implementation:** This is achieved purely with CSS. The `<path>` elements within the SVG have been given a class of `.animated-logo`. The animation is defined in `assets/css/style.css` using `stroke-dasharray` and `stroke-dashoffset` properties.
+-   **Customization:** The speed and delay of the animation can be adjusted in the `assets/css/style.css` file under the "Animated Logo" section.
+
+### 5.3. Universal Breadcrumbs
 For enhanced user navigation and SEO, a breadcrumb component has been added to the top of every page (except the homepage). This component is styled in `style.css` and includes `BreadcrumbList` Schema.org structured data for search engines.
 
-### 5.2. "Golden Thread" Diagram v2
+### 5.4. "Golden Thread" Diagram v2
 The homepage features a visually rich and interactive "Golden Thread" diagram (`#golden-thread-diagram-v2`).
 -   **Structure:** Built with semantic HTML and styled with CSS.
 -   **Icons:** Uses inline SVG data URIs for fast loading.
 -   **Interactivity:** `assets/js/index.js` adds hover listeners to highlight the strategic path, providing a visually engaging experience.
 
-### 5.3. Enhanced Animations
+### 5.5. Enhanced Animations
 -   **Counter Animation:** Elements with a `data-animate-counter` attribute will have their numerical content count up when scrolled into view.
 -   **Animated Workflow:** A new animated diagram on the `features-upstream.html` page visually represents a card moving through a Kanban-style workflow.
 
