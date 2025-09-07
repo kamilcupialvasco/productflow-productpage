@@ -7,10 +7,10 @@
 // interactivity, animations, and analytics.
 //
 // Modules:
-// - Nav: Handles navigation, including mobile menu and the new click-driven mega menu.
+// - Nav: Handles all navigation, including the mobile menu and the new,
+//        simplified click-driven dropdown menus.
 // - Animations: Manages all visual effects, like scroll-triggered animations.
 // - UI: Initializes interactive components like tabs, carousels, and forms.
-// - Blog: Handles enhancements for blog post pages.
 // - Analytics: Provides a lightweight event tracking system.
 //
 // Execution starts at the bottom with the DOMContentLoaded event listener.
@@ -18,11 +18,11 @@
 
 
 // --- NAVIGATION MODULE ---
-// Handles the main site navigation, including the mobile menu and mega menu.
+// Handles the main site navigation, including the mobile menu and dropdowns.
 const Nav = {
     init() {
         this.initMobileMenu();
-        this.initClickMegaMenu();
+        this.initDropdowns(); // Use the new simplified dropdown logic
         this.initStickySubNav();
     },
 
@@ -37,79 +37,32 @@ const Nav = {
         }
     },
 
-    initClickMegaMenu() {
-        const containers = document.querySelectorAll('.mega-menu-container');
-        if (containers.length === 0) {
-            return;
-        }
+    initDropdowns() {
+        const dropdowns = document.querySelectorAll('.dropdown-container');
 
-        const triggers = document.querySelectorAll('.mega-menu-trigger');
-
-        triggers.forEach(trigger => {
-            const container = trigger.closest('.mega-menu-container');
-            trigger.addEventListener('click', (event) => {
-                event.stopPropagation();
-                const wasOpen = container.classList.contains('is-open');
-                
-                // Close all other menus
-                containers.forEach(c => c.classList.remove('is-open'));
-                
-                if (!wasOpen) {
-                    container.classList.add('is-open');
-                }
-            });
-        });
-
-        document.addEventListener('click', () => {
-            containers.forEach(container => container.classList.remove('is-open'));
-        });
-        
-        containers.forEach((container) => {
-            const links = container.querySelectorAll('.mega-menu-nav-link');
-            const detailsColumn = container.querySelector('.mega-menu-details-column .details-content');
-            
-            if (detailsColumn && links.length > 0) {
-                const titleEl = detailsColumn.querySelector('h4');
-                const descEl = detailsColumn.querySelector('p');
-                const linkEl = detailsColumn.querySelector('a.mega-menu-link');
-
-                const originalState = {
-                    title: titleEl.innerHTML,
-                    description: descEl.innerHTML,
-                    href: linkEl.href,
-                    gaEvent: linkEl.dataset.gaEvent
-                };
-
-                links.forEach(link => {
-                    link.addEventListener('mouseenter', () => {
-                        const title = link.dataset.title;
-                        const description = link.dataset.description;
-                        detailsColumn.classList.add('fade-out-details');
-                        setTimeout(() => {
-                            titleEl.textContent = title;
-                            descEl.textContent = description;
-                            linkEl.href = link.href;
-                            // Update GA event for the main link
-                            const baseEvent = linkEl.dataset.gaEvent.split('_')[0];
-                            const newEvent = link.dataset.gaEvent.replace('Nav:Click:', '');
-                            linkEl.dataset.gaEvent = `${baseEvent}_${newEvent}`;
-                            detailsColumn.classList.remove('fade-out-details');
-                        }, 150);
-                    });
-                });
-                
-                const megaMenu = container.querySelector('.mega-menu');
-                megaMenu.addEventListener('mouseleave', () => {
-                     detailsColumn.classList.add('fade-out-details');
-                     setTimeout(() => {
-                        titleEl.innerHTML = originalState.title;
-                        descEl.innerHTML = originalState.description;
-                        linkEl.href = originalState.href;
-                        linkEl.dataset.gaEvent = originalState.gaEvent;
-                        detailsColumn.classList.remove('fade-out-details');
-                    }, 150);
+        dropdowns.forEach(dropdown => {
+            const trigger = dropdown.querySelector('.dropdown-trigger');
+            if (trigger) {
+                trigger.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const wasOpen = dropdown.classList.contains('is-open');
+                    // Close all other dropdowns
+                    dropdowns.forEach(d => d.classList.remove('is-open'));
+                    // If it wasn't open, open it
+                    if (!wasOpen) {
+                        dropdown.classList.add('is-open');
+                    }
                 });
             }
+        });
+
+        // Add a click listener to the whole document to close dropdowns when clicking outside
+        document.addEventListener('click', (event) => {
+            dropdowns.forEach(dropdown => {
+                if (!dropdown.contains(event.target)) {
+                    dropdown.classList.remove('is-open');
+                }
+            });
         });
     },
 
@@ -153,7 +106,6 @@ const Animations = {
         this.initScrollAnimations();
         this.initHeroAnimation();
         this.initHeroParallax();
-        this.initCodeAnimations();
         this.initCounterAnimation();
     },
 
@@ -228,18 +180,6 @@ const Animations = {
             parallaxBg.style.transform = `translateY(${offset * 0.3}px)`;
         });
     },
-
-    initCodeAnimations() {
-        document.querySelectorAll('.code-block-animated').forEach(block => {
-            const observer = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    block.classList.add('is-visible');
-                    observer.unobserve(block);
-                }
-            }, { threshold: 0.5 });
-            observer.observe(block);
-        });
-    },
     
     initCounterAnimation() {
         const counters = document.querySelectorAll('[data-animate-counter]');
@@ -279,14 +219,11 @@ const UI = {
         this.initUseCaseFilters();
         this.initGoldenThread();
         this.initForms();
-        this.initDeepLinking();
-        this.initPresentationControls();
-        this.initInteractiveTour();
         this.initKnowledgeHubFilters();
     },
     
     initTabs() {
-        document.querySelectorAll('.tabs-container, #for-who-tabs, #built-for-you-tabs, #roadmap-tabs').forEach(container => {
+        document.querySelectorAll('.tabs-container, #for-who-tabs, #built-for-you-tabs').forEach(container => {
             const buttons = container.querySelectorAll('.tab-button');
             const panes = container.querySelectorAll('.tab-pane');
             if (!buttons.length || !panes.length) return;
@@ -424,100 +361,6 @@ const UI = {
         }
     },
 
-    initDeepLinking() {
-        const handleHashChange = () => {
-            const hash = window.location.hash;
-            if (!hash) return;
-        
-            const targetElement = document.querySelector(hash);
-            if (!targetElement) return;
-        
-            const tabPane = targetElement.closest('.tab-pane');
-            if (!tabPane) { // Not inside a tab, just scroll
-                 setTimeout(() => {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-                return;
-            }
-        
-            const container = tabPane.closest('.tab-content').parentElement;
-            if(!container) return;
-
-            const tabId = tabPane.id;
-            const correspondingButton = container.querySelector(`.tab-button[data-tab="${tabId}"]`);
-        
-            if (correspondingButton) {
-                // Deactivate all buttons and panes in this group
-                container.querySelectorAll('.tab-button').forEach(btn => {
-                    btn.classList.remove('active');
-                    btn.setAttribute('aria-selected', 'false');
-                });
-                container.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
-        
-                // Activate the correct ones
-                correspondingButton.classList.add('active');
-                correspondingButton.setAttribute('aria-selected', 'true');
-                tabPane.classList.add('active');
-        
-                // Scroll to the element
-                setTimeout(() => {
-                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }, 100);
-            }
-        };
-
-        window.addEventListener('hashchange', handleHashChange);
-        handleHashChange(); // Run on initial load
-    },
-
-    initPresentationControls() {
-        const printButton = document.querySelector('[data-action="print"]');
-        if(printButton) {
-            printButton.addEventListener('click', () => {
-                window.print();
-            });
-        }
-    },
-
-    initInteractiveTour() {
-        const tourContainer = document.getElementById('interactive-tour');
-        if (!tourContainer) return;
-
-        const steps = tourContainer.querySelectorAll('.tour-step');
-        const nextButtons = tourContainer.querySelectorAll('[data-action="next-step"]');
-        const prevButtons = tourContainer.querySelectorAll('[data-action="prev-step"]');
-        const progressFill = tourContainer.querySelector('.tour-progress-fill');
-        let currentStep = 0;
-
-        const updateTourState = () => {
-            steps.forEach((step, index) => {
-                step.classList.toggle('active', index === currentStep);
-            });
-            const progressPercentage = ((currentStep + 1) / steps.length) * 100;
-            progressFill.style.width = `${progressPercentage}%`;
-        };
-
-        nextButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                if (currentStep < steps.length - 1) {
-                    currentStep++;
-                    updateTourState();
-                }
-            });
-        });
-        
-        prevButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                if (currentStep > 0) {
-                    currentStep--;
-                    updateTourState();
-                }
-            });
-        });
-
-        updateTourState(); // Initialize first step
-    },
-
     initKnowledgeHubFilters() {
         const container = document.getElementById('knowledge-hub-filters');
         if(!container) return;
@@ -539,77 +382,12 @@ const UI = {
     }
 };
 
-
-// --- BLOG MODULE ---
-// Handles enhancements for blog post pages.
-const Blog = {
-    init() {
-        this.initProgressBar();
-        this.initStickyTOC();
-    },
-
-    initProgressBar() {
-        const progressBar = document.getElementById('reading-progress-bar');
-        if (!progressBar) return;
-        
-        window.addEventListener('scroll', () => {
-            const scrollTop = document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrollPercent = (scrollTop / scrollHeight) * 100;
-            progressBar.style.width = `${scrollPercent}%`;
-        });
-    },
-
-    initStickyTOC() {
-        const toc = document.getElementById('blog-toc');
-        const article = document.querySelector('article');
-        if (!toc || !article) return;
-        
-        const headings = article.querySelectorAll('h2, h3');
-        if(headings.length === 0) return;
-
-        toc.innerHTML = '<h4 class="font-semibold mb-2">In this article</h4>'; // Clear and add header
-        
-        const observer = new IntersectionObserver(entries => {
-            // Find the last intersecting element
-            const intersectingEntries = entries.filter(e => e.isIntersecting);
-            if (intersectingEntries.length > 0) {
-                const lastIntersecting = intersectingEntries[intersectingEntries.length - 1];
-                 const id = lastIntersecting.target.getAttribute('id');
-                 const link = toc.querySelector(`a[href="#${id}"]`);
-                if(link) {
-                    document.querySelectorAll('#blog-toc a').forEach(l => l.classList.remove('active'));
-                    link.classList.add('active');
-                }
-            }
-           
-        }, { rootMargin: '0px 0px -80% 0px' });
-
-        headings.forEach(heading => {
-            const id = heading.textContent.toLowerCase().replace(/\s+/g, '-').replace(/[?]/g, '');
-            heading.setAttribute('id', id);
-            
-            const link = document.createElement('a');
-            link.setAttribute('href', `#${id}`);
-            link.textContent = heading.textContent;
-            link.classList.add('toc-link');
-            if(heading.tagName === 'H3') {
-                link.classList.add('toc-link-h3');
-            }
-            toc.appendChild(link);
-            
-            observer.observe(heading);
-        });
-    }
-};
-
 // --- ANALYTICS MODULE ---
 // Handles lightweight event tracking for analytics.
 const Analytics = {
     init() {
         document.body.addEventListener('click', this.trackEvent.bind(this));
         document.body.addEventListener('submit', this.trackEvent.bind(this));
-
     },
 
     trackEvent(e) {
@@ -638,6 +416,5 @@ document.addEventListener('DOMContentLoaded', () => {
     Nav.init();
     Animations.init();
     UI.init();
-    Blog.init();
     Analytics.init();
 });

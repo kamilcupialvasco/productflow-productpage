@@ -48,71 +48,38 @@
             <h1 class="ml-2 text-2xl font-bold tracking-tighter">productflow.online</h1>
         </a>
         <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold">
-            <!-- Mega Menu: Product -->
-            <div class="mega-menu-container">
-                <button class="mega-menu-trigger" data-ga-event="Nav:Click:Product">
+            
+            <div class="dropdown-container">
+                <button class="dropdown-trigger" data-ga-event="Nav:Click:Product">
                     Product
                     <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="mega-menu">
-                    <div class="mega-menu-content">
-                        <div class="mega-menu-nav-column">
-                            <h4 class="mega-menu-column-header">Features</h4>
-                            <a href="/features-knowledge.html" class="mega-menu-nav-link" data-title="Knowledge Base" data-description="The command center for all product research and early-stage ideation. Find and validate problems worth solving." data-ga-event="Nav:Click:Features_KnowledgeBase">Knowledge Base</a>
-                            <a href="/features-feedback.html" class="mega-menu-nav-link" data-title="Feedback Hub" data-description="Turn customer noise into product signal. Aggregate, analyze, and act on user feedback from any source." data-ga-event="Nav:Click:Features_FeedbackHub">Feedback Hub</a>
-                            <a href="/features-strategy.html" class="mega-menu-nav-link" data-title="Strategy & Analytics" data-description="Connect your strategy to daily execution. Define OKRs and visualize the 'Golden Thread' from vision to user stories." data-ga-event="Nav:Click:Features_StrategySuite">Strategy & Analytics</a>
-                            <a href="/features-upstream.html" class="mega-menu-nav-link" data-title="Upstream Workflow" data-description="From a vague idea to a bulletproof plan. Standardize your solution discovery process with our guided Kanban workflow." data-ga-event="Nav:Click:Features_UpstreamWorkflow">Upstream Workflow</a>
-                             <a href="/features-roadmaps.html" class="mega-menu-nav-link" data-title="Dynamic Roadmaps" data-description="Build flexible, outcome-driven roadmaps that align your team and communicate your strategy effectively." data-ga-event="Nav:Click:Features_Roadmaps">Dynamic Roadmaps</a>
-                             <a href="/features-integrations.html" class="mega-menu-nav-link" data-title="Integrations" data-description="Connect the tools you already use to create a single source of truth for product decisions." data-ga-event="Nav:Click:Features_Integrations">Integrations</a>
-                        </div>
-                         <div class="mega-menu-nav-column">
-                            <h4 class="mega-menu-column-header">Use Cases</h4>
-                            <a href="/use-cases/roadmap-prioritization.html" class="mega-menu-nav-link" data-title="Prioritize Your Roadmap" data-description="Make confident, data-driven decisions about what to build next based on user impact and strategic fit." data-ga-event="Nav:Click:UseCases_Prioritize">Prioritize Your Roadmap</a>
-                            <a href="/use-cases/justify-decisions.html" class="mega-menu-nav-link" data-title="Justify Decisions" data-description="Build a bulletproof business case for every feature by tracing it back to the problem it solves and goal it serves." data-ga-event="Nav:Click:UseCases_Justify">Justify Decisions</a>
-                            <a href="/use-cases/align-stakeholders.html" class="mega-menu-nav-link" data-title="Align Stakeholders" data-description="Create a single source of truth that engineering, marketing, and leadership can rally behind." data-ga-event="Nav:Click:UseCases_Align">Align Stakeholders</a>
-                            <a href="/use-cases/de-risk-initiatives.html" class="mega-menu-nav-link" data-title="De-Risk Initiatives" data-description="Systematically validate your assumptions and de-risk big bets before you commit to building." data-ga-event="Nav:Click:UseCases_DeRisk">De-Risk Initiatives</a>
-                            <a href="/use-cases/leverage-ai.html" class="mega-menu-nav-link" data-title="Leverage AI" data-description="Accelerate your entire workflow with an AI co-pilot that helps you summarize, analyze, and generate content." data-ga-event="Nav:Click:UseCases_AI">Leverage AI</a>
-                        </div>
-                        <div class="mega-menu-details-column">
-                            <div class="details-content">
-                                <h4 id="mega-menu-details-title">Explore Our Product</h4>
-                                <p id="mega-menu-details-description">Hover over an item to learn more about how productflow.online can help your team build better products.</p>
-                                <a id="mega-menu-details-link" href="/features.html" class="mega-menu-link" data-ga-event="Nav:Click:Product_ViewAll">View all features &rarr;</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="dropdown-menu">
+                    <div class="dropdown-header">Features</div>
+                    <a href="/features-knowledge.html" class="dropdown-link" data-ga-event="Nav:Click:Features_KnowledgeBase">Knowledge Base</a>
+                    <a href="/features-feedback.html" class="dropdown-link" data-ga-event="Nav:Click:Features_FeedbackHub">Feedback Hub</a>
+                    <a href="/features-upstream.html" class="dropdown-link" data-ga-event="Nav:Click:Features_UpstreamWorkflow">Upstream Workflow</a>
+                    <a href="/features-strategy.html" class="dropdown-link" data-ga-event="Nav:Click:Features_StrategySuite">Strategy & Analytics</a>
+                    <a href="/features-roadmaps.html" class="dropdown-link" data-ga-event="Nav:Click:Features_Roadmaps">Dynamic Roadmaps</a>
+                    <a href="/features-analytics.html" class="dropdown-link" data-ga-event="Nav:Click:Features_Analytics">Analytics</a>
+                    <a href="/features-integrations.html" class="dropdown-link" data-ga-event="Nav:Click:Features_Integrations">Integrations</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="/roadmap.html" class="dropdown-link" data-ga-event="Nav:Click:Features_PublicRoadmap">Public Roadmap</a>
                 </div>
             </div>
 
-            <!-- Mega Menu: Solutions -->
-            <div class="mega-menu-container">
-                <button class="mega-menu-trigger" data-ga-event="Nav:Click:Solutions">
+            <div class="dropdown-container">
+                <button class="dropdown-trigger" data-ga-event="Nav:Click:Solutions">
                     Solutions
                     <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="mega-menu">
-                    <div class="mega-menu-content">
-                        <div class="mega-menu-nav-column">
-                            <h4 class="mega-menu-column-header">By Role</h4>
-                            <a href="/solutions/by-role/product-manager.html" class="mega-menu-nav-link" data-title="Product Managers" data-description="Take control of your entire workflow from feedback analysis to roadmap planning in one place." data-ga-event="Nav:Click:Solutions_Role_PM">For Product Managers</a>
-                            <a href="/solutions/by-role/ux-researcher.html" class="mega-menu-nav-link" data-title="UX Researchers" data-description="Ensure your research makes an impact by linking findings directly to product initiatives." data-ga-event="Nav:Click:Solutions_Role_UX">For UX Researchers</a>
-                            <a href="/solutions/by-role/head-of-product.html" class="mega-menu-nav-link" data-title="Heads of Product" data-description="Get a high-level overview of your portfolio and ensure your teams are focused on outcomes." data-ga-event="Nav:Click:Solutions_Role_Head">For Heads of Product</a>
-                             <a href="/solutions/by-role/engineering-manager.html" class="mega-menu-nav-link" data-title="Engineering Managers" data-description="Get the context you need to plan effectively and ensure your team works on well-vetted problems." data-ga-event="Nav:Click:Solutions_Role_Eng">For Engineering Managers</a>
-                        </div>
-                         <div class="mega-menu-nav-column">
-                            <h4 class="mega-menu-column-header">By Industry</h4>
-                            <a href="/solutions/by-industry/b2b-saas.html" class="mega-menu-nav-link" data-title="B2B SaaS" data-description="Balance the needs of enterprise clients with your long-term vision and strategic goals." data-ga-event="Nav:Click:Solutions_Industry_SaaS">For B2B SaaS</a>
-                            <a href="/solutions/by-industry/fintech.html" class="mega-menu-nav-link" data-title="FinTech" data-description="Maintain a clear audit trail from customer feedback to feature release, ensuring compliance." data-ga-event="Nav:Click:Solutions_Industry_Fintech">For FinTech</a>
-                             <a href="/solutions/by-industry/healthcare.html" class="mega-menu-nav-link" data-title="Healthcare" data-description="Securely manage sensitive feedback while navigating complex regulations." data-ga-event="Nav:Click:Solutions_Industry_Healthcare">For Healthcare</a>
-                        </div>
-                        <div class="mega-menu-details-column">
-                             <div class="details-content">
-                                <h4 id="mega-menu-details-title-solutions">Solutions For Your Team</h4>
-                                <p id="mega-menu-details-description-solutions">Discover how our platform adapts to your specific context, whether defined by your role, industry, or company maturity.</p>
-                                <a id="mega-menu-details-link-solutions" href="/for-who.html" class="mega-menu-link" data-ga-event="Nav:Click:Solutions_ViewAll">See all solutions &rarr;</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="dropdown-menu">
+                     <div class="dropdown-header">By Role</div>
+                    <a href="/solutions/by-role/product-manager.html" class="dropdown-link" data-ga-event="Nav:Click:Solutions_Role_PM">For Product Managers</a>
+                    <a href="/solutions/by-role/ux-researcher.html" class="dropdown-link" data-ga-event="Nav:Click:Solutions_Role_UX">For UX Researchers</a>
+                    <a href="/solutions/by-role/head-of-product.html" class="dropdown-link" data-ga-event="Nav:Click:Solutions_Role_Head">For Heads of Product</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="/for-who.html" class="dropdown-link" data-ga-event="Nav:Click:Solutions_ViewAll">See all solutions &rarr;</a>
                 </div>
             </div>
             
@@ -201,7 +168,7 @@
                         <p><strong class="text-white">Status:</strong> <span class="text-yellow-400">Investigating</span></p>
                     </div>
                 </div>
-                <div class="animate-on-scroll md:order-last">
+                <div class="animate-on-scroll">
                     <span class="text-sm font-bold text-red-500">KNOWLEDGE BASE</span>
                     <h3 class="text-3xl font-bold text-white mt-2 mb-4">Find Problems Worth Solving</h3>
                     <p class="text-gray-400 mb-6">Start at the beginning. Our Knowledge Base is the command center for all your early-stage research and ideation. Capture raw ideas, turn them into structured research questions, and build a durable, searchable knowledge base for your entire organization.</p>
@@ -229,7 +196,7 @@
 
             <!-- Feature: Upstream Workflow -->
             <div id="upstream-workflow" class="grid md:grid-cols-2 gap-12 items-center animate-on-scroll scroll-mt-24" data-stagger-group>
-                <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated md:order-last animate-on-scroll">
+                <div class="bg-gray-900 p-6 rounded-lg border border-gray-800 shadow-2xl code-block-animated animate-on-scroll">
                      <p class="font-mono text-xs text-emerald-400 mb-2">&gt; ✅ Upstream Kanban: "Improve Mobile Export"</p>
                     <div class="font-mono text-sm text-gray-300 space-y-1">
                         <p><strong class="text-white">Stage:</strong> [Analysing] -> <span class="bg-yellow-900/50 text-yellow-300 px-1 rounded">[Deep Research]</span> -> [Ready]</p>
