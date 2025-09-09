@@ -8,7 +8,7 @@
 //
 // Modules:
 // - Nav: Handles all navigation, including the mobile menu and the new,
-//        click-driven mega menus.
+//        simplified click-driven dropdown menus.
 // - Animations: Manages all visual effects, like scroll-triggered animations.
 // - UI: Initializes interactive components like tabs, carousels, and forms.
 // - Analytics: Provides a lightweight event tracking system.
@@ -22,7 +22,7 @@
 const Nav = {
     init() {
         this.initMobileMenu();
-        this.initDropdowns(); // Use the new mega menu logic
+        this.initDropdowns(); // Use the new simplified dropdown logic
         this.initStickySubNav();
     },
 
@@ -38,10 +38,10 @@ const Nav = {
     },
 
     initDropdowns() {
-        const dropdowns = document.querySelectorAll('.mega-menu-container');
+        const dropdowns = document.querySelectorAll('.dropdown-container');
 
         dropdowns.forEach(dropdown => {
-            const trigger = dropdown.querySelector('.mega-menu-trigger');
+            const trigger = dropdown.querySelector('.dropdown-trigger');
             if (trigger) {
                 trigger.addEventListener('click', (event) => {
                     event.stopPropagation();
@@ -53,39 +53,6 @@ const Nav = {
                         dropdown.classList.add('is-open');
                     }
                 });
-            }
-
-            // Add hover effect for details panel
-            const links = dropdown.querySelectorAll('.mega-menu-nav-link');
-            const detailsTitle = dropdown.querySelector('.details-content h4');
-            const detailsDescription = dropdown.querySelector('.details-content p');
-            const detailsLink = dropdown.querySelector('.details-content a');
-
-            if (links.length > 0 && detailsTitle && detailsDescription && detailsLink) {
-                // Store default values
-                const defaultTitle = detailsTitle.textContent;
-                const defaultDescription = detailsDescription.textContent;
-                const defaultLinkHref = detailsLink.href;
-
-                links.forEach(link => {
-                    link.addEventListener('mouseenter', () => {
-                        if (link.dataset.title && link.dataset.description) {
-                            detailsTitle.textContent = link.dataset.title;
-                            detailsDescription.textContent = link.dataset.description;
-                            detailsLink.href = link.href;
-                        }
-                    });
-                });
-                
-                // Reset to default when mouse leaves the entire menu content area
-                const menuContent = dropdown.querySelector('.mega-menu-content');
-                if(menuContent) {
-                    menuContent.addEventListener('mouseleave', () => {
-                         detailsTitle.textContent = defaultTitle;
-                         detailsDescription.textContent = defaultDescription;
-                         detailsLink.href = defaultLinkHref;
-                    });
-                }
             }
         });
 

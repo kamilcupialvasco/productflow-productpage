@@ -49,68 +49,39 @@
         </a>
         <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold">
             
-            <!-- Mega Menu: Product -->
-            <div class="mega-menu-container">
-                <button class="mega-menu-trigger" data-ga-event="Nav:Click:Product">
+            <div class="dropdown-container">
+                <button class="dropdown-trigger" data-ga-event="Nav:Click:Product">
                     Product
                     <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="mega-menu">
-                    <div class="mega-menu-content">
-                        <div class="mega-menu-nav-column">
-                            <h4 class="mega-menu-column-header">Features</h4>
-                            <a href="/features-knowledge.html" class="mega-menu-nav-link" data-title="Knowledge Base" data-description="The command center for all product research and early-stage ideation. Find and validate problems worth solving." data-ga-event="Nav:Click:Features_KnowledgeBase">Knowledge Base</a>
-                            <a href="/features-feedback.html" class="mega-menu-nav-link" data-title="Feedback Hub" data-description="Turn customer noise into product signal. Aggregate, analyze, and act on user feedback from any source." data-ga-event="Nav:Click:Features_FeedbackHub">Feedback Hub</a>
-                            <a href="/features-strategy.html" class="mega-menu-nav-link" data-title="Strategy & Analytics" data-description="Connect your strategy to daily execution. Define OKRs and visualize the 'Golden Thread' from vision to user stories." data-ga-event="Nav:Click:Features_StrategySuite">Strategy & Analytics</a>
-                            <a href="/features-upstream.html" class="mega-menu-nav-link" data-title="Upstream Workflow" data-description="From a vague idea to a bulletproof plan. Standardize your solution discovery process with our guided Kanban workflow." data-ga-event="Nav:Click:Features_UpstreamWorkflow">Upstream Workflow</a>
-                             <a href="/features-roadmaps.html" class="mega-menu-nav-link" data-title="Dynamic Roadmaps" data-description="Build flexible, outcome-driven roadmaps that align your team and communicate your strategy effectively." data-ga-event="Nav:Click:Features_Roadmaps">Dynamic Roadmaps</a>
-                             <a href="/features-analytics.html" class="mega-menu-nav-link" data-title="Analytics" data-description="Measure what matters. Track feature adoption, your North Star Metric, and market trends." data-ga-event="Nav:Click:Features_Analytics">Analytics</a>
-                             <a href="/features-integrations.html" class="mega-menu-nav-link" data-title="Integrations" data-description="Connect the tools you already use to create a single source of truth for product decisions." data-ga-event="Nav:Click:Features_Integrations">Integrations</a>
-                        </div>
-                         <div class="mega-menu-nav-column">
-                            <h4 class="mega-menu-column-header">More</h4>
-                            <a href="/roadmap.html" class="mega-menu-nav-link" data-title="Public Roadmap" data-description="See what we're working on now, next, and later." data-ga-event="Nav:Click:Features_PublicRoadmap">Public Roadmap</a>
-                            <a href="/use-cases.html" class="mega-menu-nav-link" data-title="Use Cases" data-description="Solve your toughest product management challenges systematically." data-ga-event="Nav:Click:UseCases">Use Cases</a>
-                        </div>
-                        <div class="mega-menu-details-column">
-                            <div class="details-content">
-                                <h4>Explore Our Product</h4>
-                                <p>Hover over an item to learn more about how productflow.online can help your team build better products.</p>
-                                <a href="/features.html" class="mega-menu-link" data-ga-event="Nav:Click:Product_ViewAll">View all features &rarr;</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="dropdown-menu">
+                    <div class="dropdown-header">Features</div>
+                    <a href="/features-knowledge.html" class="dropdown-link" data-ga-event="Nav:Click:Features_KnowledgeBase">Knowledge Base</a>
+                    <a href="/features-feedback.html" class="dropdown-link" data-ga-event="Nav:Click:Features_FeedbackHub">Feedback Hub</a>
+                    <a href="/features-upstream.html" class="dropdown-link" data-ga-event="Nav:Click:Features_UpstreamWorkflow">Upstream Workflow</a>
+                    <a href="/features-strategy.html" class="dropdown-link" data-ga-event="Nav:Click:Features_StrategySuite">Strategy & Analytics</a>
+                    <a href="/features-roadmaps.html" class="dropdown-link" data-ga-event="Nav:Click:Features_Roadmaps">Dynamic Roadmaps</a>
+                    <a href="/features-analytics.html" class="dropdown-link" data-ga-event="Nav:Click:Features_Analytics">Analytics</a>
+                    <a href="/features-integrations.html" class="dropdown-link" data-ga-event="Nav:Click:Features_Integrations">Integrations</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="/roadmap.html" class="dropdown-link" data-ga-event="Nav:Click:Features_PublicRoadmap">Public Roadmap</a>
                 </div>
             </div>
 
-            <!-- Mega Menu: Solutions -->
-            <div class="mega-menu-container">
-                <button class="mega-menu-trigger" data-ga-event="Nav:Click:Solutions">
+            <div class="dropdown-container">
+                <button class="dropdown-trigger" data-ga-event="Nav:Click:Solutions">
                     Solutions
                     <svg class="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
-                <div class="mega-menu">
-                    <div class="mega-menu-content">
-                        <div class="mega-menu-nav-column">
-                            <h4 class="mega-menu-column-header">By Role</h4>
-                            <a href="/solutions/by-role/product-manager.html" class="mega-menu-nav-link" data-title="For Product Managers" data-description="Take control of your entire workflow from feedback analysis to roadmap planning in one place." data-ga-event="Nav:Click:Solutions_Role_PM">Product Managers</a>
-                            <a href="/solutions/by-role/ux-researcher.html" class="mega-menu-nav-link" data-title="For UX Researchers" data-description="Ensure your research makes an impact by linking findings directly to product initiatives." data-ga-event="Nav:Click:Solutions_Role_UX">UX Researchers</a>
-                            <a href="/solutions/by-role/head-of-product.html" class="mega-menu-nav-link" data-title="For Heads of Product" data-description="Get a high-level overview of your portfolio and ensure your teams are focused on outcomes." data-ga-event="Nav:Click:Solutions_Role_Head">Heads of Product</a>
-                        </div>
-                         <div class="mega-menu-nav-column">
-                            <h4 class="mega-menu-column-header">By Industry</h4>
-                            <a href="/solutions/by-industry/b2b-saas.html" class="mega-menu-nav-link" data-title="For B2B SaaS" data-description="Balance the needs of enterprise clients with your long-term vision and strategic goals." data-ga-event="Nav:Click:Solutions_Industry_SaaS">B2B SaaS</a>
-                            <a href="/solutions/by-industry/fintech.html" class="mega-menu-nav-link" data-title="For FinTech" data-description="Maintain a clear audit trail from customer feedback to feature release, ensuring compliance." data-ga-event="Nav:Click:Solutions_Industry_Fintech">FinTech</a>
-                            <a href="/solutions/by-industry/healthcare.html" class="mega-menu-nav-link" data-title="For Healthcare" data-description="Securely manage sensitive feedback while navigating complex regulations." data-ga-event="Nav:Click:Solutions_Industry_Healthcare">Healthcare</a>
-                        </div>
-                        <div class="mega-menu-details-column">
-                             <div class="details-content">
-                                <h4>Solutions For Your Team</h4>
-                                <p>Discover how our platform adapts to your specific context, whether defined by your role, industry, or company maturity.</p>
-                                <a href="/for-who.html" class="mega-menu-link" data-ga-event="Nav:Click:Solutions_ViewAll">See all solutions &rarr;</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="dropdown-menu">
+                     <div class="dropdown-header">By Role</div>
+                    <a href="/solutions/by-role/product-manager.html" class="dropdown-link" data-ga-event="Nav:Click:Solutions_Role_PM">For Product Managers</a>
+                    <a href="/solutions/by-role/ux-researcher.html" class="dropdown-link" data-ga-event="Nav:Click:Solutions_Role_UX">For UX Researchers</a>
+                    <a href="/solutions/by-role/head-of-product.html" class="dropdown-link" data-ga-event="Nav:Click:Solutions_Role_Head">For Heads of Product</a>
+                    <a href="/solutions/by-role/ux-ui-designer.html" class="dropdown-link" data-ga-event="Nav:Click:Solutions_Role_Designer">For UX/UI Designers</a>
+                    <a href="/solutions/by-role/tech-lead.html" class="dropdown-link" data-ga-event="Nav:Click:Solutions_Role_TechLead">For Tech Leads</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="/for-who.html" class="dropdown-link" data-ga-event="Nav:Click:Solutions_ViewAll">See all solutions &rarr;</a>
                 </div>
             </div>
             
@@ -370,6 +341,14 @@
                                     <a href="/solutions/by-role/head-of-product.html" class="industry-card block animate-on-scroll" data-ga-event="Link:Click:BuiltForYou_Role_Head">
                                         <h4 class="font-bold text-white text-lg">Heads of Product</h4>
                                         <p class="text-sm text-gray-400 mt-2">Lead with strategy, not gut feelings. Get a high-level overview of your product portfolio, monitor strategic alignment, and ensure your teams are focused on outcomes.</p>
+                                    </a>
+                                     <a href="/solutions/by-role/ux-ui-designer.html" class="industry-card block animate-on-scroll" data-ga-event="Link:Click:BuiltForYou_Role_Designer">
+                                        <h4 class="font-bold text-white text-lg">UX/UI Designers</h4>
+                                        <p class="text-sm text-gray-400 mt-2">Stop designing in a vacuum. Get direct access to user insights and strategic context to create impactful, user-centered designs.</p>
+                                    </a>
+                                     <a href="/solutions/by-role/tech-lead.html" class="industry-card block animate-on-scroll" data-ga-event="Link:Click:BuiltForYou_Role_TechLead">
+                                        <h4 class="font-bold text-white text-lg">Tech Leads</h4>
+                                        <p class="text-sm text-gray-400 mt-2">Eliminate the thrash. Get the clarity and context your team needs to build what matters, with well-vetted problems and clear success metrics.</p>
                                     </a>
                                 </div>
                              </div>
